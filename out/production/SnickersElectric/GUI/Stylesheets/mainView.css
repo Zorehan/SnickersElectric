@@ -1,0 +1,38 @@
+#boxLeftPanel {
+    -fx-background-color: #4BC774;
+}
+
+#boxTopPanel {
+    -fx-background-color: #17AD61;
+}
+
+#btnProfiles,
+#btnTeams,
+#btnStatistics,
+#btnLogs {
+    -fx-background-radius: 0em;
+    -fx-background-color: #4BC774;
+    -fx-text-fill: #3e3e3e;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0); /* Slight drop shadow */
+    -fx-transition: all 0.3s;
+}
+
+#btnProfiles:hover,
+#btnTeams:hover,
+#btnStatistics:hover,
+#btnLogs:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.7), 10, 0, 0, 0); /* Slightly stronger drop shadow */
+    -fx-opacity: 0.9; /* Slightly reduce opacity for subtle fade effect */
+    -fx-transition: all 0.3s;
+}
+
+#lblSchneiderElectric {
+    -fx-text-fill: #ffffff;
+}
+
+/* Define style for active tab */
+.active-tab {
+    /* Add your styling properties here */
+    -fx-background-color: lightgray; /* Example background color */
+    -fx-text-fill: black; /* Example text color */
+}
