@@ -16,4 +16,6 @@ public class profileCreatorController {
         Stage stage = (Stage) btnSave.getScene().getWindow();
         stage.close();
     }
+
+
 }

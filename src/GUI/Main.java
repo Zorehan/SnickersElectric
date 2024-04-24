@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -14,6 +15,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("View/mainView.fxml")));
         Scene scene = new Scene(root);
+
+        Image image = new Image("icons/icon.png");
+        primaryStage.getIcons().add(image);
+
+
         primaryStage.setTitle("Schneider Electric");
         primaryStage.setScene(scene);
         primaryStage.setMinHeight(750);
