@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@/GUI/Stylesheets/teamsView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@/GUI/Stylesheets/teamView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.teamViewController">
     <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="777.0" spacing="10.0" stylesheets="@../Stylesheets/teamsView.css" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="777.0" spacing="10.0" stylesheets="@../Stylesheets/teamView.css" BorderPane.alignment="CENTER">
             <children>
                 <Label fx:id="lblTeams" graphicTextGap="10.0" text="Teams">
                     <font>
@@ -21,9 +21,9 @@
                         <Insets left="30.0" />
                     </padding>
                 </Label>
-                <Button fx:id="btnNewTeam" mnemonicParsing="false" text="Add new team" />
+                <Button fx:id="btnNewTeam" mnemonicParsing="false" text="Add new team" onAction="#openTeamCreator" />
+                <Button fx:id="btnEditTeam" mnemonicParsing="false" text="Edit team" onAction="#openTeamEditor"/>
                 <Button fx:id="btnRemoveTeam" mnemonicParsing="false" text="Remove team" />
-                <Button fx:id="btnEditTeam" mnemonicParsing="false" text="Edit team" />
             </children>
             <BorderPane.margin>
                 <Insets top="-10.0" />
@@ -31,15 +31,17 @@
         </HBox>
     </top>
     <center>
-        <TableView fx:id="tblViewTeams" focusTraversable="false" prefHeight="200.0" prefWidth="770.0" stylesheets="@../Stylesheets/teamsView.css" BorderPane.alignment="CENTER">
+        <TableView fx:id="tblViewTeams" focusTraversable="false" prefHeight="444.0" prefWidth="770.0" stylesheets="@../Stylesheets/teamView.css" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="nameColumn" editable="false" prefWidth="112.0" text="Name" />
-                <TableColumn fx:id="annualSalaryColumn" editable="false" prefWidth="89.0" text="Annual Salary" />
-                <TableColumn fx:id="fixedAnnualAmountColumn" editable="false" prefWidth="140.0" text="Fixed Annual Amount" />
-                <TableColumn fx:id="annualWorkingHoursColumn" editable="false" prefWidth="142.0" text="Annual working hours" />
-                <TableColumn fx:id="overheadColumn" editable="false" minWidth="9.0" prefWidth="98.0" text="Overhead (%)" />
+                <TableColumn fx:id="nameColumn" editable="false" prefWidth="94.0" text="Name" />
+            <TableColumn fx:id="countryColumn" editable="false" prefWidth="77.0" text="Country" />
+                <TableColumn fx:id="annualSalaryColumn" editable="false" prefWidth="85.0" text="Annual salary" />
+                <TableColumn fx:id="fixedAnnualAmountColumn" editable="false" prefWidth="101.0" text="Annual amount" />
+                <TableColumn fx:id="annualWorkingHoursColumn" editable="false" prefWidth="94.0" text="Working hours" />
+                <TableColumn fx:id="overheadColumn" editable="false" minWidth="9.0" prefWidth="88.0" text="Overhead (%)" />
                 <TableColumn fx:id="utilizationColumn" editable="false" prefWidth="95.0" text="Utilization (%)" />
-                <TableColumn fx:id="hourlyRateColumn" editable="false" prefWidth="99.0" text="Hourly Rate" />
+            <TableColumn fx:id="typeColumn" editable="false" prefWidth="54.0" text="Type" />
+                <TableColumn fx:id="hourlyRateColumn" editable="false" prefWidth="90.0" text="Hourly Rate" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
