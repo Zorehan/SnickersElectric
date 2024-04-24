@@ -3,7 +3,15 @@
     -fx-background-color: #fff;
     -fx-border-color: #a8a8a8;
     -fx-text-fill: #3e3e3e;
+    -fx-cursor: hand; /* Optional: Change cursor to hand when hovering */
 }
+
+#btnNewProfile:hover, #btnRemoveProfile:hover, #btnEditProfile:hover {
+    -fx-background-color: #dadada; /* Change background color on hover */
+    -fx-border-color: #a8a8a8; /* You can adjust border color on hover if needed */
+    -fx-text-fill: #3e3e3e; /* You can adjust text color on hover if needed */
+}
+
 
 #lblProfiles {
     -fx-text-fill: #3e3e3e;
@@ -16,7 +24,9 @@
 #annualWorkingHoursColumn,
 #overheadColumn,
 #utilizationColumn,
-#hourlyRateColumn {
+#hourlyRateColumn,
+#typeColumn,
+#countryColumn {
     -fx-background-color: white;
 }
 

@@ -22,13 +22,11 @@ public class mainViewController {
 
     @FXML
     private void handleProfilesButtonClick() {
-        // Load the profileView.fxml file and set it as the center content
         loadAndViewFXML("../View/profileView.fxml");
     }
 
     @FXML
     private void handleTeamsButtonClick() {
-        // Load the teamsView.fxml file and set it as the center content
         loadAndViewFXML("../View/teamView.fxml");
     }
 
@@ -38,7 +36,6 @@ public class mainViewController {
             borderPane.setCenter(loader.load());
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the exception
         }
     }
 }
