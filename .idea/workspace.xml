@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="ANALYZE_INJECTED_CODE" value="false" />
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/profileCreatorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/teamCreatorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/teamEditorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileCreator.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/profileCreator.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/profileEditor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/teamCreator.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/teamEditor.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Controller/mainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Controller/mainViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Controller/profileViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Controller/profileViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Controller/teamViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Controller/teamViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Stylesheets/profilesView.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/Stylesheets/teamsView.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/logView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/logView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/mainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/mainView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/profileView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/teamView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnickersElectric/GUI/View/teamView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/teamViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/teamViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/mainView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/mainView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/profilesView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/teamsView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/logView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/logView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" afterDir="false" />
@@ -60,7 +78,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ResizeFix",
+    "git-widget-placeholder": "ProfileCreator",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/runsi/OneDrive/Dokumenter/GitHub/SnickersElectric/src/GUI/View",
@@ -73,7 +91,6 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -124,9 +141,7 @@
       <workItem from="1713894919911" duration="333000" />
       <workItem from="1713895285605" duration="374000" />
       <workItem from="1713895743348" duration="5211000" />
-      <workItem from="1713955209964" duration="2765000" />
-      <workItem from="1713958153630" duration="26000" />
-      <workItem from="1713967859552" duration="3774000" />
+      <workItem from="1713955209964" duration="2554000" />
     </task>
     <servers />
   </component>
