@@ -11,16 +11,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="570.0" prefWidth="980.0" stylesheets="@/GUI/Stylesheets/mainView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.mainViewController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="570.0" prefWidth="980.0" stylesheets="@/GUI/Stylesheets/mainView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.mainViewController">
     <children>
-        <BorderPane fx:id="borderPane" prefHeight="570.0" prefWidth="980.0" stylesheets="@../Stylesheets/mainView.css">
+        <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="777.0" stylesheets="@../Stylesheets/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
-                <VBox fx:id="boxLeftPanel" prefHeight="570.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <VBox fx:id="boxLeftPanel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="570.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="btnProfiles" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleProfilesButtonClick" prefHeight="46.0" prefWidth="208.0" text="Profiles">
 
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+
                         </ImageView>
                      </graphic>
                      <padding>
@@ -36,6 +37,7 @@
                   <Button fx:id="btnTeams" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleTeamsButtonClick" prefHeight="46.0" prefWidth="208.0" text="Teams">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+
                         </ImageView>
                      </graphic>
                      <padding>
@@ -51,6 +53,7 @@
                   <Button fx:id="btnLogs" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="208.0" text="Logs">
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+
                         </ImageView>
                      </graphic>
                      <padding>
@@ -66,6 +69,7 @@
                   <Button fx:id="btnStatistics" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="208.0" text="Statistics">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+
                         </ImageView>
                      </graphic>
                      <padding>

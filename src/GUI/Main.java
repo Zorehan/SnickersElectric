@@ -16,6 +16,8 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("Schneider Electric");
         primaryStage.setScene(scene);
+        primaryStage.setMinHeight(750);
+        primaryStage.setMinWidth(1100);
         primaryStage.show();
     }
 

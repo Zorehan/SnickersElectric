@@ -21,8 +21,8 @@
                         <Insets left="30.0" />
                     </padding>
                 </Label>
-                <Button fx:id="btnNewTeam" mnemonicParsing="false" text="Add new team" onAction="#openTeamCreator" />
-                <Button fx:id="btnEditTeam" mnemonicParsing="false" text="Edit team" onAction="#openTeamEditor"/>
+                <Button fx:id="btnNewTeam" mnemonicParsing="false" onAction="#openTeamCreator" text="Add new team" />
+                <Button fx:id="btnEditTeam" mnemonicParsing="false" onAction="#openTeamEditor" text="Edit team" />
                 <Button fx:id="btnRemoveTeam" mnemonicParsing="false" text="Remove team" />
             </children>
             <BorderPane.margin>

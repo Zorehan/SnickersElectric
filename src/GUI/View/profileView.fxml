@@ -30,8 +30,8 @@
          </BorderPane.margin>
       </HBox>
    </top>
-   <right>
-      <TableView fx:id="tblViewProfiles" focusTraversable="false" prefHeight="444.0" prefWidth="777.0" stylesheets="@../Stylesheets/profileView.css" BorderPane.alignment="CENTER">
+   <center>
+      <TableView fx:id="tblViewProfiles" focusTraversable="false" prefHeight="444.0" prefWidth="770.0" stylesheets="@../Stylesheets/profileView.css" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="nameColumn" editable="false" prefWidth="95.0" text="Name" />
             <TableColumn fx:id="countryColumn" editable="false" prefWidth="74.0" text="Country" />
@@ -43,12 +43,12 @@
             <TableColumn fx:id="typeColumn" editable="false" prefWidth="57.0" text="Type" />
             <TableColumn fx:id="hourlyRateColumn" editable="false" prefWidth="90.0" text="Hourly Rate" />
          </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
          <BorderPane.margin>
             <Insets top="-9.0" />
          </BorderPane.margin>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-   </right>
+   </center>
 </BorderPane>
