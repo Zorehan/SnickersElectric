@@ -1,14 +1,10 @@
 package BE;
 
 public class Profile {
-    private String name;
-    private String country;
+    private String name, country;
     private ProfileType type;
-    private double annualSalary;
-    private int workHours;
-    private int annualAmount;
-    private double overheadPercent;
-    private double utilizationPercent;
+    private double annualSalary, overheadPercent, utilizationPercent;
+    private int id, workHours, annualAmount;
 
     // Denne kunne godt være sin egen Class, men det kan vi ret nemt refactor hvis vi føler det er nødvændigt
     // Det finder vi bare ud af engang.
@@ -16,7 +12,8 @@ public class Profile {
         TEAM_LEAD, TEAM_MEMBER, CONTRACTOR
     }
 
-    public Profile(String name, double annualSalary, int workHours, int annualAmount, double overheadPercent, double utilizationPercent, String country, ProfileType type) {
+    public Profile(int id, String name, double annualSalary, int workHours, int annualAmount, double overheadPercent, double utilizationPercent, String country, ProfileType type) {
+        setId(id);
         setName(name);
         setAnnualSalary(annualSalary);
         setWorkHours(workHours);
@@ -27,67 +24,79 @@ public class Profile {
         setType(type);
     }
 
-    private void setName(String name) {
-        this.name = name;
-    }
 
-    private void setAnnualSalary(double annualSalary) {
-        this.annualSalary = annualSalary;
-    }
-
-    private void setAnnualAmount(int annualAmount) {
-        this.annualAmount = annualAmount;
-    }
-
-    private void setCountry(String country) {
-        this.country = country;
-    }
-
-    private void setOverheadPercent(double overheadPercent) {
-        this.overheadPercent = overheadPercent;
-    }
-
-    private void setType(ProfileType type) {
-        this.type = type;
-    }
-
-    private void setUtilizationPercent(double utilizationPercent) {
-        this.utilizationPercent = utilizationPercent;
-    }
-
-    private void setWorkHours(int workHours) {
-        this.workHours = workHours;
-    }
-
-    private String getName() {
+    /*
+     *  ----------------- GETTERS OG SETTERS -----------------
+     */
+    public String getName() {
         return name;
     }
 
-    private double getAnnualSalary() {
-        return annualSalary;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    private double getOverheadPercent() {
-        return overheadPercent;
+    public String getCountry() {
+        return country;
     }
 
-    private double getUtilizationPercent() {
-        return utilizationPercent;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    private int getAnnualAmount() {
-        return annualAmount;
-    }
-
-    private int getWorkHours() {
-        return workHours;
-    }
-
-    private ProfileType getType() {
+    public ProfileType getType() {
         return type;
     }
 
-    private String getCountry() {
-        return country;
+    public void setType(ProfileType type) {
+        this.type = type;
+    }
+
+    public double getAnnualSalary() {
+        return annualSalary;
+    }
+
+    public void setAnnualSalary(double annualSalary) {
+        this.annualSalary = annualSalary;
+    }
+
+    public double getOverheadPercent() {
+        return overheadPercent;
+    }
+
+    public void setOverheadPercent(double overheadPercent) {
+        this.overheadPercent = overheadPercent;
+    }
+
+    public double getUtilizationPercent() {
+        return utilizationPercent;
+    }
+
+    public void setUtilizationPercent(double utilizationPercent) {
+        this.utilizationPercent = utilizationPercent;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getWorkHours() {
+        return workHours;
+    }
+
+    public void setWorkHours(int workHours) {
+        this.workHours = workHours;
+    }
+
+    public int getAnnualAmount() {
+        return annualAmount;
+    }
+
+    public void setAnnualAmount(int annualAmount) {
+        this.annualAmount = annualAmount;
     }
 }

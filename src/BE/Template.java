@@ -1,2 +1,4 @@
-package BE;public class Template {
+package BE;
+
+public class Template {
 }
