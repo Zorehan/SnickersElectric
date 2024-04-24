@@ -3,8 +3,8 @@ package BE;
 public class Profile {
     private String name, country;
     private ProfileType type;
-    private double annualSalary, overheadPercent, utilizationPercent;
-    private int id, workHours, annualAmount;
+    private double annualSalary, overheadPercent, utilizationPercent, annualAmount, workHours;
+    private int id;
 
     // Denne kunne godt være sin egen Class, men det kan vi ret nemt refactor hvis vi føler det er nødvændigt
     // Det finder vi bare ud af engang.
@@ -12,7 +12,7 @@ public class Profile {
         TEAM_LEAD, TEAM_MEMBER, CONTRACTOR
     }
 
-    public Profile(int id, String name, double annualSalary, int workHours, int annualAmount, double overheadPercent, double utilizationPercent, String country, ProfileType type) {
+    public Profile(int id, String name, double annualSalary, double workHours, double annualAmount, double overheadPercent, double utilizationPercent, String country, ProfileType type) {
         setId(id);
         setName(name);
         setAnnualSalary(annualSalary);
@@ -84,19 +84,19 @@ public class Profile {
         this.id = id;
     }
 
-    public int getWorkHours() {
+    public double getWorkHours() {
         return workHours;
     }
 
-    public void setWorkHours(int workHours) {
+    public void setWorkHours(double workHours) {
         this.workHours = workHours;
     }
 
-    public int getAnnualAmount() {
+    public double getAnnualAmount() {
         return annualAmount;
     }
 
-    public void setAnnualAmount(int annualAmount) {
+    public void setAnnualAmount(double annualAmount) {
         this.annualAmount = annualAmount;
     }
 }
