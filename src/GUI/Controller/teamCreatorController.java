@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Profile;
+import BE.Team;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,6 +37,7 @@ public class teamCreatorController implements Initializable {
 
 
     private Profile profile;
+    private Team team;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,16 +64,12 @@ public class teamCreatorController implements Initializable {
 
     @FXML
     private void saveInformation() {
-        String name = txtFieldName.getText();
-        double workingHours = Double.parseDouble(txtFieldWorkingHours.getText());
-        double overhead = Double.parseDouble(txtFieldOverhead.getText());
-        double utilization = Double.parseDouble(txtFieldUtilization.getText());
-        double annualAmount = Double.parseDouble(txtFieldAnnualAmount.getText());
-        double annualSalary = Double.parseDouble(txtFieldAnnualSalary.getText());
-        String country = comboBoxCountry.getValue();
-        Profile.ProfileType type = Profile.ProfileType.valueOf(comboBoxType.getValue());
 
-        Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,type);
+        String name = txtFieldName.getText();
+        String country = comboBoxCountry.getValue();
+        Team.TeamType type = Team.TeamType.valueOf(comboBoxType.getValue());
+
+        Team team = new Team(-1, name, country, type);
 
         // TODO: Add CRUD create
 
