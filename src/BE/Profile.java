@@ -9,8 +9,21 @@ public class Profile {
     // Denne kunne godt være sin egen Class, men det kan vi ret nemt refactor hvis vi føler det er nødvændigt
     // Det finder vi bare ud af engang.
     public enum ProfileType {
-        TEAM_LEAD, TEAM_MEMBER, CONTRACTOR
+        TEAM_LEAD("Team Lead"),
+        TEAM_MEMBER("Team Member"),
+        CONTRACTOR("Contractor");
+
+        private final String displayName;
+
+        ProfileType(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
     }
+
 
     public Profile(int id, String name, double annualSalary, double workHours, double annualAmount, double overheadPercent, double utilizationPercent, String country, ProfileType type) {
         setId(id);
