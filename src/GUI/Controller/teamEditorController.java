@@ -67,9 +67,9 @@ public class teamEditorController implements Initializable {
 
         String name = txtFieldName.getText();
         String country = comboBoxCountry.getValue();
-        Team.TeamType type = Team.TeamType.valueOf(comboBoxType.getValue());
+        //Team.TeamType type = Team.TeamType.valueOf(comboBoxType.getValue());
 
-        Team team = new Team(-1, name, country, type);
+        Team team = new Team(-1, name);
 
         // TODO: Add CRUD create
 
