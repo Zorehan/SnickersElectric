@@ -1,6 +1,8 @@
 package GUI.Controller;
 
 import BE.Profile;
+import GUI.Model.ProfileModel;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,10 +44,11 @@ public class profileViewController implements Initializable {
     private TableColumn<Profile, Double> utilizationColumn;
 
     @FXML
-    private TableColumn<Profile, Profile.ProfileType> typeColumn;
+    private TableColumn<Profile, String> typeColumn;
 
     @FXML
     private TableColumn<Profile, Double> hourlyRateColumn;
+    private ProfileModel profileModel = ProfileModel.getInstance();
 
 
     @FXML
@@ -76,11 +79,8 @@ public class profileViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //Det her burde meget gerne virke ligeså snart vi har en modelklasse knyttet til og noget crud 
-
-        /*
-        tblViewProfiles.setItems(model.getObservableProfiles());
+        //Det her burde meget gerne virke ligeså snart vi har en modelklasse knyttet til og noget crud
+        tblViewProfiles.setItems(profileModel.getObservableProfiles());
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
         annualSalaryColumn.setCellValueFactory(new PropertyValueFactory<>("annualSalary"));
@@ -88,7 +88,6 @@ public class profileViewController implements Initializable {
         annualWorkingHoursColumn.setCellValueFactory(new PropertyValueFactory<>("workHours"));
         overheadColumn.setCellValueFactory(new PropertyValueFactory<>("overheadPercent"));
         utilizationColumn.setCellValueFactory(new PropertyValueFactory<>("utilizationPercent"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("ProfileType"));
-        */
+        typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().toString()));
     }
 }
