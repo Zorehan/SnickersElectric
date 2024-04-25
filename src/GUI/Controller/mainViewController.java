@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import DAL.DatabaseConnector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
