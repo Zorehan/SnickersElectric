@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/config.settings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/configExample.settings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/ProfileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/DatabaseConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SnickersElectric.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SnickersElectric.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BLL/TeamManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DAL/TeamDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Model/TeamModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BE/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +69,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "CRUD",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/runsi/OneDrive/Dokumenter/GitHub/SnickersElectric/src/GUI/View",
@@ -141,6 +135,7 @@
       <workItem from="1713955209964" duration="2554000" />
       <workItem from="1714035289439" duration="2243000" />
       <workItem from="1714055975480" duration="4882000" />
+      <workItem from="1714079507854" duration="1926000" />
     </task>
     <servers />
   </component>

@@ -73,8 +73,8 @@ public class ProfileDAO {
 
     public void deleteProfile(Profile profile) {
         String sql = "DELETE FROM dbo.Profiles WHERE id = ?;";
-        try(Connection conn = databaseConnector.getConnection()){
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        try(Connection conn = databaseConnector.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)){
 
             stmt.setInt(1, profile.getId());
             stmt.executeUpdate();
