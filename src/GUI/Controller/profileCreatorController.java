@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Profile;
+import GUI.Model.ProfileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -31,6 +32,8 @@ public class profileCreatorController implements Initializable {
     private ComboBox<String> comboBoxType;
     @FXML
     private Button btnSave;
+
+    private ProfileModel profileModel = ProfileModel.getInstance();
 
 
 
@@ -70,11 +73,22 @@ public class profileCreatorController implements Initializable {
         double annualAmount = Double.parseDouble(txtFieldAnnualAmount.getText());
         double annualSalary = Double.parseDouble(txtFieldAnnualSalary.getText());
         String country = comboBoxCountry.getValue();
-        Profile.ProfileType type = Profile.ProfileType.valueOf(comboBoxType.getValue());
+        Profile.ProfileType actualType = null;
 
-        Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,type);
+        for (Profile.ProfileType type : Profile.ProfileType.values()) {
+            if (type.getDisplayName().equals(comboBoxType.getValue())) {
+                actualType = type;
+                break;
+            }
+        }
 
-        // TODO: Add CRUD create
+        if (actualType == null) {
+            System.err.println("Invalid profile type: " + comboBoxType.getValue());
+        }
+
+        Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,actualType);
+
+        profileModel.createProfile(profile);
 
 
         // Close down window
