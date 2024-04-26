@@ -1,9 +1,11 @@
 package BE;
 
+import util.Calculator;
+
 public class Profile {
     private String name, country;
     private ProfileType type;
-    private double annualSalary, overheadPercent, utilizationPercent, annualAmount, workHours;
+    private double annualSalary, overheadPercent, utilizationPercent, annualAmount, workHours, hourlyRate;
     private int id;
 
     // Denne kunne godt være sin egen Class, men det kan vi ret nemt refactor hvis vi føler det er nødvændigt
@@ -35,6 +37,7 @@ public class Profile {
         setUtilizationPercent(utilizationPercent);
         setCountry(country);
         setType(type);
+        setHourlyRate();
     }
 
 
@@ -111,5 +114,14 @@ public class Profile {
 
     public void setAnnualAmount(double annualAmount) {
         this.annualAmount = annualAmount;
+    }
+
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate() {
+        Calculator cal = new Calculator();
+        this.hourlyRate = cal.calcHourlyRate(this);
     }
 }

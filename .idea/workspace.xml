@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/util/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SnickersElectric.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SnickersElectric.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BE/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Calculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Calculator",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/krame/Desktop/Projekter/SnickersElectric",
@@ -135,7 +134,7 @@
       <workItem from="1714055975480" duration="4882000" />
       <workItem from="1714079507854" duration="1926000" />
       <workItem from="1714132491351" duration="276000" />
-      <workItem from="1714146100724" duration="917000" />
+      <workItem from="1714146100724" duration="2433000" />
     </task>
     <servers />
   </component>
