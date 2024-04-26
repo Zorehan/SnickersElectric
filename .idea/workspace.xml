@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/util/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SnickersElectric.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SnickersElectric.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,19 +64,20 @@
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/runsi/OneDrive/Dokumenter/GitHub/SnickersElectric/src/GUI/View",
+    "last_opened_file_path": "C:/Users/krame/Desktop/Projekter/SnickersElectric",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.38062283",
     "vue.rearranger.settings.migration": "true"
@@ -134,6 +135,7 @@
       <workItem from="1714055975480" duration="4882000" />
       <workItem from="1714079507854" duration="1926000" />
       <workItem from="1714132491351" duration="276000" />
+      <workItem from="1714146100724" duration="917000" />
     </task>
     <servers />
   </component>
