@@ -73,19 +73,26 @@ public class profileEditorController implements Initializable {
     @FXML
     private void saveInformation() {
         String name = txtFieldName.getText();
-        double workingHours = Double.parseDouble(txtFieldWorkingHours.getText());
-        double overhead = Double.parseDouble(txtFieldOverhead.getText());
-        double utilization = Double.parseDouble(txtFieldUtilization.getText());
-        double annualAmount = Double.parseDouble(txtFieldAnnualAmount.getText());
-        double annualSalary = Double.parseDouble(txtFieldAnnualSalary.getText());
-        String country = comboBoxCountry.getValue();
-        Profile.ProfileType type = Profile.ProfileType.valueOf(comboBoxType.getValue());
+        chosenProfile.setWorkHours(Double.parseDouble(txtFieldWorkingHours.getText()));
+        chosenProfile.setOverheadPercent(Double.parseDouble(txtFieldOverhead.getText()));
+        chosenProfile.setUtilizationPercent(Double.parseDouble(txtFieldUtilization.getText()));
+        chosenProfile.setAnnualAmount(Double.parseDouble(txtFieldAnnualAmount.getText()));
+        chosenProfile.setAnnualSalary(Double.parseDouble(txtFieldAnnualSalary.getText()));
+        chosenProfile.setCountry(comboBoxCountry.getValue());
 
-        
-        Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,type);
+        for (Profile.ProfileType type : Profile.ProfileType.values()) {
+            if (type.getDisplayName().equals(comboBoxType.getValue())) {
+                chosenProfile.setType(type);
+                break;
+            }
+        }
 
-        // TODO: Add CRUD update
-
+        try {
+            profileModel.updateProfile(chosenProfile);
+        } catch (Exception e )
+        {
+            e.printStackTrace();
+        }
 
         // Close down window
         Stage stage = (Stage) btnSave.getScene().getWindow();

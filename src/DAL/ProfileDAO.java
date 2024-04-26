@@ -84,7 +84,7 @@ public class ProfileDAO {
     }
 
     public void updateProfile(Profile profile) {
-        String sql = "UPDATE dbo.Profiles SET name = ?, annualSalary = ?, overheadPercent = ?, annualAmount = ?, workHours = ?, utilPercent = ?, country = ?, type = ? WHERE id = ?;";
+        String sql = "UPDATE dbo.Profiles SET name = ?, annualSalary = ?, overheadMultiplier = ?, annualAmount = ?, workHours = ?, utilizationPercentage = ?, country = ?, type = ? WHERE id = ?;";
         try(Connection conn = databaseConnector.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
 
@@ -96,6 +96,8 @@ public class ProfileDAO {
             stmt.setDouble(6, profile.getUtilizationPercent());
             stmt.setString(7, profile.getCountry());
             stmt.setString(8, profile.getType().toString());
+
+            stmt.setInt(9, profile.getId());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
