@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -35,6 +36,9 @@ public class profileEditorController implements Initializable {
     @FXML
     private Button btnSave;
 
+    @FXML
+    private Label lblProfileName;
+
     private Profile profile;
 
     private Profile chosenProfile;
@@ -43,7 +47,9 @@ public class profileEditorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         chosenProfile = profileModel.getChosenProfile();
+        lblProfileName.setText("Profile: " + chosenProfile.getName());
         txtFieldAnnualAmount.setText(String.valueOf(chosenProfile.getAnnualAmount()));
         txtFieldAnnualSalary.setText(String.valueOf(chosenProfile.getAnnualSalary()));
         txtFieldUtilization.setText(String.valueOf(chosenProfile.getUtilizationPercent()));

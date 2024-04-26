@@ -17,7 +17,7 @@
          <top>
             <HBox fx:id="topPanel" alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="325.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="lblProfileName" text="Profile: Name">
+                  <Label fx:id="lblProfileName">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
