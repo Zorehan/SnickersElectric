@@ -17,19 +17,6 @@
     -fx-text-fill: #3e3e3e;
 }
 
-/* Style for all column headers */
-#nameColumn,
-#annualSalaryColumn,
-#fixedAnnualAmountColumn,
-#annualWorkingHoursColumn,
-#overheadColumn,
-#utilizationColumn,
-#hourlyRateColumn,
-#typeColumn,
-#countryColumn {
-    -fx-background-color: white;
-}
-
 #tblViewProfiles .column-header .label {
     -fx-text-fill: green;
 }
