@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,16 +18,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="CRUD" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,16 +69,16 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/runsi/OneDrive/Dokumenter/GitHub/SnickersElectric/src/GUI/View",
+    "last_opened_file_path": "C:/Users/kadar/Documents/GitHub/MyTunes",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.38062283",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -130,10 +130,8 @@
       <workItem from="1713895285605" duration="374000" />
       <workItem from="1713895743348" duration="5211000" />
       <workItem from="1713955209964" duration="2554000" />
-      <workItem from="1714035289439" duration="2243000" />
-      <workItem from="1714055975480" duration="4882000" />
-      <workItem from="1714079507854" duration="1926000" />
-      <workItem from="1714132491351" duration="276000" />
+      <workItem from="1714036174374" duration="1551000" />
+      <workItem from="1714136931737" duration="1476000" />
     </task>
     <servers />
   </component>

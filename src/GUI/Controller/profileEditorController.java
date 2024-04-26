@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Profile;
+import GUI.Model.ProfileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,9 +37,19 @@ public class profileEditorController implements Initializable {
 
     private Profile profile;
 
+    private Profile chosenProfile;
+
+    private ProfileModel profileModel = ProfileModel.getInstance();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        chosenProfile = profileModel.getChosenProfile();
+        txtFieldAnnualAmount.setText(String.valueOf(chosenProfile.getAnnualAmount()));
+        txtFieldAnnualSalary.setText(String.valueOf(chosenProfile.getAnnualSalary()));
+        txtFieldUtilization.setText(String.valueOf(chosenProfile.getUtilizationPercent()));
+        txtFieldName.setText(chosenProfile.getName());
+        txtFieldWorkingHours.setText(String.valueOf(chosenProfile.getWorkHours()));
+        txtFieldOverhead.setText(String.valueOf(chosenProfile.getOverheadPercent()));
         initializeCountries();
         initializeProfileTypes();
     }
@@ -70,6 +81,7 @@ public class profileEditorController implements Initializable {
         String country = comboBoxCountry.getValue();
         Profile.ProfileType type = Profile.ProfileType.valueOf(comboBoxType.getValue());
 
+        
         Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,type);
 
         // TODO: Add CRUD update

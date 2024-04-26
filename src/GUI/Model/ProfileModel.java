@@ -11,6 +11,8 @@ public class ProfileModel {
     private Profile profile;
     private ObservableList<Profile> allProfiles;
 
+    private Profile chosenProfile;
+
     public ProfileModel() {
         profileManager = new ProfileManager();
 
@@ -38,6 +40,16 @@ public class ProfileModel {
     public void deleteProfile(Profile profile) {
         profileManager.deleteProfile(profile);
         allProfiles.remove(profile);
+    }
+
+    public void setChosenProfile(Profile profile)
+    {
+        chosenProfile = profile;
+    }
+
+    public Profile getChosenProfile()
+    {
+        return chosenProfile;
     }
 
     public void updateProfile(Profile profile) {

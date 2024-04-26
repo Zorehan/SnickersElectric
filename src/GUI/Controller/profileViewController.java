@@ -80,6 +80,9 @@ public class profileViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Det her burde meget gerne virke ligeså snart vi har en modelklasse knyttet til og noget crud
+
+        tblViewProfiles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> profileModel.setChosenProfile(newValue));
+
         tblViewProfiles.setItems(profileModel.getObservableProfiles());
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
