@@ -48,6 +48,8 @@ public class profileViewController implements Initializable {
 
     @FXML
     private TableColumn<Profile, Double> hourlyRateColumn;
+    @FXML
+    private TableColumn<Profile, Double> dailyRateColumn;
     private ProfileModel profileModel = ProfileModel.getInstance();
 
 
@@ -92,5 +94,7 @@ public class profileViewController implements Initializable {
         overheadColumn.setCellValueFactory(new PropertyValueFactory<>("overheadPercent"));
         utilizationColumn.setCellValueFactory(new PropertyValueFactory<>("utilizationPercent"));
         typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().toString()));
+        hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
+        dailyRateColumn.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
     }
 }

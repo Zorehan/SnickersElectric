@@ -42,6 +42,7 @@
             <TableColumn fx:id="utilizationColumn" editable="false" prefWidth="90.0" text="Utilization (%)" />
             <TableColumn fx:id="typeColumn" editable="false" prefWidth="57.0" text="Type" />
             <TableColumn fx:id="hourlyRateColumn" editable="false" prefWidth="90.0" text="Hourly Rate" />
+            <TableColumn fx:id="dailyRateColumn" editable="false" prefWidth="90.0" text="Daily Rate" />
          </columns>
          <BorderPane.margin>
             <Insets top="-9.0" />
