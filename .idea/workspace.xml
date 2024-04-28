@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/BE/Scenario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/scenarioViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/scenarioView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/mainView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/mainView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +24,6 @@
       <list>
         <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -69,7 +73,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kadar/Documents/GitHub/MyTunes",
+    "last_opened_file_path": "C:/Users/krame/Desktop/Projekter/SnickersElectric/src/GUI/View",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -84,6 +88,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\krame\Desktop\Projekter\SnickersElectric\src\GUI\View" />
       <recent name="C:\Users\runsi\OneDrive\Dokumenter\GitHub\SnickersElectric\src\GUI\View" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -132,11 +137,7 @@
       <workItem from="1713955209964" duration="2554000" />
       <workItem from="1714036174374" duration="1551000" />
       <workItem from="1714136931737" duration="3653000" />
-      <workItem from="1714316618073" duration="3147000" />
-      <workItem from="1714381401575" duration="248000" />
-      <workItem from="1714381723225" duration="3585000" />
-      <workItem from="1714469012203" duration="988000" />
-      <workItem from="1714546139095" duration="7585000" />
+      <workItem from="1714316618073" duration="6042000" />
     </task>
     <servers />
   </component>

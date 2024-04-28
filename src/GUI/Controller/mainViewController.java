@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import DAL.DatabaseConnector;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -35,5 +36,14 @@ public class mainViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleDashboardButtonClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void handleScenariosButtonClick(ActionEvent actionEvent) {
+        loadAndViewFXML("../View/scenarioView.fxml");
     }
 }
