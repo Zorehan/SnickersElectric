@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/BE/Scenario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/scenarioViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/scenarioView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/mainView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/mainView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,33 +61,34 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kadar/Documents/GitHub/MyTunes&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/krame/Desktop/Projekter/SnickersElectric/src/GUI/View",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\krame\Desktop\Projekter\SnickersElectric\src\GUI\View" />
       <recent name="C:\Users\runsi\OneDrive\Dokumenter\GitHub\SnickersElectric\src\GUI\View" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -134,7 +137,7 @@
       <workItem from="1713955209964" duration="2554000" />
       <workItem from="1714036174374" duration="1551000" />
       <workItem from="1714136931737" duration="3653000" />
-      <workItem from="1714316618073" duration="3147000" />
+      <workItem from="1714316618073" duration="6042000" />
     </task>
     <servers />
   </component>
