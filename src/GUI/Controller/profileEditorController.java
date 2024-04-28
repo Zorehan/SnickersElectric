@@ -47,7 +47,6 @@ public class profileEditorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         chosenProfile = profileModel.getChosenProfile();
         lblProfileName.setText("Profile: " + chosenProfile.getName());
         txtFieldAnnualAmount.setText(String.valueOf(chosenProfile.getAnnualAmount()));
@@ -67,18 +66,25 @@ public class profileEditorController implements Initializable {
         for (String countryCode : countryCodes) {
             Locale locale = new Locale("", countryCode);
             comboBoxCountry.getItems().add(locale.getDisplayCountry());
+            if(locale.getDisplayCountry().equals(chosenProfile.getCountry())){
+                comboBoxCountry.getSelectionModel().select(locale.getDisplayCountry());
+            }
         }
     }
 
     private void initializeProfileTypes() {
         for (Profile.ProfileType type : Profile.ProfileType.values()) {
             comboBoxType.getItems().add(type.getDisplayName());
+
+            if(type.equals(chosenProfile.getType())){
+                comboBoxType.getSelectionModel().select(type.getDisplayName());
+            }
         }
     }
 
     @FXML
     private void saveInformation() {
-        String name = txtFieldName.getText();
+        chosenProfile.setName(txtFieldName.getText());
         chosenProfile.setWorkHours(Double.parseDouble(txtFieldWorkingHours.getText()));
         chosenProfile.setOverheadPercent(Double.parseDouble(txtFieldOverhead.getText()));
         chosenProfile.setUtilizationPercent(Double.parseDouble(txtFieldUtilization.getText()));

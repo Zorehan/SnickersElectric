@@ -23,7 +23,7 @@ public class ProfileManager {
         profileDAO.deleteProfile(profile);
     }
 
-    public void updateProfile(Profile profile) {
-        profileDAO.updateProfile(profile);
+    public Profile updateProfile(Profile profile) {
+        return profileDAO.updateProfile(profile);
     }
 }

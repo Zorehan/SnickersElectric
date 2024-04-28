@@ -53,6 +53,8 @@ public class ProfileModel {
     }
 
     public void updateProfile(Profile profile) {
-        profileManager.updateProfile(profile);
+        Profile newProfile = profileManager.updateProfile(profile);
+        allProfiles.remove(profile);
+        allProfiles.add(newProfile);
     }
 }

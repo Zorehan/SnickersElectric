@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BE/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +134,7 @@
       <workItem from="1713955209964" duration="2554000" />
       <workItem from="1714036174374" duration="1551000" />
       <workItem from="1714136931737" duration="3653000" />
+      <workItem from="1714316618073" duration="3147000" />
     </task>
     <servers />
   </component>
