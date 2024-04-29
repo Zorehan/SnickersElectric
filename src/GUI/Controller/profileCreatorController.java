@@ -35,8 +35,6 @@ public class profileCreatorController implements Initializable {
 
     private ProfileModel profileModel = ProfileModel.getInstance();
 
-
-
     private Profile profile;
 
     @Override

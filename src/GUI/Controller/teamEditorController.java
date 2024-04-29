@@ -2,11 +2,13 @@ package GUI.Controller;
 
 import BE.Profile;
 import BE.Team;
+import GUI.Model.TeamModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -15,7 +17,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class teamEditorController implements Initializable {
-
+    @FXML
+    public Label lblTeamName;
     @FXML
     private TextField txtFieldName;
     @FXML
@@ -35,15 +38,21 @@ public class teamEditorController implements Initializable {
     @FXML
     private Button btnSave;
 
+    private Team team;
 
+    private Team chosenTeam;
 
-    private Profile profile;
+    private final TeamModel teamModel = TeamModel.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        chosenTeam = teamModel.getChosenTeam();
+        lblTeamName.setText("Team: " + chosenTeam.getName());
+        txtFieldName.setText(chosenTeam.getName());
+
 
         initializeCountries();
-        initializeProfileTypes();
+        initializeTeamTypes();
     }
 
 
@@ -53,32 +62,43 @@ public class teamEditorController implements Initializable {
         for (String countryCode : countryCodes) {
             Locale locale = new Locale("", countryCode);
             comboBoxCountry.getItems().add(locale.getDisplayCountry());
+            if(locale.getDisplayCountry().equals(chosenTeam.getCountry())){
+                comboBoxCountry.getSelectionModel().select(locale.getDisplayCountry());
+            }
         }
     }
 
-    private void initializeProfileTypes() {
-        for (Profile.ProfileType type : Profile.ProfileType.values()) {
+    private void initializeTeamTypes() {
+        for (Team.TeamType type : Team.TeamType.values()) {
             comboBoxType.getItems().add(type.getDisplayName());
+
+            if(type.equals(chosenTeam.getType())){
+                comboBoxType.getSelectionModel().select(type.getDisplayName());
+            }
         }
     }
 
     @FXML
     private void saveInformation() {
+        chosenTeam.setName(txtFieldName.getText());
+        chosenTeam.setCountry(comboBoxCountry.getValue());
 
-        String name = txtFieldName.getText();
-        String country = comboBoxCountry.getValue();
-        //Team.TeamType type = Team.TeamType.valueOf(comboBoxType.getValue());
+        for (Team.TeamType type : Team.TeamType.values()) {
+            if (type.getDisplayName().equals(comboBoxType.getValue())) {
+                chosenTeam.setType(type);
+                break;
+            }
+        }
 
-        Team team = new Team(-1, name);
-
-        // TODO: Add CRUD create
-
+        try {
+            teamModel.updateTeam(chosenTeam);
+        } catch (Exception e )
+        {
+            e.printStackTrace();
+        }
 
         // Close down window
         Stage stage = (Stage) btnSave.getScene().getWindow();
         stage.close();
     }
-
-
-
 }

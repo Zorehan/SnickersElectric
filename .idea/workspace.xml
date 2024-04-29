@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BE/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BE/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/TeamManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/TeamDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileCreatorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/teamCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/teamCreatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/teamEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/teamEditorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/teamViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/teamViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/TeamModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/TeamModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +76,7 @@
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Delete&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/kadar/Documents/GitHub/MyTunes&quot;,
@@ -135,6 +143,8 @@
       <workItem from="1714036174374" duration="1551000" />
       <workItem from="1714136931737" duration="3653000" />
       <workItem from="1714316618073" duration="3147000" />
+      <workItem from="1714381401575" duration="248000" />
+      <workItem from="1714381723225" duration="3585000" />
     </task>
     <servers />
   </component>

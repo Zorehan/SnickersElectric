@@ -13,12 +13,13 @@ public class TeamModel {
     private Team team;
     private ObservableList<Team> allTeams;
 
+    private Team chosenTeam;
+
     public TeamModel() {
             teamManager = new TeamManager();
-
             allTeams = FXCollections.observableArrayList();
             allTeams.addAll(teamManager.getAllTeams());
-        }
+    }
 
     public static TeamModel getInstance() {
         if(instance == null) {
@@ -26,19 +27,35 @@ public class TeamModel {
         }
         return instance;
     }
+
     public ObservableList<Team> getObservableTeams() {
         return allTeams;
     }
+
     public Team createTeam(Team newTeam) {
         Team team = teamManager.createTeam(newTeam);
         allTeams.add(team);
         return team;
     }
+
     public void deleteTeam(Team team) {
         teamManager.deleteTeam(team);
         allTeams.remove(team);
     }
+
+    public void setChosenTeam(Team team)
+    {
+        chosenTeam = team;
+    }
+
+    public Team getChosenTeam()
+    {
+        return chosenTeam;
+    }
+
     public void updateTeam(Team team) {
-        teamManager.updateTeam(team);
+        Team newTeam = teamManager.updateTeam(team);
+        allTeams.remove(team);
+        allTeams.add(team);
     }
 }

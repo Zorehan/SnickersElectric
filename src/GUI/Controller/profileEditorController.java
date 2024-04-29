@@ -43,7 +43,7 @@ public class profileEditorController implements Initializable {
 
     private Profile chosenProfile;
 
-    private ProfileModel profileModel = ProfileModel.getInstance();
+    private final ProfileModel profileModel = ProfileModel.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,6 +55,7 @@ public class profileEditorController implements Initializable {
         txtFieldName.setText(chosenProfile.getName());
         txtFieldWorkingHours.setText(String.valueOf(chosenProfile.getWorkHours()));
         txtFieldOverhead.setText(String.valueOf(chosenProfile.getOverheadPercent()));
+
         initializeCountries();
         initializeProfileTypes();
     }

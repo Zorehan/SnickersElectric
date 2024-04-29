@@ -23,7 +23,7 @@ public class TeamManager {
         teamDAO.deleteTeam(team);
     }
 
-    public void updateTeam(Team team) {
-        teamDAO.updateTeam(team);
+    public Team updateTeam(Team team) {
+        return teamDAO.updateTeam(team);
     }
 }

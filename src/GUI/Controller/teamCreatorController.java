@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import BE.Profile;
 import BE.Team;
+import GUI.Model.TeamModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -34,16 +35,16 @@ public class teamCreatorController implements Initializable {
     @FXML
     private Button btnSave;
 
-
-
-    private Profile profile;
     private Team team;
+
+    private Team chosenTeam;
+
+    private final TeamModel teamModel = TeamModel.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         initializeCountries();
-        initializeProfileTypes();
+        initializeTeamTypes();
     }
 
 
@@ -56,8 +57,8 @@ public class teamCreatorController implements Initializable {
         }
     }
 
-    private void initializeProfileTypes() {
-        for (Profile.ProfileType type : Profile.ProfileType.values()) {
+    private void initializeTeamTypes() {
+        for (Team.TeamType type : Team.TeamType.values()) {
             comboBoxType.getItems().add(type.getDisplayName());
         }
     }
@@ -65,13 +66,25 @@ public class teamCreatorController implements Initializable {
     @FXML
     private void saveInformation() {
 
+        // Save all information from text fields and create team
         String name = txtFieldName.getText();
         String country = comboBoxCountry.getValue();
-        //Team.TeamType type = Team.TeamType.valueOf(comboBoxType.getValue());
+        Team.TeamType actualType = null;
 
-        Team team = new Team(-1, name);
+        for (Team.TeamType type : Team.TeamType.values()) {
+            if (type.getDisplayName().equals(comboBoxType.getValue())) {
+                actualType = type;
+                break;
+            }
+        }
 
-        // TODO: Add CRUD create
+        if (actualType == null) {
+            System.err.println("Invalid team type: " + comboBoxType.getValue());
+        }
+
+        Team team = new Team(-1, name, country,actualType);
+
+        teamModel.createTeam(team);
 
 
         // Close down window

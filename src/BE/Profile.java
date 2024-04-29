@@ -17,9 +17,8 @@ public class Profile {
     // Denne kunne godt være sin egen Class, men det kan vi ret nemt refactor hvis vi føler det er nødvændigt
     // Det finder vi bare ud af engang.
     public enum ProfileType {
-        TEAM_LEAD("Team Lead"),
-        TEAM_MEMBER("Team Member"),
-        CONTRACTOR("Contractor");
+        OVERHEAD_COST("Overhead Cost"),
+        PRODUCTION_RESOURCE("Production Resource");
 
         private final String displayName;
 

@@ -22,8 +22,10 @@ public class TeamDAO {
             while(rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                String country = rs.getString("country");
+                Team.TeamType type = Team.TeamType.valueOf(rs.getString("type"));
 
-                Team team = new Team(id, name);
+                Team team = new Team(id, name, country, type);
                 allTeams.add(team);
             }
         } catch (SQLException e) {
@@ -33,11 +35,13 @@ public class TeamDAO {
     }
 
     public Team createTeam(Team team) {
-        String sql = "INSERT INTO dbo.Teams (name) VALUES (?);";
+        String sql = "INSERT INTO dbo.Teams (name, country, type) VALUES (?,?,?);";
         try(Connection conn = databaseConnector.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, team.getName());
+            stmt.setString(2, team.getCountry());
+            stmt.setString(3, team.getType().toString());
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
@@ -47,7 +51,7 @@ public class TeamDAO {
                 id = rs.getInt(1);
             }
 
-            Team createdTeam = new Team(id, team.getName());
+            Team createdTeam = new Team(id, team.getName(), team.getCountry(),team.getType());
             return createdTeam;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -66,14 +70,22 @@ public class TeamDAO {
         }
     }
 
-    public void updateTeam(Team team) {
-        String sql = "UPDATE dbo.Profile SET name = ? WHERE id = ?;";
+    public Team updateTeam(Team team) {
+        String sql = "UPDATE dbo.Teams SET name = ?, country = ?, type =? WHERE id = ?;";
         try(Connection conn = databaseConnector.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, team.getName());
+            stmt.setString(2, team.getCountry());
+            stmt.setString(3, team.getType().toString());
+
+            stmt.setInt(4, team.getId());
 
             stmt.executeUpdate();
+
+            Team updatedTeam = new Team(team.getId(), team.getName(), team.getCountry(),team.getType());
+            return updatedTeam;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

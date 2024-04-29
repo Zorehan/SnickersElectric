@@ -23,7 +23,7 @@
             </Label>
             <Button fx:id="btnNewProfile" mnemonicParsing="false" onAction="#openProfileCreator" text="Add new profile" />
             <Button fx:id="btnEditProfile" mnemonicParsing="false" onAction="#openProfileEditor" text="Edit profile" />
-            <Button fx:id="btnRemoveProfile" mnemonicParsing="false" text="Remove profile" />
+            <Button fx:id="btnRemoveProfile" mnemonicParsing="false" onAction="#deleteSelectedProfile" text="Remove profile" />
          </children>
          <BorderPane.margin>
             <Insets top="-10.0" />
