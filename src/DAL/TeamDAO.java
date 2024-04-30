@@ -1,25 +1,23 @@
 package DAL;
 
 import BE.Team;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamDAO {
-    private DatabaseConnector databaseConnector;
-
-    public TeamDAO() {
-        databaseConnector = new DatabaseConnector();
-    }
-    public List<Team> getAllTeams() {
+public class TeamDAO implements GenericDAO<Team> {
+    @Override
+    public List<Team> getAll() {
         List<Team> allTeams = new ArrayList<>();
         String sql = "SELECT * FROM dbo.Teams;";
-        try(Connection conn = databaseConnector.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql)){
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String country = rs.getString("country");
@@ -34,35 +32,33 @@ public class TeamDAO {
         return allTeams;
     }
 
-    public Team createTeam(Team team) {
+    @Override
+    public Team create(Team team) {
         String sql = "INSERT INTO dbo.Teams (name, country, type) VALUES (?,?,?);";
-        try(Connection conn = databaseConnector.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, team.getName());
             stmt.setString(2, team.getCountry());
             stmt.setString(3, team.getType().toString());
             stmt.executeUpdate();
 
-            ResultSet rs = stmt.getGeneratedKeys();
-            int id = 0;
-
-            if(rs.next()) {
-                id = rs.getInt(1);
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    team.setId(rs.getInt(1));
+                }
             }
 
-            Team createdTeam = new Team(id, team.getName(), team.getCountry(),team.getType());
-            return createdTeam;
+            return team;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void deleteTeam(Team team) {
-        String sql = "DELETE FROM dbo.Teams WHERE id = ?;";
-        try(Connection conn = databaseConnector.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
-
+    @Override
+    public void delete(Team team) {
+        String sql = "DELETE FROM dbo.Teams WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, team.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -70,22 +66,18 @@ public class TeamDAO {
         }
     }
 
-    public Team updateTeam(Team team) {
-        String sql = "UPDATE dbo.Teams SET name = ?, country = ?, type =? WHERE id = ?;";
-        try(Connection conn = databaseConnector.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
+    @Override
+    public Team update(Team team) {
+        String sql = "UPDATE dbo.Teams SET name = ?, country = ?, type = ? WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, team.getName());
             stmt.setString(2, team.getCountry());
             stmt.setString(3, team.getType().toString());
-
             stmt.setInt(4, team.getId());
 
             stmt.executeUpdate();
-
-            Team updatedTeam = new Team(team.getId(), team.getName(), team.getCountry(),team.getType());
-            return updatedTeam;
-
+            return team;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

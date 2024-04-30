@@ -96,7 +96,7 @@ public class teamViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please select a profile to delete.");
+            alert.setContentText("Please select a team to delete.");
             alert.showAndWait();
         }
     }

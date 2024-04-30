@@ -12,18 +12,18 @@ public class ProfileManager {
     }
 
     public List<Profile> getAllProfiles() {
-        return profileDAO.getAllProfiles();
+        return profileDAO.getAll();
     }
 
     public Profile createProfile(Profile profile) {
-        return profileDAO.createProfile(profile);
+        return profileDAO.create(profile);
     }
 
     public void deleteProfile(Profile profile) {
-        profileDAO.deleteProfile(profile);
+        profileDAO.delete(profile);
     }
 
     public Profile updateProfile(Profile profile) {
-        return profileDAO.updateProfile(profile);
+        return profileDAO.update(profile);
     }
 }
