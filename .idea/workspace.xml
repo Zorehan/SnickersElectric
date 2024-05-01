@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DAL/GenericDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/SearchEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/TeamManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/TeamDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +19,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,7 +68,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "DAL",
+    "git-widget-placeholder": "SearchEngine",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kadar/Documents/GitHub/MyTunes",
@@ -139,6 +138,7 @@
       <workItem from="1714381401575" duration="248000" />
       <workItem from="1714381723225" duration="3585000" />
       <workItem from="1714469012203" duration="988000" />
+      <workItem from="1714546139095" duration="1018000" />
     </task>
     <servers />
   </component>
