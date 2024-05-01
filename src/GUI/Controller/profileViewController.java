@@ -2,7 +2,10 @@ package GUI.Controller;
 
 import BE.Profile;
 import GUI.Model.ProfileModel;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +29,12 @@ public class profileViewController implements Initializable {
     private TextField txtSearchField;
 
     private SearchEngine searchEngine;
+
+    @FXML
+    private TextField txtGM;
+
+    @FXML
+    private TextField txtMarkup;
 
     @FXML
     private TableView<Profile> tblViewProfiles;
@@ -59,6 +68,9 @@ public class profileViewController implements Initializable {
 
     @FXML
     private TableColumn<Profile, Double> dailyRateColumn;
+
+    private double gmMultiplier = 1.0;
+    private double markupMultiplier = 1.0;
 
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
@@ -96,7 +108,6 @@ public class profileViewController implements Initializable {
         if (selectedProfile != null) {
             profileModel.deleteProfile(selectedProfile);
         } else {
-            // If no profile is selected, show an error pop-up
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -124,7 +135,39 @@ public class profileViewController implements Initializable {
         hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         dailyRateColumn.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
 
+
         txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> searchEngine.filter(newValue));
         tblViewProfiles.setItems(searchEngine.getFilteredProfiles());
+
+        DoubleBinding gmMultiplierBinding = createMultiplierBinding(txtGM);
+        setupMultiplierCalculations(gmMultiplierBinding, hourlyRateColumn, dailyRateColumn);
+
+        DoubleBinding markupMultiplierBinding = createMultiplierBinding(txtMarkup);
+        setupMultiplierCalculations(markupMultiplierBinding, hourlyRateColumn, dailyRateColumn);
+    }
+
+    private DoubleBinding createMultiplierBinding(TextField textField) {
+        return Bindings.createDoubleBinding(() -> {
+            try {
+                return 1.0 + (Double.parseDouble(textField.getText()) / 100.0);
+            } catch (NumberFormatException e) {
+                return 1.0;
+            }
+        }, textField.textProperty());
+    }
+
+    private void setupMultiplierCalculations(DoubleBinding multiplierBinding, TableColumn<Profile, Double> hourlyRateColumn, TableColumn<Profile, Double> dailyRateColumn) {
+
+        hourlyRateColumn.setCellValueFactory(cellData ->
+                Bindings.createObjectBinding(() -> {
+                    double rate = cellData.getValue().getHourlyRate() * multiplierBinding.get();
+                    return rate;
+                }, multiplierBinding));
+
+        dailyRateColumn.setCellValueFactory(cellData ->
+                Bindings.createObjectBinding(() -> {
+                    double rate = cellData.getValue().getDailyRate() * multiplierBinding.get();
+                    return rate;
+                }, multiplierBinding));
     }
 }
