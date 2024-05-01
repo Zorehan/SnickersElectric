@@ -11,14 +11,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.SearchEngine;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class profileViewController implements Initializable {
+
+    @FXML
+    private TextField txtSearchField;
+
+    private SearchEngine searchEngine;
 
     @FXML
     private TableView<Profile> tblViewProfiles;
@@ -100,8 +107,9 @@ public class profileViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //Det her burde meget gerne virke ligeså snart vi har en modelklasse knyttet til og noget crud
 
+        searchEngine = new SearchEngine(profileModel.getObservableProfiles());
+        txtSearchField.setPromptText("Type query here, split with ','");
         tblViewProfiles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> profileModel.setChosenProfile(newValue));
 
         tblViewProfiles.setItems(profileModel.getObservableProfiles());
@@ -115,5 +123,8 @@ public class profileViewController implements Initializable {
         typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().toString()));
         hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         dailyRateColumn.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+
+        txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> searchEngine.filter(newValue));
+        tblViewProfiles.setItems(searchEngine.getFilteredProfiles());
     }
 }
