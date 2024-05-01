@@ -140,10 +140,11 @@ public class profileViewController implements Initializable {
         tblViewProfiles.setItems(searchEngine.getFilteredProfiles());
 
         DoubleBinding gmMultiplierBinding = createMultiplierBinding(txtGM);
-        setupMultiplierCalculations(gmMultiplierBinding, hourlyRateColumn, dailyRateColumn);
-
         DoubleBinding markupMultiplierBinding = createMultiplierBinding(txtMarkup);
-        setupMultiplierCalculations(markupMultiplierBinding, hourlyRateColumn, dailyRateColumn);
+
+        DoubleBinding combinedMultiplierBinding = gmMultiplierBinding.multiply(markupMultiplierBinding);
+
+        setupMultiplierCalculations(combinedMultiplierBinding, hourlyRateColumn, dailyRateColumn);
     }
 
     private DoubleBinding createMultiplierBinding(TextField textField) {
