@@ -158,7 +158,7 @@ public class profileViewController implements Initializable {
                 }
             });
         });
-        //Listener for tekstfielden der leder efter workhours
+        //Listener for tekstfielden der ændrer dailyraten alt efter hvilket tal man skriver i det 
         txtWorkHours.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 int hours;
