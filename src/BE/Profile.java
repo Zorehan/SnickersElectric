@@ -2,11 +2,14 @@ package BE;
 
 import util.Calculator;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 public class Profile {
+    private final PropertyChangeSupport propertyChangeSupport;
     private String name, country;
     private ProfileType type;
     private double annualSalary, overheadPercent
@@ -43,7 +46,9 @@ public class Profile {
         setCountry(country);
         setType(type);
         setHourlyRate();
+        propertyChangeSupport = new PropertyChangeSupport(this);
         setDailyRate(10);
+
     }
 
 
@@ -139,8 +144,19 @@ public class Profile {
 
     public void setDailyRate(int hours) {
         Calculator cal = new Calculator();
-        double rate = cal.calcDayRate(this, hours);
+        double oldRate = this.dailyRate;
+        double newRate = cal.calcDayRate(this, hours);
         DecimalFormat df = new DecimalFormat("#.00", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
-        this.dailyRate = Double.parseDouble(df.format(rate));
+        this.dailyRate = Double.parseDouble(df.format(newRate));
+        propertyChangeSupport.firePropertyChange("dailyRate", oldRate, this.dailyRate);
     }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener(listener);
+    }
+
 }
