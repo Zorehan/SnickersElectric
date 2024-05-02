@@ -31,6 +31,9 @@ public class profileViewController implements Initializable {
     private SearchEngine searchEngine;
 
     @FXML
+    private TextField txtWorkHours;
+
+    @FXML
     private TextField txtGM;
 
     @FXML
@@ -145,6 +148,37 @@ public class profileViewController implements Initializable {
         DoubleBinding combinedMultiplierBinding = gmMultiplierBinding.multiply(markupMultiplierBinding);
 
         setupMultiplierCalculations(combinedMultiplierBinding, hourlyRateColumn, dailyRateColumn);
+
+        // Den her del sørger for at de ændringer der kommer i profilesne direkte (altså setters kaldt direkte på BE's opdaterer dem med det samme i Observablelisten også
+        profileModel.getObservableProfiles().forEach(profile -> {
+            profile.addPropertyChangeListener(evt -> {
+                if ("dailyRate".equals(evt.getPropertyName())) {
+                    int index = profileModel.getObservableProfiles().indexOf(profile);
+                    profileModel.getObservableProfiles().set(index, profile);
+                }
+            });
+        });
+        //Listener for tekstfielden der leder efter workhours
+        txtWorkHours.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                int hours;
+                if (!newValue.isEmpty()) {
+                    hours = Integer.parseInt(newValue);
+                } else {
+                    hours = 8;
+                }
+                if (hours >= 0) {
+
+                    profileModel.getObservableProfiles().forEach(profile -> {
+                        profile.setDailyRate(hours);
+                    });
+                } else {
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     private DoubleBinding createMultiplierBinding(TextField textField) {
