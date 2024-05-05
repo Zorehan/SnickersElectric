@@ -1,7 +1,8 @@
-package GUI.Controller;
+package GUI.Controller.Creator;
 
 import BE.Profile;
-import GUI.Model.ProfileModel;
+import BE.Team;
+import GUI.Model.TeamModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,7 +14,8 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class profileCreatorController implements Initializable {
+public class teamCreatorController implements Initializable {
+
     @FXML
     private TextField txtFieldName;
     @FXML
@@ -33,15 +35,16 @@ public class profileCreatorController implements Initializable {
     @FXML
     private Button btnSave;
 
-    private ProfileModel profileModel = ProfileModel.getInstance();
+    private Team team;
 
-    private Profile profile;
+    private Team chosenTeam;
+
+    private final TeamModel teamModel = TeamModel.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         initializeCountries();
-        initializeProfileTypes();
+        initializeTeamTypes();
     }
 
 
@@ -54,8 +57,8 @@ public class profileCreatorController implements Initializable {
         }
     }
 
-    private void initializeProfileTypes() {
-        for (Profile.ProfileType type : Profile.ProfileType.values()) {
+    private void initializeTeamTypes() {
+        for (Team.TeamType type : Team.TeamType.values()) {
             comboBoxType.getItems().add(type.getDisplayName());
         }
     }
@@ -63,17 +66,12 @@ public class profileCreatorController implements Initializable {
     @FXML
     private void saveInformation() {
 
-        // Save all information from text fields and create profile
+        // Save all information from text fields and create team
         String name = txtFieldName.getText();
-        double workingHours = Double.parseDouble(txtFieldWorkingHours.getText());
-        double overhead = Double.parseDouble(txtFieldOverhead.getText());
-        double utilization = Double.parseDouble(txtFieldUtilization.getText());
-        double annualAmount = Double.parseDouble(txtFieldAnnualAmount.getText());
-        double annualSalary = Double.parseDouble(txtFieldAnnualSalary.getText());
         String country = comboBoxCountry.getValue();
-        Profile.ProfileType actualType = null;
+        Team.TeamType actualType = null;
 
-        for (Profile.ProfileType type : Profile.ProfileType.values()) {
+        for (Team.TeamType type : Team.TeamType.values()) {
             if (type.getDisplayName().equals(comboBoxType.getValue())) {
                 actualType = type;
                 break;
@@ -81,12 +79,12 @@ public class profileCreatorController implements Initializable {
         }
 
         if (actualType == null) {
-            System.err.println("Invalid profile type: " + comboBoxType.getValue());
+            System.err.println("Invalid team type: " + comboBoxType.getValue());
         }
 
-        Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,actualType);
+        Team team = new Team(-1, name, country,actualType);
 
-        profileModel.createProfile(profile);
+        teamModel.createTeam(team);
 
 
         // Close down window

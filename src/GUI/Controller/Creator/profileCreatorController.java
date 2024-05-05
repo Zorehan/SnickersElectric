@@ -1,14 +1,11 @@
-package GUI.Controller;
+package GUI.Controller.Creator;
 
 import BE.Profile;
-import BE.Team;
-import GUI.Model.TeamModel;
-import javafx.event.ActionEvent;
+import GUI.Model.ProfileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -16,9 +13,7 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class teamEditorController implements Initializable {
-    @FXML
-    public Label lblTeamName;
+public class profileCreatorController implements Initializable {
     @FXML
     private TextField txtFieldName;
     @FXML
@@ -38,21 +33,15 @@ public class teamEditorController implements Initializable {
     @FXML
     private Button btnSave;
 
-    private Team team;
+    private ProfileModel profileModel = ProfileModel.getInstance();
 
-    private Team chosenTeam;
-
-    private final TeamModel teamModel = TeamModel.getInstance();
+    private Profile profile;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        chosenTeam = teamModel.getChosenTeam();
-        lblTeamName.setText("Team: " + chosenTeam.getName());
-        txtFieldName.setText(chosenTeam.getName());
-
 
         initializeCountries();
-        initializeTeamTypes();
+        initializeProfileTypes();
     }
 
 
@@ -62,43 +51,47 @@ public class teamEditorController implements Initializable {
         for (String countryCode : countryCodes) {
             Locale locale = new Locale("", countryCode);
             comboBoxCountry.getItems().add(locale.getDisplayCountry());
-            if(locale.getDisplayCountry().equals(chosenTeam.getCountry())){
-                comboBoxCountry.getSelectionModel().select(locale.getDisplayCountry());
-            }
         }
     }
 
-    private void initializeTeamTypes() {
-        for (Team.TeamType type : Team.TeamType.values()) {
+    private void initializeProfileTypes() {
+        for (Profile.ProfileType type : Profile.ProfileType.values()) {
             comboBoxType.getItems().add(type.getDisplayName());
-
-            if(type.equals(chosenTeam.getType())){
-                comboBoxType.getSelectionModel().select(type.getDisplayName());
-            }
         }
     }
 
     @FXML
     private void saveInformation() {
-        chosenTeam.setName(txtFieldName.getText());
-        chosenTeam.setCountry(comboBoxCountry.getValue());
 
-        for (Team.TeamType type : Team.TeamType.values()) {
+        // Save all information from text fields and create profile
+        String name = txtFieldName.getText();
+        double workingHours = Double.parseDouble(txtFieldWorkingHours.getText());
+        double overhead = Double.parseDouble(txtFieldOverhead.getText());
+        double utilization = Double.parseDouble(txtFieldUtilization.getText());
+        double annualAmount = Double.parseDouble(txtFieldAnnualAmount.getText());
+        double annualSalary = Double.parseDouble(txtFieldAnnualSalary.getText());
+        String country = comboBoxCountry.getValue();
+        Profile.ProfileType actualType = null;
+
+        for (Profile.ProfileType type : Profile.ProfileType.values()) {
             if (type.getDisplayName().equals(comboBoxType.getValue())) {
-                chosenTeam.setType(type);
+                actualType = type;
                 break;
             }
         }
 
-        try {
-            teamModel.updateTeam(chosenTeam);
-        } catch (Exception e )
-        {
-            e.printStackTrace();
+        if (actualType == null) {
+            System.err.println("Invalid profile type: " + comboBoxType.getValue());
         }
+
+        Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,actualType);
+
+        profileModel.createProfile(profile);
+
 
         // Close down window
         Stage stage = (Stage) btnSave.getScene().getWindow();
         stage.close();
     }
+
 }

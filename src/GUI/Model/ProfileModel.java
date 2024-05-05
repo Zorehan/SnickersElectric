@@ -13,7 +13,7 @@ public class ProfileModel {
 
     private Profile chosenProfile;
 
-    public ProfileModel() {
+    private ProfileModel() {
         profileManager = new ProfileManager();
 
         allProfiles = FXCollections.observableArrayList();

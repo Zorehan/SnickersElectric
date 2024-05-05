@@ -3,17 +3,25 @@ package BE;
 import java.util.List;
 
 public class Scenario {
+    private int id;
     private String name;
-    private List<Profile> profilesList;
     private double hourlyRate;
     private double dayRate;
 
-    public Scenario() {
-
-        setHourlyRate();
-        setDayRate();
+    public Scenario(int id, String name, double hourlyRate, double dayRate) {
+        this.id = id;
+        this.name = name;
+        this.hourlyRate = hourlyRate;
+        this.dayRate = dayRate;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -22,35 +30,14 @@ public class Scenario {
         this.name = name;
     }
 
-    public List<Profile> getProfilesList() {
-        return profilesList;
-    }
-
-    public void setProfilesList(List<Profile> profilesList) {
-        this.profilesList = profilesList;
-    }
 
     public double getHourlyRate() {
         return hourlyRate;
     }
 
-    public void setHourlyRate() {
-        double hourlyRate = 0;
-        for(Profile profile : profilesList) {
-            hourlyRate += profile.getHourlyRate();
-        }
-        this.hourlyRate = hourlyRate;
-    }
 
-    public double getDayRate() {
+    public double getDailyRate() {
         return dayRate;
     }
 
-    public void setDayRate() {
-        double dayRate = 0;
-        for(Profile profile : profilesList) {
-            dayRate += profile.getDailyRate();
-        }
-        this.dayRate = dayRate;
-    }
 }

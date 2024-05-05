@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@../Stylesheets/scenarioView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.scenarioViewController">
+<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@../Stylesheets/scenarioView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.View.scenarioViewController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="777.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -33,10 +33,10 @@
    <center>
       <TableView fx:id="tblViewScenario" focusTraversable="false" prefHeight="444.0" prefWidth="770.0" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="nameColumn" editable="false" prefWidth="95.0" text="Name" />
-            <TableColumn fx:id="annualWorkingHoursColumn" editable="false" prefWidth="89.0" text="Working hours" />
-            <TableColumn fx:id="hourlyRateColumn" editable="false" prefWidth="90.0" text="Total Hourly Rate" />
-            <TableColumn fx:id="dailyRateColumn" editable="false" prefWidth="90.0" text="Total Daily Rate" />
+            <TableColumn fx:id="colName" editable="false" prefWidth="95.0" text="Name" />
+            <TableColumn fx:id="colAmount" editable="false" prefWidth="89.0" text="Amount of People" />
+            <TableColumn fx:id="colHourlyRate" editable="false" prefWidth="90.0" text="Total Hourly Rate" />
+            <TableColumn fx:id="colDailyRate" editable="false" prefWidth="90.0" text="Total Daily Rate" />
          </columns>
          <BorderPane.margin>
             <Insets top="-9.0" />

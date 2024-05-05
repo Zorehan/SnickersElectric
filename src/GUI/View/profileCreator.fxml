@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="324.0" prefWidth="354.0" stylesheets="@../Stylesheets/profileCreator.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.profileCreatorController">
+<AnchorPane prefHeight="324.0" prefWidth="354.0" stylesheets="@../Stylesheets/profileCreator.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Creator.profileCreatorController">
    <children>
       <BorderPane prefHeight="344.0" prefWidth="354.0">
          <top>

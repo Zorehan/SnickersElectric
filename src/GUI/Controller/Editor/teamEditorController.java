@@ -1,12 +1,14 @@
-package GUI.Controller;
+package GUI.Controller.Editor;
 
 import BE.Profile;
 import BE.Team;
 import GUI.Model.TeamModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -14,8 +16,9 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class teamCreatorController implements Initializable {
-
+public class teamEditorController implements Initializable {
+    @FXML
+    public Label lblTeamName;
     @FXML
     private TextField txtFieldName;
     @FXML
@@ -43,6 +46,11 @@ public class teamCreatorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        chosenTeam = teamModel.getChosenTeam();
+        lblTeamName.setText("Team: " + chosenTeam.getName());
+        txtFieldName.setText(chosenTeam.getName());
+
+
         initializeCountries();
         initializeTeamTypes();
     }
@@ -54,42 +62,43 @@ public class teamCreatorController implements Initializable {
         for (String countryCode : countryCodes) {
             Locale locale = new Locale("", countryCode);
             comboBoxCountry.getItems().add(locale.getDisplayCountry());
+            if(locale.getDisplayCountry().equals(chosenTeam.getCountry())){
+                comboBoxCountry.getSelectionModel().select(locale.getDisplayCountry());
+            }
         }
     }
 
     private void initializeTeamTypes() {
         for (Team.TeamType type : Team.TeamType.values()) {
             comboBoxType.getItems().add(type.getDisplayName());
+
+            if(type.equals(chosenTeam.getType())){
+                comboBoxType.getSelectionModel().select(type.getDisplayName());
+            }
         }
     }
 
     @FXML
     private void saveInformation() {
-
-        // Save all information from text fields and create team
-        String name = txtFieldName.getText();
-        String country = comboBoxCountry.getValue();
-        Team.TeamType actualType = null;
+        chosenTeam.setName(txtFieldName.getText());
+        chosenTeam.setCountry(comboBoxCountry.getValue());
 
         for (Team.TeamType type : Team.TeamType.values()) {
             if (type.getDisplayName().equals(comboBoxType.getValue())) {
-                actualType = type;
+                chosenTeam.setType(type);
                 break;
             }
         }
 
-        if (actualType == null) {
-            System.err.println("Invalid team type: " + comboBoxType.getValue());
+        try {
+            teamModel.updateTeam(chosenTeam);
+        } catch (Exception e )
+        {
+            e.printStackTrace();
         }
-
-        Team team = new Team(-1, name, country,actualType);
-
-        teamModel.createTeam(team);
-
 
         // Close down window
         Stage stage = (Stage) btnSave.getScene().getWindow();
         stage.close();
     }
-
 }
