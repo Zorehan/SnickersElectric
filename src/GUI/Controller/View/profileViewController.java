@@ -1,4 +1,4 @@
-package GUI.Controller;
+package GUI.Controller.View;
 
 import BE.Profile;
 import GUI.Model.ProfileModel;
@@ -141,12 +141,12 @@ public class profileViewController implements Initializable {
     }
     @FXML
     private void openProfileEditor() {
-        openNewWindow("../View/profileEditor.fxml");
+        openNewWindow("../../View/profileEditor.fxml");
     }
 
     @FXML
     private void openProfileCreator() {
-        openNewWindow("../View/profileCreator.fxml");
+        openNewWindow("../../View/profileCreator.fxml");
     }
 
     @FXML
