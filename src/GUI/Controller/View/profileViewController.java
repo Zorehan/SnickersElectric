@@ -1,4 +1,4 @@
-package GUI.Controller;
+package GUI.Controller.View;
 
 import BE.Profile;
 import GUI.Model.ProfileModel;
@@ -75,7 +75,35 @@ public class profileViewController implements Initializable {
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
+        searchEngine = new SearchEngine(profileModel.getObservableProfiles());
+        txtSearchField.setPromptText("Type query here, split with ','");
+        tblViewProfiles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> profileModel.setChosenProfile(newValue));
+
+        tblViewProfiles.setItems(profileModel.getObservableProfiles());
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
+        annualSalaryColumn.setCellValueFactory(new PropertyValueFactory<>("annualSalary"));
+        fixedAnnualAmountColumn.setCellValueFactory(new PropertyValueFactory<>("annualAmount"));
+        annualWorkingHoursColumn.setCellValueFactory(new PropertyValueFactory<>("workHours"));
+        overheadColumn.setCellValueFactory(new PropertyValueFactory<>("overheadPercent"));
+        utilizationColumn.setCellValueFactory(new PropertyValueFactory<>("utilizationPercent"));
+        typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().toString()));
+        hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
+        dailyRateColumn.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+
+
+        txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> searchEngine.filter(newValue));
+        tblViewProfiles.setItems(searchEngine.getFilteredProfiles());
+
+        DoubleBinding gmMultiplierBinding = createMultiplierBinding(txtGM);
+        setupMultiplierCalculations(gmMultiplierBinding, hourlyRateColumn, dailyRateColumn);
+
+        DoubleBinding markupMultiplierBinding = createMultiplierBinding(txtMarkup);
+        setupMultiplierCalculations(markupMultiplierBinding, hourlyRateColumn, dailyRateColumn);
+    }
     @FXML
     private void openProfileEditor() {
         openNewWindow("../View/profileEditor.fxml");
@@ -114,36 +142,6 @@ public class profileViewController implements Initializable {
             alert.setContentText("Please select a profile to delete.");
             alert.showAndWait();
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        searchEngine = new SearchEngine(profileModel.getObservableProfiles());
-        txtSearchField.setPromptText("Type query here, split with ','");
-        tblViewProfiles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> profileModel.setChosenProfile(newValue));
-
-        tblViewProfiles.setItems(profileModel.getObservableProfiles());
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
-        annualSalaryColumn.setCellValueFactory(new PropertyValueFactory<>("annualSalary"));
-        fixedAnnualAmountColumn.setCellValueFactory(new PropertyValueFactory<>("annualAmount"));
-        annualWorkingHoursColumn.setCellValueFactory(new PropertyValueFactory<>("workHours"));
-        overheadColumn.setCellValueFactory(new PropertyValueFactory<>("overheadPercent"));
-        utilizationColumn.setCellValueFactory(new PropertyValueFactory<>("utilizationPercent"));
-        typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().toString()));
-        hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
-        dailyRateColumn.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
-
-
-        txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> searchEngine.filter(newValue));
-        tblViewProfiles.setItems(searchEngine.getFilteredProfiles());
-
-        DoubleBinding gmMultiplierBinding = createMultiplierBinding(txtGM);
-        setupMultiplierCalculations(gmMultiplierBinding, hourlyRateColumn, dailyRateColumn);
-
-        DoubleBinding markupMultiplierBinding = createMultiplierBinding(txtMarkup);
-        setupMultiplierCalculations(markupMultiplierBinding, hourlyRateColumn, dailyRateColumn);
     }
 
     private DoubleBinding createMultiplierBinding(TextField textField) {

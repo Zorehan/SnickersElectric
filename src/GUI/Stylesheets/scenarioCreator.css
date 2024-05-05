@@ -1,4 +1,13 @@
-#btnNewScenario, #btnEditScenario, #btnRemoveScenario {
+#topPanel {
+    -fx-background-color: #17AD61;
+}
+
+#lblScenarioCreator {
+    -fx-text-fill: #fff;
+}
+
+
+#btnSave, #btnCancel, #btnAssign, #btnUnassign {
     -fx-background-radius: 0em;
     -fx-background-color: #fff;
     -fx-border-color: #a8a8a8;
@@ -6,15 +15,15 @@
     -fx-cursor: hand; /* Optional: Change cursor to hand when hovering */
 }
 
-#btnNewScenario:hover, #btnEditScenario:hover, #btnRemoveScenario:hover {
+#btnSave:hover , #btnCancel:hover {
     -fx-background-color: #dadada; /* Change background color on hover */
     -fx-border-color: #a8a8a8; /* You can adjust border color on hover if needed */
     -fx-text-fill: #3e3e3e; /* You can adjust text color on hover if needed */
 }
 
+#txtName {
+    -fx-background-radius: 0em;
 
-#lblProfiles {
-    -fx-text-fill: #3e3e3e;
 }
 
 .table-view .column-header {
@@ -46,5 +55,3 @@
 .table-row-cell:hover {
     -fx-background-color: rgba(132, 159, 132, 0.4);
 }
-
-

@@ -1,4 +1,4 @@
-package GUI.Controller;
+package GUI.Controller.Editor;
 
 import BE.Profile;
 import GUI.Model.ProfileModel;

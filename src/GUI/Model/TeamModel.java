@@ -15,7 +15,7 @@ public class TeamModel {
 
     private Team chosenTeam;
 
-    public TeamModel() {
+    private TeamModel() {
             teamManager = new TeamManager();
             allTeams = FXCollections.observableArrayList();
             allTeams.addAll(teamManager.getAllTeams());
