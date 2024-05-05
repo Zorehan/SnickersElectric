@@ -6,10 +6,7 @@
     -fx-background-color: #17AD61;
 }
 
-#btnProfiles,
-#btnTeams,
-#btnStatistics,
-#btnLogs {
+.button {
     -fx-background-radius: 0em;
     -fx-background-color: #4BC774;
     -fx-text-fill: #3e3e3e;
@@ -18,10 +15,7 @@
     -fx-cursor: hand; /* Optional: Change cursor to hand when hovering */
 }
 
-#btnProfiles:hover,
-#btnTeams:hover,
-#btnStatistics:hover,
-#btnLogs:hover {
+.button:hover {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.7), 10, 0, 0, 0); /* Slightly stronger drop shadow */
     -fx-opacity: 0.9; /* Slightly reduce opacity for subtle fade effect */
     -fx-transition: all 0.3s;

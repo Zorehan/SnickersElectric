@@ -78,47 +78,6 @@ public class profileViewController implements Initializable {
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
 
-
-    @FXML
-    private void openProfileEditor() {
-        openNewWindow("../View/profileEditor.fxml");
-    }
-
-    @FXML
-    private void openProfileCreator() {
-        openNewWindow("../View/profileCreator.fxml");
-    }
-
-    @FXML
-    private void openNewWindow(String fxmlPath) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.setTitle("Schneider Electric");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void deleteSelectedProfile() {
-        Profile selectedProfile = tblViewProfiles.getSelectionModel().getSelectedItem();
-        if (selectedProfile != null) {
-            profileModel.deleteProfile(selectedProfile);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a profile to delete.");
-            alert.showAndWait();
-        }
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -158,7 +117,7 @@ public class profileViewController implements Initializable {
                 }
             });
         });
-        //Listener for tekstfielden der ændrer dailyraten alt efter hvilket tal man skriver i det 
+        //Listener for tekstfielden der ændrer dailyraten alt efter hvilket tal man skriver i det
         txtWorkHours.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 int hours;
@@ -179,6 +138,45 @@ public class profileViewController implements Initializable {
             }
         });
 
+    }
+    @FXML
+    private void openProfileEditor() {
+        openNewWindow("../View/profileEditor.fxml");
+    }
+
+    @FXML
+    private void openProfileCreator() {
+        openNewWindow("../View/profileCreator.fxml");
+    }
+
+    @FXML
+    private void openNewWindow(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setTitle("Schneider Electric");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void deleteSelectedProfile() {
+        Profile selectedProfile = tblViewProfiles.getSelectionModel().getSelectedItem();
+        if (selectedProfile != null) {
+            profileModel.deleteProfile(selectedProfile);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a profile to delete.");
+            alert.showAndWait();
+        }
     }
 
     private DoubleBinding createMultiplierBinding(TextField textField) {

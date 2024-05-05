@@ -1,4 +1,4 @@
-package GUI.Controller;
+package GUI.Controller.View;
 
 public class logViewController {
 }

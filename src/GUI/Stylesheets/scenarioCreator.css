@@ -1,0 +1,57 @@
+#topPanel {
+    -fx-background-color: #17AD61;
+}
+
+#lblScenarioCreator {
+    -fx-text-fill: #fff;
+}
+
+
+#btnSave, #btnCancel, #btnAssign, #btnUnassign {
+    -fx-background-radius: 0em;
+    -fx-background-color: #fff;
+    -fx-border-color: #a8a8a8;
+    -fx-text-fill: #3e3e3e;
+    -fx-cursor: hand; /* Optional: Change cursor to hand when hovering */
+}
+
+#btnSave:hover , #btnCancel:hover {
+    -fx-background-color: #dadada; /* Change background color on hover */
+    -fx-border-color: #a8a8a8; /* You can adjust border color on hover if needed */
+    -fx-text-fill: #3e3e3e; /* You can adjust text color on hover if needed */
+}
+
+#txtName {
+    -fx-background-radius: 0em;
+
+}
+
+.table-view .column-header {
+    -fx-background-color: #e8e8e8;
+    -fx-border-color: #dedede;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: green;
+}
+
+.table-view .table-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 5 0 5 10;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #93f9b911;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #1dbbdd11;
+}
+
+.table-row-cell:focused {
+    -fx-background-color: rgba(101, 196, 101, 0.4);
+}
+
+.table-row-cell:hover {
+    -fx-background-color: rgba(132, 159, 132, 0.4);
+}

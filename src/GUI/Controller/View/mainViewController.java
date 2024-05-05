@@ -1,6 +1,7 @@
-package GUI.Controller;
+package GUI.Controller.View;
 
 import DAL.DatabaseConnector;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -20,12 +21,12 @@ public class mainViewController {
 
     @FXML
     private void handleProfilesButtonClick() {
-        loadAndViewFXML("../View/profileView.fxml");
+        loadAndViewFXML("../../View/profileView.fxml");
     }
 
     @FXML
     private void handleTeamsButtonClick() {
-        loadAndViewFXML("../View/teamView.fxml");
+        loadAndViewFXML("../../View/teamView.fxml");
     }
 
     private void loadAndViewFXML(String fxmlFilePath) {
@@ -35,5 +36,14 @@ public class mainViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleDashboardButtonClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void handleScenariosButtonClick(ActionEvent actionEvent) {
+        loadAndViewFXML("../../View/scenarioView.fxml");
     }
 }

@@ -1,4 +1,4 @@
-package GUI.Controller;
+package GUI.Controller.View;
 
 import BE.Profile;
 import BE.Team;
@@ -61,12 +61,12 @@ public class teamViewController implements Initializable {
 
     @FXML
     private void openTeamEditor() {
-        openNewWindow("../View/teamEditor.fxml");
+        openNewWindow("../../View/teamEditor.fxml");
     }
 
     @FXML
     private void openTeamCreator() {
-        openNewWindow("../View/teamCreator.fxml");
+        openNewWindow("../../View/teamCreator.fxml");
     }
 
     @FXML

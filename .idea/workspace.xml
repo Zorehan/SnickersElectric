@@ -5,10 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/BE/ScenarioProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BLL/ScenarioManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BLL/ScenarioProfileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DAL/ScenarioDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DAL/ScenarioProfileDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/Creator/scenarioCreatorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Model/ScenarioModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Model/ScenarioProfileModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/scenarioCreator.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/scenarioCreator.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BE/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BE/Scenario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Scenario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/logViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/logViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Creator/profileCreatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Editor/profileEditorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/scenarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/teamCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Creator/teamCreatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/teamEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Editor/teamEditorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/teamViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/teamViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/TeamModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/TeamModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/scenarioView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/scenarioView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileCreator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileCreator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileEditor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileEditor.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/teamCreator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/teamCreator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/teamEditor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/teamEditor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +47,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="CSS File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -58,33 +85,34 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Refactor-dailyrate",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kadar/Documents/GitHub/MyTunes",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Scenarios&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/krame/Desktop/Projekter/SnickersElectric&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\krame\Desktop\Projekter\SnickersElectric\src\GUI\View" />
       <recent name="C:\Users\runsi\OneDrive\Dokumenter\GitHub\SnickersElectric\src\GUI\View" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -133,11 +161,10 @@
       <workItem from="1713955209964" duration="2554000" />
       <workItem from="1714036174374" duration="1551000" />
       <workItem from="1714136931737" duration="3653000" />
-      <workItem from="1714316618073" duration="3147000" />
-      <workItem from="1714381401575" duration="248000" />
-      <workItem from="1714381723225" duration="3585000" />
-      <workItem from="1714469012203" duration="988000" />
-      <workItem from="1714546139095" duration="7585000" />
+      <workItem from="1714316618073" duration="6042000" />
+      <workItem from="1714554579106" duration="1082000" />
+      <workItem from="1714817955433" duration="1601000" />
+      <workItem from="1714923657671" duration="12593000" />
     </task>
     <servers />
   </component>

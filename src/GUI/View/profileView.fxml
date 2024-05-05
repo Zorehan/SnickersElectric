@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@/GUI/Stylesheets/profileView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.profileViewController">
+<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@/GUI/Stylesheets/profileView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.View.profileViewController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="777.0" spacing="10.0" stylesheets="@../Stylesheets/profileView.css" BorderPane.alignment="CENTER">
          <children>

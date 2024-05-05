@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@/GUI/Stylesheets/teamView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.teamViewController">
+<BorderPane fx:id="centerBorderPane" prefHeight="506.0" prefWidth="777.0" stylesheets="@/GUI/Stylesheets/teamView.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.View.teamViewController">
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="777.0" spacing="10.0" stylesheets="@../Stylesheets/teamView.css" BorderPane.alignment="CENTER">
             <children>
