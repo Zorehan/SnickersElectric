@@ -24,6 +24,12 @@
                 <Button fx:id="btnNewTeam" mnemonicParsing="false" onAction="#openTeamCreator" text="Add new team" />
                 <Button fx:id="btnEditTeam" mnemonicParsing="false" onAction="#openTeamEditor" text="Edit team" />
                 <Button fx:id="btnRemoveTeam" mnemonicParsing="false" onAction="#deleteSelectedTeam" text="Remove team" />
+            <Button fx:id="btnAddProfile" mnemonicParsing="false" text="Add profile">
+               <HBox.margin>
+                  <Insets left="300.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnRemoveProfile" mnemonicParsing="false" text="Remove profile" />
             </children>
             <BorderPane.margin>
                 <Insets top="-10.0" />
