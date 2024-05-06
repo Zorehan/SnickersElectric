@@ -27,8 +27,8 @@
             <Button fx:id="btnRemoveProfile" mnemonicParsing="false" onAction="#deleteSelectedProfile" text="Remove profile" />
             <TextField fx:id="txtSearchField" prefHeight="25.0" prefWidth="210.0" />
             <TextField fx:id="txtGM" prefHeight="25.0" prefWidth="33.0" promptText="GM" />
-            <TextField fx:id="txtMarkup" prefHeight="25.0" prefWidth="33.0" />
-            <TextField fx:id="txtWorkHours" prefHeight="25.0" prefWidth="35.0" />
+            <TextField fx:id="txtMarkup" prefHeight="25.0" prefWidth="33.0" promptText="Markup" />
+            <TextField fx:id="txtWorkHours" prefHeight="25.0" prefWidth="35.0" promptText="WH" />
          </children>
          <BorderPane.margin>
             <Insets top="-10.0" />
