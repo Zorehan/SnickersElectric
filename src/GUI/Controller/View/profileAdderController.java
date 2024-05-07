@@ -52,16 +52,22 @@ public class profileAdderController implements Initializable {
     private void addSelectedProfiles() {
         ObservableList<Profile> selectedProfiles = tblViewProfiles.getSelectionModel().getSelectedItems();
         if (!selectedProfiles.isEmpty() && selectedTeam != null) {
+            // If there are selected profiles and a team is selected
             for (Profile profile : selectedProfiles) {
                 if (isProfileAlreadyInTeam(profile, selectedTeam)) {
+                    // If the profile is already in the team, show an error dialog
                     showErrorDialog("Selected profile '" + profile.getName() + "' is already associated with the team.");
                 } else {
+                    // Otherwise, add the profile to the team
                     profileTeamModel.addProfileToTeam(selectedTeam.getId(), profile.getId());
                 }
             }
+            // Close the window after adding profiles
             Stage stage = (Stage) btnSave.getScene().getWindow();
             stage.close();
         } else {
+            // If no profiles are selected or no team is selected, show an error dialog
+            System.out.println("No profiles selected or no team selected.");
             showErrorDialog("Please select at least one profile to add to the team.");
         }
     }

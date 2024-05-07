@@ -124,6 +124,11 @@ public class teamViewController implements Initializable {
                 ((profileRemoverController) controller).setSelectedTeam(selectedTeam);
             }
 
+            // If the loaded controller is profileAdderController, then send selectedTeam to profileAdderController
+            if (controller instanceof profileAdderController) {
+                ((profileAdderController) controller).setSelectedTeam(selectedTeam);
+            }
+
             // Configure the stage
             Stage stage = new Stage();
             stage.setResizable(false);
