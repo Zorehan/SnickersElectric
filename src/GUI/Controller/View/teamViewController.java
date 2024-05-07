@@ -33,6 +33,18 @@ public class teamViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         initTableColumns();
         initTable();
+        addRightClickFunctionality();
+
+        // Add event handler for double-click on table rows
+        tblViewTeams.setRowFactory(tv -> {
+            TableRow<Team> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    openTeamList(); // Call the method to open TeamList
+                }
+            });
+            return row;
+        });
     }
 
     // Delete the selected team
@@ -63,7 +75,13 @@ public class teamViewController implements Initializable {
     // Open the team editor window
     @FXML
     private void openTeamEditor() {
-        openWindow("../../View/teamEditor.fxml", null);
+        Team selectedTeam = tblViewTeams.getSelectionModel().getSelectedItem();
+        if (selectedTeam != null) {
+            openWindow("../../View/teamEditor.fxml", null);
+        } else {
+            showErrorDialog("Please select a team to edit.");
+        }
+
     }
     // Open the team creator window
     @FXML
@@ -100,11 +118,6 @@ public class teamViewController implements Initializable {
             Parent root = loader.load();
 
             Object controller = loader.getController();
-
-            // If the loaded controller is profileAdderController, then send selectedTeam to profileAdderController
-            if (controller instanceof profileAdderController) {
-                ((profileAdderController) controller).setSelectedTeam(selectedTeam);
-            }
 
             // If the loaded controller is profileRemoverController, then send selectedTeam to profileRemoverController
             if (controller instanceof profileRemoverController) {
@@ -147,6 +160,28 @@ public class teamViewController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void addRightClickFunctionality() {
+        ContextMenu contextMenu = new ContextMenu();
+
+        // Define menu items
+        MenuItem addPersonToTeam = new MenuItem("Add person to team");
+        MenuItem viewTeams = new MenuItem("View teamlist");
+        MenuItem editMenuItem = new MenuItem("Edit team");
+        MenuItem deleteMenuItem = new MenuItem("Delete team");
+
+        // Set actions for menu items
+        editMenuItem.setOnAction(event -> openTeamEditor());
+        deleteMenuItem.setOnAction(event -> deleteSelectedTeam());
+        viewTeams.setOnAction(event -> openTeamList());
+        addPersonToTeam.setOnAction(event -> openProfileAdder());
+
+        // Add menu items to context menu
+        contextMenu.getItems().addAll(addPersonToTeam,viewTeams,editMenuItem, deleteMenuItem);
+
+        // Associate context menu with table view
+        tblViewTeams.setContextMenu(contextMenu);
     }
 }
 

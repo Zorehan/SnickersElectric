@@ -5,12 +5,10 @@ import BE.Team;
 import GUI.Model.ProfileModel;
 import GUI.Model.ProfileTeamModel;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -46,21 +44,25 @@ public class profileAdderController implements Initializable {
         // Initialize table columns & set table items
         initializeColumns();
         tblViewProfiles.setItems(profileModel.getObservableProfiles());
+        setupSelection();
     }
 
-    // Method for adding a profile to a team
+    // Method for adding selected profiles to the team
     @FXML
-    private void addSelectedProfile() {
-        Profile selectedProfile = tblViewProfiles.getSelectionModel().getSelectedItem();
-        if (selectedProfile != null && selectedTeam != null) {
-            if (isProfileAlreadyInTeam(selectedProfile, selectedTeam)) {
-                showErrorDialog("Selected profile is already associated with the team.");
-            } else {
-                profileTeamModel.addProfileToTeam(selectedTeam.getId(), selectedProfile.getId());
-
-                Stage stage = (Stage) btnSave.getScene().getWindow();
-                stage.close();
+    private void addSelectedProfiles() {
+        ObservableList<Profile> selectedProfiles = tblViewProfiles.getSelectionModel().getSelectedItems();
+        if (!selectedProfiles.isEmpty() && selectedTeam != null) {
+            for (Profile profile : selectedProfiles) {
+                if (isProfileAlreadyInTeam(profile, selectedTeam)) {
+                    showErrorDialog("Selected profile '" + profile.getName() + "' is already associated with the team.");
+                } else {
+                    profileTeamModel.addProfileToTeam(selectedTeam.getId(), profile.getId());
+                }
             }
+            Stage stage = (Stage) btnSave.getScene().getWindow();
+            stage.close();
+        } else {
+            showErrorDialog("Please select at least one profile to add to the team.");
         }
     }
 
@@ -94,6 +96,11 @@ public class profileAdderController implements Initializable {
     // Simple setter
     void setSelectedTeam(Team team) {
         this.selectedTeam = team;
+    }
+
+    // Method for setting up selection mode for the table
+    private void setupSelection() {
+        tblViewProfiles.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     private void showErrorDialog(String message) {

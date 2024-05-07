@@ -31,14 +31,6 @@
     -fx-padding: 5 0 5 10;
 }
 
-.table-row-cell:odd {
-    -fx-background-color: #93f9b911;
-}
-
-.table-row-cell:even {
-    -fx-background-color: #1dbbdd11;
-}
-
 .table-row-cell:focused {
     -fx-background-color: rgba(101, 196, 101, 0.4);
 }

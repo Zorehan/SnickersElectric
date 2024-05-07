@@ -50,6 +50,7 @@ public class profileViewController implements Initializable {
         setupSearch();
         setupMultiplierBindings();
         setupListeners();
+        addRightClickFunctionality();
     }
 
     // Setup table view
@@ -195,5 +196,23 @@ public class profileViewController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void addRightClickFunctionality() {
+        ContextMenu contextMenu = new ContextMenu();
+
+        // Define menu items
+        MenuItem editMenuItem = new MenuItem("Edit profile");
+        MenuItem deleteMenuItem = new MenuItem("Delete profile");
+
+        // Set actions for menu items
+        editMenuItem.setOnAction(event -> openProfileEditor());
+        deleteMenuItem.setOnAction(event -> deleteSelectedProfile());
+
+        // Add menu items to context menu
+        contextMenu.getItems().addAll(editMenuItem, deleteMenuItem);
+
+        // Associate context menu with table view
+        tblViewProfiles.setContextMenu(contextMenu);
     }
 }

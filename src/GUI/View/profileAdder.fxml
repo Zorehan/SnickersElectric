@@ -27,7 +27,7 @@
          </columnResizePolicy>
       </TableView>
       <HBox layoutX="60.0" layoutY="404.0" prefHeight="100.0" prefWidth="200.0" />
-      <Button fx:id="btnSave" layoutX="719.0" layoutY="460.0" mnemonicParsing="false" onAction="#addSelectedProfile" text="Add">
+      <Button fx:id="btnSave" layoutX="719.0" layoutY="460.0" mnemonicParsing="false" onAction="#addSelectedProfiles" text="Add">
          <font>
             <Font size="14.0" />
          </font>

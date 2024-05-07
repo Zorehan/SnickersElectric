@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BE/TeamProfiles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileAdderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileRemoverController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/View/profileAdder.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/View/profileRemover.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileTeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileTeamManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileTeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileTeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/TeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/profileAdderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileAdderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/profileRemoverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileRemoverController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/teamViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/teamViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ProfileTeamModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileTeamModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/profileView.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileAdder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileAdder.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +151,7 @@
       <workItem from="1715038314124" duration="12000" />
       <workItem from="1715038332463" duration="80000" />
       <workItem from="1715038422309" duration="1178000" />
-      <workItem from="1715039617826" duration="1785000" />
+      <workItem from="1715039617826" duration="3658000" />
     </task>
     <servers />
   </component>

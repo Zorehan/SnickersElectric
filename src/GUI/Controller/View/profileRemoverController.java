@@ -5,11 +5,11 @@ import BE.Team;
 import GUI.Model.ProfileTeamModel;
 import GUI.Model.TeamModel;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -39,10 +39,14 @@ public class profileRemoverController implements Initializable {
     // Selected team
     private Team selectedTeam;
 
+    // Inside the initialize method
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Initialize table columns
         initializeColumns();
+
+        // Enable multiple selection
+        tblViewTeamMembers.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // Get the selected team from the model
         Team selectedTeam = teamModel.getChosenTeam();
@@ -51,17 +55,37 @@ public class profileRemoverController implements Initializable {
         if (selectedTeam != null) {
             tblViewTeamMembers.setItems(profileTeamModel.getProfilesForTeam(selectedTeam.getId()));
         }
+
+        // Listen for selection changes to enable/disable delete button
+        ObservableList<Profile> selectedItems = tblViewTeamMembers.getSelectionModel().getSelectedItems();
+        selectedItems.addListener((ListChangeListener<Profile>) change -> {
+            // Enable delete button if at least one item is selected
+            btnDelete.setDisable(selectedItems.isEmpty());
+        });
     }
 
-    // Method for deleting a profile from a team
+    // Modify deleteSelectedProfile method to handle multiple selections and confirmation dialog
     @FXML
     private void deleteSelectedProfile() {
-        Profile selectedProfile = tblViewTeamMembers.getSelectionModel().getSelectedItem();
-        if (selectedProfile != null && selectedTeam != null) {
-            profileTeamModel.removeProfileFromTeam(selectedProfile.getId(), selectedTeam.getId());
+        ObservableList<Profile> selectedProfiles = tblViewTeamMembers.getSelectionModel().getSelectedItems();
+        if (!selectedProfiles.isEmpty() && selectedTeam != null) {
+            // Show confirmation dialog
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirmation");
+            confirmation.setHeaderText("Confirm Deletion");
+            confirmation.setContentText("Are you sure you want to delete the selected profiles?");
 
-            Stage stage = (Stage) btnDelete.getScene().getWindow();
-            stage.close();
+            // Show the dialog and wait for user response
+            confirmation.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    // User confirmed deletion, proceed with deletion
+                    selectedProfiles.forEach(profile -> profileTeamModel.removeProfileFromTeam(profile.getId(), selectedTeam.getId()));
+
+                    // Close the window
+                    Stage stage = (Stage) btnDelete.getScene().getWindow();
+                    stage.close();
+                }
+            });
         }
     }
 
