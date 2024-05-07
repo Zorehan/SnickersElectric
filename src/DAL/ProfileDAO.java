@@ -68,11 +68,23 @@ public class ProfileDAO implements GenericDAO<Profile> {
 
     @Override
     public void delete(Profile profile) {
-        String sql = "DELETE FROM dbo.Profiles WHERE id = ?";
+        String sql1 = "DELETE FROM dbo.TeamProfiles WHERE ProfileId = ?";
+        String sql2 = "DELETE FROM dbo.ScenarioProfiles WHERE profileId = ?";
+        String sql3 = "DELETE FROM dbo.Profiles WHERE id = ?";
+
+
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, profile.getId());
-            stmt.executeUpdate();
+             PreparedStatement stmt1 = conn.prepareStatement(sql1)) {
+             PreparedStatement stmt2 = conn.prepareStatement(sql2);
+            PreparedStatement stmt3 = conn.prepareStatement(sql3);
+
+            stmt1.setInt(1, profile.getId());
+            stmt2.setInt(1, profile.getId());
+            stmt3.setInt(1, profile.getId());
+
+            stmt1.executeUpdate();
+            stmt2.executeUpdate();
+            stmt3.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

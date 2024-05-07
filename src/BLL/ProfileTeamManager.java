@@ -1,5 +1,6 @@
 package BLL;
 
+import BE.Profile;
 import DAL.ProfileTeamDAO;
 
 import java.util.List;
@@ -19,11 +20,7 @@ public class ProfileTeamManager {
         profileTeamDAO.removeProfileFromTeam(profileId, teamId);
     }
 
-    public List<Integer> getTeamsForProfile(int profileId) {
-        return profileTeamDAO.getTeamsForProfile(profileId);
-    }
-
-    public List<Integer> getProfilesForTeam(int teamId) {
+    public List<Profile> getProfilesForTeam(int teamId) {
         return profileTeamDAO.getProfilesForTeam(teamId);
     }
 }

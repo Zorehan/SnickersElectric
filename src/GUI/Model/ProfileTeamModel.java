@@ -1,5 +1,6 @@
 package GUI.Model;
 
+import BE.Profile;
 import BLL.ProfileTeamManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,15 +27,12 @@ public class ProfileTeamModel {
         return instance;
     }
 
-    public ObservableList<Integer> getTeamsForProfile(int profileId) {
-        teamsForProfile.setAll(profileTeamManager.getTeamsForProfile(profileId));
-        return teamsForProfile;
+    public ObservableList<Profile> getProfilesForTeam(int id) {
+        ObservableList<Profile> profiles = FXCollections.observableArrayList();
+        profiles.setAll(profileTeamManager.getProfilesForTeam(id));
+        return profiles;
     }
 
-    public ObservableList<Integer> getProfilesForTeam(int teamId) {
-        profilesForTeam.setAll(profileTeamManager.getProfilesForTeam(teamId));
-        return profilesForTeam;
-    }
 
     public void addProfileToTeam(int profileId, int teamId) {
         profileTeamManager.addProfileToTeam(profileId, teamId);

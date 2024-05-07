@@ -23,16 +23,11 @@ import java.util.ResourceBundle;
 public class scenarioViewController implements Initializable {
     private ScenarioModel scenarioModel = ScenarioModel.getInstance();
     private ScenarioProfileModel scenarioProfileModel = ScenarioProfileModel.getInstance();
-    @FXML
-    private TableView<Scenario> tblViewScenario;
-    @FXML
-    private TableColumn<Scenario, String> colName;
-    @FXML
-    private TableColumn<Scenario, Integer> colAmount;
-    @FXML
-    private TableColumn<Scenario, Double> colHourlyRate;
-    @FXML
-    private TableColumn<Scenario, Double> colDailyRate;
+    @FXML private TableView<Scenario> tblViewScenario;
+    @FXML private TableColumn<Scenario, String> colName;
+    @FXML private TableColumn<Scenario, Integer> colAmount;
+    @FXML private TableColumn<Scenario, Double> colHourlyRate;
+    @FXML private TableColumn<Scenario, Double> colDailyRate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

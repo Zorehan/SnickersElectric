@@ -56,11 +56,18 @@ public class TeamDAO implements GenericDAO<Team> {
 
     @Override
     public void delete(Team team) {
-        String sql = "DELETE FROM dbo.Teams WHERE id = ?";
+        String sql1 = "DELETE FROM dbo.TeamProfiles WHERE TeamId = ?";
+        String sql2 = "DELETE FROM dbo.Teams WHERE id = ?";
+
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, team.getId());
-            stmt.executeUpdate();
+             PreparedStatement stmt1 = conn.prepareStatement(sql1)) {
+            PreparedStatement stmt2 = conn.prepareStatement(sql2);
+
+            stmt1.setInt(1, team.getId());
+            stmt2.setInt(1, team.getId());
+
+            stmt1.executeUpdate();
+            stmt2.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

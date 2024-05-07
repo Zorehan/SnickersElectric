@@ -11,21 +11,11 @@ import java.io.IOException;
 
 public class mainViewController {
 
-    public VBox boxLeftPanel;
-    @FXML
-    private BorderPane borderPane;
-
-    @FXML
-    private void initialize() {
-    }
-
-    @FXML
-    private void handleProfilesButtonClick() {
+    @FXML private BorderPane borderPane;
+    @FXML private void handleProfilesButtonClick() {
         loadAndViewFXML("../../View/profileView.fxml");
     }
-
-    @FXML
-    private void handleTeamsButtonClick() {
+    @FXML private void handleTeamsButtonClick() {
         loadAndViewFXML("../../View/teamView.fxml");
     }
 

@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DAL/ProfileTeamDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BE/TeamProfiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileAdderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileRemoverController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/profileAdder.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/profileRemover.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileTeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileTeamManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileTeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileTeamDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/TeamDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/teamViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/teamViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ProfileTeamModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ProfileTeamModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Stylesheets/teamView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/profileView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/teamView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +32,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -65,6 +81,7 @@
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;ProfileTeam&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -137,6 +154,14 @@
       <workItem from="1714469012203" duration="988000" />
       <workItem from="1715029182529" duration="49000" />
       <workItem from="1715029291862" duration="320000" />
+      <workItem from="1715038210579" duration="16000" />
+      <workItem from="1715038236320" duration="1000" />
+      <workItem from="1715038244046" duration="43000" />
+      <workItem from="1715038293721" duration="11000" />
+      <workItem from="1715038314124" duration="12000" />
+      <workItem from="1715038332463" duration="80000" />
+      <workItem from="1715038422309" duration="1178000" />
+      <workItem from="1715039617826" duration="1785000" />
     </task>
     <servers />
   </component>
@@ -153,5 +178,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

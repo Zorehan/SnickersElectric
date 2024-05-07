@@ -2,19 +2,16 @@ package GUI.Controller.View;
 
 import BE.Profile;
 import GUI.Model.ProfileModel;
+import GUI.Model.ProfileTeamModel;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,67 +22,39 @@ import java.util.ResourceBundle;
 
 public class profileViewController implements Initializable {
 
-    @FXML
-    private TextField txtSearchField;
+    // FXML elements
+    @FXML private TextField txtSearchField;
+    @FXML private TextField txtWorkHours;
+    @FXML private TextField txtGM;
+    @FXML private TextField txtMarkup;
+    @FXML private TableView<Profile> tblViewProfiles;
+    @FXML private TableColumn<Profile, String> nameColumn;
+    @FXML private TableColumn<Profile, String> countryColumn;
+    @FXML private TableColumn<Profile, Double> annualSalaryColumn;
+    @FXML private TableColumn<Profile, Double> fixedAnnualAmountColumn;
+    @FXML private TableColumn<Profile, Double> annualWorkingHoursColumn;
+    @FXML private TableColumn<Profile, Integer> overheadColumn;
+    @FXML private TableColumn<Profile, Double> utilizationColumn;
+    @FXML private TableColumn<Profile, String> typeColumn;
+    @FXML private TableColumn<Profile, Double> hourlyRateColumn;
+    @FXML private TableColumn<Profile, Double> dailyRateColumn;
 
-    private SearchEngine searchEngine;
-
-    @FXML
-    private TextField txtWorkHours;
-
-    @FXML
-    private TextField txtGM;
-
-    @FXML
-    private TextField txtMarkup;
-
-    @FXML
-    private TableView<Profile> tblViewProfiles;
-
-    @FXML
-    private TableColumn<Profile,String> nameColumn;
-
-    @FXML
-    private TableColumn<Profile, String> countryColumn;
-
-    @FXML
-    private TableColumn<Profile, Double> annualSalaryColumn;
-
-    @FXML
-    private TableColumn<Profile, Double> fixedAnnualAmountColumn;
-
-    @FXML
-    private TableColumn<Profile, Double> annualWorkingHoursColumn;
-
-    @FXML
-    private TableColumn<Profile, Integer> overheadColumn;
-
-    @FXML
-    private TableColumn<Profile, Double> utilizationColumn;
-
-    @FXML
-    private TableColumn<Profile, String> typeColumn;
-
-    @FXML
-    private TableColumn<Profile, Double> hourlyRateColumn;
-
-    @FXML
-    private TableColumn<Profile, Double> dailyRateColumn;
-
-    private double gmMultiplier = 1.0;
-    private double markupMultiplier = 1.0;
-
-
+    // Model
     private final ProfileModel profileModel = ProfileModel.getInstance();
+    private final SearchEngine searchEngine = new SearchEngine(profileModel.getObservableProfiles());
+    private final ProfileTeamModel profileTeamModel = ProfileTeamModel.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setupTable();
+        setupSearch();
+        setupMultiplierBindings();
+        setupListeners();
+    }
 
-        searchEngine = new SearchEngine(profileModel.getObservableProfiles());
-        txtSearchField.setPromptText("Type query here, split with ','");
-        tblViewProfiles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> profileModel.setChosenProfile(newValue));
-
-        tblViewProfiles.setItems(profileModel.getObservableProfiles());
+    // Setup table view
+    private void setupTable() {
+        tblViewProfiles.setItems(searchEngine.getFilteredProfiles());
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
         annualSalaryColumn.setCellValueFactory(new PropertyValueFactory<>("annualSalary"));
@@ -96,19 +65,32 @@ public class profileViewController implements Initializable {
         typeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType().toString()));
         hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         dailyRateColumn.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+    }
 
-
+    // Setup search functionality
+    private void setupSearch() {
+        txtSearchField.setPromptText("Type query here, split with ','");
         txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> searchEngine.filter(newValue));
-        tblViewProfiles.setItems(searchEngine.getFilteredProfiles());
+    }
 
+    // Setup multiplier bindings for hourly and daily rates
+    private void setupMultiplierBindings() {
         DoubleBinding gmMultiplierBinding = createMultiplierBinding(txtGM);
         DoubleBinding markupMultiplierBinding = createMultiplierBinding(txtMarkup);
-
         DoubleBinding combinedMultiplierBinding = gmMultiplierBinding.multiply(markupMultiplierBinding);
 
-        setupMultiplierCalculations(combinedMultiplierBinding, hourlyRateColumn, dailyRateColumn);
+        hourlyRateColumn.setCellValueFactory(cellData ->
+                Bindings.createObjectBinding(() -> cellData.getValue().getHourlyRate() * combinedMultiplierBinding.get(), combinedMultiplierBinding));
 
-        // Den her del sørger for at de ændringer der kommer i profilesne direkte (altså setters kaldt direkte på BE's opdaterer dem med det samme i Observablelisten også
+        dailyRateColumn.setCellValueFactory(cellData ->
+                Bindings.createObjectBinding(() -> cellData.getValue().getDailyRate() * combinedMultiplierBinding.get(), combinedMultiplierBinding));
+    }
+
+    // Setup listeners for text fields
+    private void setupListeners() {
+        tblViewProfiles.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> profileModel.setChosenProfile(newValue));
+
+        // Den her del sørger for at de ændringer der kommer i profilerne direkte (altså setters kaldt direkte på BE's opdaterer dem med det samme i Observablelisten også
         profileModel.getObservableProfiles().forEach(profile -> {
             profile.addPropertyChangeListener(evt -> {
                 if ("dailyRate".equals(evt.getPropertyName())) {
@@ -117,7 +99,8 @@ public class profileViewController implements Initializable {
                 }
             });
         });
-        //Listener for tekstfielden der ændrer dailyraten alt efter hvilket tal man skriver i det
+
+        // Listener for tekstfield der ændrer dailyraten alt efter hvilket tal man skriver i det
         txtWorkHours.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 int hours;
@@ -137,19 +120,36 @@ public class profileViewController implements Initializable {
                 e.printStackTrace();
             }
         });
-
-    }
-    @FXML
-    private void openProfileEditor() {
-        openNewWindow("../../View/profileEditor.fxml");
     }
 
-    @FXML
-    private void openProfileCreator() {
+    // Create multiplier binding based on text field input
+    private DoubleBinding createMultiplierBinding(TextField textField) {
+        return Bindings.createDoubleBinding(() -> {
+            try {
+                return 1.0 + (Double.parseDouble(textField.getText()) / 100.0);
+            } catch (NumberFormatException e) {
+                return 1.0;
+            }
+        }, textField.textProperty());
+    }
+
+    // Open profile editor window
+    @FXML private void openProfileEditor() {
+        Profile selectedProfile = tblViewProfiles.getSelectionModel().getSelectedItem();
+
+        if (selectedProfile != null) {
+            openNewWindow("../../View/profileEditor.fxml");
+        } else {
+            showErrorDialog("Please select a profile");
+        }
+    }
+
+    // Open profile creator window
+    @FXML private void openProfileCreator() {
         openNewWindow("../../View/profileCreator.fxml");
     }
 
-    @FXML
+    // Open a new window with specified FXML path
     private void openNewWindow(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -165,42 +165,35 @@ public class profileViewController implements Initializable {
         }
     }
 
+    // Delete selected profile
     @FXML
     private void deleteSelectedProfile() {
         Profile selectedProfile = tblViewProfiles.getSelectionModel().getSelectedItem();
         if (selectedProfile != null) {
-            profileModel.deleteProfile(selectedProfile);
+            // Show confirmation dialog
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirmation");
+            confirmation.setHeaderText("Confirm Deletion");
+            confirmation.setContentText("Are you sure you want to delete the selected profile?");
+
+            // Show the dialog and wait for user response
+            confirmation.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    // User confirmed deletion, proceed with deletion
+                    profileModel.deleteProfile(selectedProfile);
+                }
+            });
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a profile to delete.");
-            alert.showAndWait();
+            showErrorDialog("Please select a profile to delete.");
         }
     }
 
-    private DoubleBinding createMultiplierBinding(TextField textField) {
-        return Bindings.createDoubleBinding(() -> {
-            try {
-                return 1.0 + (Double.parseDouble(textField.getText()) / 100.0);
-            } catch (NumberFormatException e) {
-                return 1.0;
-            }
-        }, textField.textProperty());
-    }
-
-    private void setupMultiplierCalculations(DoubleBinding multiplierBinding, TableColumn<Profile, Double> hourlyRateColumn, TableColumn<Profile, Double> dailyRateColumn) {
-
-        hourlyRateColumn.setCellValueFactory(cellData ->
-                Bindings.createObjectBinding(() -> {
-                    double rate = cellData.getValue().getHourlyRate() * multiplierBinding.get();
-                    return rate;
-                }, multiplierBinding));
-
-        dailyRateColumn.setCellValueFactory(cellData ->
-                Bindings.createObjectBinding(() -> {
-                    double rate = cellData.getValue().getDailyRate() * multiplierBinding.get();
-                    return rate;
-                }, multiplierBinding));
+    // Show error dialog with specified message
+    private void showErrorDialog(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

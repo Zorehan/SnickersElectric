@@ -1,5 +1,7 @@
 package DAL;
 
+import BE.Profile;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +12,34 @@ import java.util.List;
 public class ProfileTeamDAO {
     private Connection getConnection() {
         return new DatabaseConnector().getConnection();
+    }
+
+    public List<Profile> getProfilesForTeam(int teamId) {
+        List<Profile> profiles = new ArrayList<>();
+        String sql = "SELECT P.* FROM dbo.Profiles P INNER JOIN dbo.TeamProfiles TP ON P.id = TP.ProfileId WHERE TP.TeamId = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, teamId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                double annualSalary = rs.getDouble("annualSalary");
+                double overheadPercent = rs.getDouble("overheadMultiplier");
+                double annualAmount = rs.getDouble("annualAmount");
+                double workHours = rs.getDouble("workHours");
+                double utilPercent = rs.getDouble("utilizationPercentage");
+                String country = rs.getString("country");
+                Profile.ProfileType type = Profile.ProfileType.valueOf(rs.getString("type"));
+
+                Profile profile = new Profile(id, name, annualSalary, workHours, annualAmount, overheadPercent, utilPercent, country, type);
+                profiles.add(profile);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return profiles;
     }
 
     public void addProfileToTeam(int profileId, int teamId) {
@@ -34,37 +64,5 @@ public class ProfileTeamDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public List<Integer> getTeamsForProfile(int profileId) {
-        List<Integer> teamIds = new ArrayList<>();
-        String sql = "SELECT TeamId FROM dbo.TeamProfiles WHERE ProfileId = ?;";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, profileId);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                teamIds.add(rs.getInt("TeamId"));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return teamIds;
-    }
-
-    public List<Integer> getProfilesForTeam(int teamId) {
-        List<Integer> profileIds = new ArrayList<>();
-        String sql = "SELECT ProfileId FROM dbo.TeamProfiles WHERE TeamId = ?;";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, teamId);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                profileIds.add(rs.getInt("ProfileId"));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return profileIds;
     }
 }
