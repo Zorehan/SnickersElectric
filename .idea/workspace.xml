@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/Creator/scenarioCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Creator/scenarioCreatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/Editor/scenarioEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Editor/scenarioEditorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +153,7 @@
       <workItem from="1715765742894" duration="719000" />
       <workItem from="1715792119643" duration="2357000" />
       <workItem from="1715794588061" duration="3609000" />
-      <workItem from="1715878180455" duration="9194000" />
+      <workItem from="1715878180455" duration="10287000" />
     </task>
     <servers />
   </component>

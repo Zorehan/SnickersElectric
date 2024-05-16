@@ -72,6 +72,7 @@ public class scenarioCreatorController implements Initializable {
 
         // Initialize the selected profiles.
         selectedProfiles = FXCollections.observableArrayList();
+        tblSelected.setItems(selectedProfiles);
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
         colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));

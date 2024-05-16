@@ -12,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -43,22 +40,23 @@ public class scenarioViewController implements Initializable {
         tblViewScenario.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 scenarioModel.setScenario(newValue);
+                addRightClickFunctionality();
             }
         });
     }
 
     @FXML
-    private void openScenarioCreator(ActionEvent actionEvent) {
+    private void openScenarioCreator() {
         openNewWindow("../../View/scenarioCreator.fxml");
     }
 
     @FXML
-    private void openScenarioEditor(ActionEvent actionEvent) {
+    private void openScenarioEditor() {
         openNewWindow("../../View/scenarioEditor.fxml");
     }
 
     @FXML
-    private void removeScenario(ActionEvent actionEvent) {
+    private void removeScenario() {
         Scenario scenario = tblViewScenario.getSelectionModel().getSelectedItem();
         if (scenario != null) {
             // Show confirmation dialog
@@ -101,5 +99,27 @@ public class scenarioViewController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void addRightClickFunctionality() {
+        Scenario scenario = scenarioModel.getScenario();
+        ContextMenu contextMenu = new ContextMenu();
+
+        // Define menu items
+        MenuItem margin = new MenuItem("Margin: " + scenario.getGrossMargin() + "%");
+        MenuItem markup = new MenuItem("Markup: " + scenario.getMarkup() + "%");
+        MenuItem workHours = new MenuItem("Work Hours (Per Person): " + scenario.getWorkHours());
+        MenuItem editMenuItem = new MenuItem("Edit Scenario");
+        MenuItem deleteMenuItem = new MenuItem("Delete Scenario");
+
+        // Add menu items to context menu
+        contextMenu.getItems().addAll(margin, markup, workHours, editMenuItem, deleteMenuItem);
+        margin.setStyle("fx-background-color: black");
+
+        editMenuItem.setOnAction(event -> openScenarioEditor());
+        deleteMenuItem.setOnAction(event -> removeScenario());
+
+        // Associate context menu with table view
+        tblViewScenario.setContextMenu(contextMenu);
     }
 }
