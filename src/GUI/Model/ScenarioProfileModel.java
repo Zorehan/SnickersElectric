@@ -1,6 +1,6 @@
 package GUI.Model;
 
-import BE.ScenarioProfile;
+import BE.Profile;
 import BLL.ScenarioProfileManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,13 +8,10 @@ import javafx.collections.ObservableList;
 public class ScenarioProfileModel {
     private static ScenarioProfileModel instance;
     private ScenarioProfileManager scenarioProfileManager;
-    private ObservableList<ScenarioProfile> allScenarioProfiles;
+    private ObservableList<Profile> allScenarioProfiles;
 
     private ScenarioProfileModel() {
         this.scenarioProfileManager = new ScenarioProfileManager();
-
-        allScenarioProfiles = FXCollections.observableArrayList();
-        allScenarioProfiles.addAll(scenarioProfileManager.getAllScenarioProfiles());
     }
 
     public static ScenarioProfileModel getInstance() {
@@ -24,24 +21,17 @@ public class ScenarioProfileModel {
         return instance;
     }
 
-    public ObservableList<ScenarioProfile> getObservableScenarios(){
+    public ObservableList<Profile> getAllObservableProfiles(int scenarioId){
+        allScenarioProfiles = FXCollections.observableArrayList();
+        allScenarioProfiles.setAll(scenarioProfileManager.getAllProfiles(scenarioId));
         return allScenarioProfiles;
     }
 
-    public ScenarioProfile createScenario(ScenarioProfile newScenarioProfile) {
-        ScenarioProfile scenario = scenarioProfileManager.createScenarioProfile(newScenarioProfile);
-        allScenarioProfiles.add(scenario);
-        return scenario;
+    public void addToScenario(int scenarioId, int profileId) {
+        scenarioProfileManager.createScenarioProfile(scenarioId, profileId);
     }
 
-    public void deleteScenario(ScenarioProfile newScenarioProfile) {
-        scenarioProfileManager.deleteScenarioProfile(newScenarioProfile);
-        allScenarioProfiles.remove(newScenarioProfile);
-    }
-
-    public void updateScenario(ScenarioProfile scenarioProfile) {
-        ScenarioProfile newScenarioProfile = scenarioProfileManager.updateScenarioProfile(scenarioProfile);
-        allScenarioProfiles.remove(scenarioProfile);
-        allScenarioProfiles.add(newScenarioProfile);
+    public void deleteFromScenario(int scenarioId, int profileId) {
+        scenarioProfileManager.deleteScenarioProfile(scenarioId, profileId);
     }
 }

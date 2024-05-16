@@ -25,7 +25,6 @@ public class scenarioViewController implements Initializable {
     private ScenarioProfileModel scenarioProfileModel = ScenarioProfileModel.getInstance();
     @FXML private TableView<Scenario> tblViewScenario;
     @FXML private TableColumn<Scenario, String> colName;
-    @FXML private TableColumn<Scenario, Integer> colAmount;
     @FXML private TableColumn<Scenario, Double> colHourlyRate;
     @FXML private TableColumn<Scenario, Double> colDailyRate;
 
@@ -37,6 +36,12 @@ public class scenarioViewController implements Initializable {
         //colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         colDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+
+        tblViewScenario.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                scenarioModel.setScenario(newValue);
+            }
+        });
     }
 
     @FXML
@@ -46,7 +51,7 @@ public class scenarioViewController implements Initializable {
 
     @FXML
     private void openScenarioEditor(ActionEvent actionEvent) {
-        //TODO 
+        openNewWindow("../../View/scenarioEditor.fxml");
     }
 
     @FXML

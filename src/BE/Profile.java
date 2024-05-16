@@ -47,7 +47,7 @@ public class Profile {
         setType(type);
         setHourlyRate();
         propertyChangeSupport = new PropertyChangeSupport(this);
-        setDailyRate(10);
+        setDailyRate(10.0);
 
     }
 
@@ -141,7 +141,7 @@ public class Profile {
         return dailyRate;
     }
 
-    public void setDailyRate(int hours) {
+    public void setDailyRate(Double hours) {
         double oldRate = this.dailyRate;
         double newRate = Calculator.calcDayRate(this, hours);
         DecimalFormat df = new DecimalFormat("#.00", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
@@ -157,4 +157,15 @@ public class Profile {
         propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Profile profile = (Profile) o;
+        return id == profile.id;
+    }
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
 }

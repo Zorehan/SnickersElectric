@@ -1,8 +1,6 @@
 package BLL;
 
-import BE.Scenario;
-import BE.ScenarioProfile;
-import DAL.ScenarioDAO;
+import BE.Profile;
 import DAL.ScenarioProfileDAO;
 
 import java.util.List;
@@ -14,19 +12,15 @@ public class ScenarioProfileManager {
         this.scenarioProfileDAO = new ScenarioProfileDAO();
     }
 
-    public List<ScenarioProfile> getAllScenarioProfiles(){
-        return scenarioProfileDAO.getAll();
+    public List<Profile> getAllProfiles(int scenarioId){
+        return scenarioProfileDAO.getAllProfiles(scenarioId);
     }
 
-    public ScenarioProfile createScenarioProfile(ScenarioProfile scenarioProfile) {
-        return scenarioProfileDAO.create(scenarioProfile);
+    public void createScenarioProfile(int scenarioId, int profileId) {
+        scenarioProfileDAO.addToScenario(scenarioId, profileId);
     }
 
-    public void deleteScenarioProfile(ScenarioProfile scenarioProfile) {
-        scenarioProfileDAO.delete(scenarioProfile);
-    }
-
-    public ScenarioProfile updateScenarioProfile(ScenarioProfile scenarioProfile) {
-        return scenarioProfileDAO.update(scenarioProfile);
+    public void deleteScenarioProfile(int scenarioId, int profileId) {
+        scenarioProfileDAO.deleteFromScenario(scenarioId, profileId);
     }
 }

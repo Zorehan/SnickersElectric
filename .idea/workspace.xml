@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Controller/Editor/scenarioEditorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/View/scenarioEditor.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BE/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BE/Scenario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Scenario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/ScenarioProfileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ScenarioProfileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DAL/ScenarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ScenarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ScenarioProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ScenarioProfileDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Controller/Creator/scenarioCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Creator/scenarioCreatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/View/scenarioCreator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/scenarioCreator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ScenarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ScenarioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ScenarioProfileModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ScenarioProfileModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Calculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +28,8 @@
       <list>
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -62,35 +66,36 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kadar/Documents/GitHub/MyTunes&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "Scenario2.0",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/krame/Desktop/Projekter/SnickersElectric/src/GUI/View",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\krame\Desktop\Projekter\SnickersElectric\src\GUI\View" />
       <recent name="C:\Users\runsi\OneDrive\Dokumenter\GitHub\SnickersElectric\src\GUI\View" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -158,7 +163,7 @@
       <workItem from="1715765742894" duration="719000" />
       <workItem from="1715792119643" duration="2357000" />
       <workItem from="1715794588061" duration="3609000" />
-      <workItem from="1715878180455" duration="585000" />
+      <workItem from="1715878180455" duration="8078000" />
     </task>
     <servers />
   </component>

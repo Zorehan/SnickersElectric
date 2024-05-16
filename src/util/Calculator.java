@@ -3,7 +3,7 @@ package util;
 import BE.Profile;
 
 public class Calculator {
-    public static double calcDayRate(Profile profile, int hours) {
+    public static double calcDayRate(Profile profile, double hours) {
         double dayRate = profile.getHourlyRate() * hours;
         return dayRate;
     }

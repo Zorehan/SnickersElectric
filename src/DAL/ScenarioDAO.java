@@ -40,15 +40,17 @@ public class ScenarioDAO implements GenericDAO<Scenario> {
 
     @Override
     public Scenario create(Scenario scenario) {
-        String sql = "INSERT INTO dbo.Scenarios (name, hourlyRate, dailyRate) VALUES (?,?,?);";
+        String sql = "INSERT INTO dbo.Scenarios (name, hourlyRate, dailyRate, grossMargin, markup, workHours) VALUES (?,?,?,?,?,?);";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, scenario.getName());
             stmt.setDouble(2, scenario.getHourlyRate());
             stmt.setDouble(3, scenario.getDailyRate());
+            stmt.setDouble(4, scenario.getGrossMargin());
+            stmt.setDouble(5, scenario.getMarkup());
+            stmt.setDouble(6, scenario.getWorkHours());
 
             stmt.executeUpdate();
-
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
                     scenario.setId(rs.getInt(1));
@@ -75,13 +77,16 @@ public class ScenarioDAO implements GenericDAO<Scenario> {
 
     @Override
     public Scenario update(Scenario scenario) {
-        String sql = "UPDATE dbo.Scenarios SET name = ?, hourlyRate = ?, dailyRate = ? WHERE id = ?";
+        String sql = "UPDATE dbo.Scenarios SET name = ?, hourlyRate = ?, dailyRate = ?, grossMargin = ?, markup = ?, workHours = ? WHERE id = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, scenario.getName());
             stmt.setDouble(2, scenario.getHourlyRate());
             stmt.setDouble(3, scenario.getDailyRate());
-            stmt.setInt(4, scenario.getId());
+            stmt.setDouble(4, scenario.getGrossMargin());
+            stmt.setDouble(5, scenario.getMarkup());
+            stmt.setDouble(6, scenario.getWorkHours());
+            stmt.setInt(7, scenario.getId());
 
             stmt.executeUpdate();
             return scenario;

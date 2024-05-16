@@ -10,6 +10,7 @@ public class ScenarioModel {
     private static ScenarioModel instance;
     private ScenarioManager scenarioManager;
     private ObservableList<Scenario> allScenarios;
+    private Scenario scenario;
 
     private ScenarioModel() {
         this.scenarioManager = new ScenarioManager();
@@ -41,8 +42,14 @@ public class ScenarioModel {
     }
 
     public void updateScenario(Scenario scenario) {
-        Scenario newScenario = scenarioManager.updateScenario(scenario);
-        allScenarios.remove(scenario);
-        allScenarios.add(newScenario);
+        scenarioManager.updateScenario(scenario);
+    }
+
+    public void setScenario(Scenario scenario) {
+        this.scenario = scenario;
+    }
+
+    public Scenario getScenario() {
+        return scenario;
     }
 }
