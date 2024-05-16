@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/util/Exception.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ProfileTeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ProfileTeamManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ScenarioManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ScenarioManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ScenarioProfileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ScenarioProfileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/TeamManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/profileAdderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileAdderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/profileRemoverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileRemoverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/profileViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/profileViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/teamViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/teamViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +67,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ExceptionClass&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/kadar/Documents/GitHub/MyTunes&quot;,

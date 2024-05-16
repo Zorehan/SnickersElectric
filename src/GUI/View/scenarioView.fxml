@@ -34,7 +34,6 @@
       <TableView fx:id="tblViewScenario" focusTraversable="false" prefHeight="444.0" prefWidth="770.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="colName" editable="false" prefWidth="95.0" text="Name" />
-            <TableColumn fx:id="colAmount" editable="false" prefWidth="89.0" text="Amount of People" />
             <TableColumn fx:id="colHourlyRate" editable="false" prefWidth="90.0" text="Total Hourly Rate" />
             <TableColumn fx:id="colDailyRate" editable="false" prefWidth="90.0" text="Total Daily Rate" />
          </columns>

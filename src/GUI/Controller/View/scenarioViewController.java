@@ -18,7 +18,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class scenarioViewController implements Initializable {
     private ScenarioModel scenarioModel = ScenarioModel.getInstance();
@@ -32,8 +34,6 @@ public class scenarioViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tblViewScenario.setItems(scenarioModel.getObservableScenarios());
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        //TODO Muligvis tilføj "amount of employees"
-        //colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         colDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
 
@@ -103,21 +103,17 @@ public class scenarioViewController implements Initializable {
 
     private void addRightClickFunctionality() {
         Scenario scenario = scenarioModel.getScenario();
+        Set<Profile> hash = new HashSet<>(scenarioProfileModel.getAllObservableProfiles(scenario.getId()));
         ContextMenu contextMenu = new ContextMenu();
 
         // Define menu items
         MenuItem margin = new MenuItem("Margin: " + scenario.getGrossMargin() + "%");
         MenuItem markup = new MenuItem("Markup: " + scenario.getMarkup() + "%");
         MenuItem workHours = new MenuItem("Work Hours (Per Person): " + scenario.getWorkHours());
-        MenuItem editMenuItem = new MenuItem("Edit Scenario");
-        MenuItem deleteMenuItem = new MenuItem("Delete Scenario");
+        MenuItem amount = new MenuItem("Amount of people: " + hash.size());
 
         // Add menu items to context menu
-        contextMenu.getItems().addAll(margin, markup, workHours, editMenuItem, deleteMenuItem);
-        margin.setStyle("fx-background-color: black");
-
-        editMenuItem.setOnAction(event -> openScenarioEditor());
-        deleteMenuItem.setOnAction(event -> removeScenario());
+        contextMenu.getItems().addAll(margin, markup, workHours, amount);
 
         // Associate context menu with table view
         tblViewScenario.setContextMenu(contextMenu);
