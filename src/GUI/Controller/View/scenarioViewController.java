@@ -2,6 +2,7 @@ package GUI.Controller.View;
 
 import BE.Profile;
 import BE.Scenario;
+import BE.Team;
 import GUI.Model.ScenarioModel;
 import GUI.Model.ScenarioProfileModel;
 import javafx.beans.property.SimpleStringProperty;
@@ -11,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -56,7 +59,25 @@ public class scenarioViewController implements Initializable {
 
     @FXML
     private void removeScenario(ActionEvent actionEvent) {
-        //TODO dette kræver at man loader en list af alle profiler. Skal nok få det ordnet engang.
+        Scenario scenario = tblViewScenario.getSelectionModel().getSelectedItem();
+        if (scenario != null) {
+            // Show confirmation dialog
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirmation");
+            confirmation.setHeaderText("Confirm Deletion");
+            confirmation.setContentText("Are you sure you want to delete the selected scenario?");
+
+            // Show the dialog and wait for user response
+            confirmation.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    // User confirmed deletion, proceed with deletion
+                    scenarioModel.deleteScenario(scenario);
+                }
+            });
+        } else {
+            // If no scenario is selected, show an error pop-up
+            showErrorDialog("Please select a scenario to delete.");
+        }
     }
 
     private void openNewWindow(String fxmlPath) {
@@ -72,5 +93,13 @@ public class scenarioViewController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void showErrorDialog(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

@@ -65,11 +65,16 @@ public class ScenarioDAO implements GenericDAO<Scenario> {
 
     @Override
     public void delete(Scenario scenario) {
-        String sql = "DELETE FROM dbo.Scenarios WHERE id = ?";
+        String sql1 = "DELETE FROM dbo.ScenarioProfiles WHERE scenarioId = ?";
+        String sql2 = "DELETE FROM dbo.Scenarios WHERE id = ?";
+
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, scenario.getId());
-            stmt.executeUpdate();
+             PreparedStatement stmt1 = conn.prepareStatement(sql1)) {
+            PreparedStatement stmt2 = conn.prepareStatement(sql2);
+            stmt1.setInt(1, scenario.getId());
+            stmt2.setInt(1, scenario.getId());
+            stmt1.executeUpdate();
+            stmt2.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
