@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../Stylesheets/scenarioCreator.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Creator.scenarioCreatorController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../Stylesheets/scenarioCreator.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Editor.scenarioEditorController">
    <children>
       <BorderPane prefHeight="700.0" prefWidth="1000.0">
          <top>

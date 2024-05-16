@@ -1,32 +1,32 @@
-package GUI.Controller.Creator;
+package GUI.Controller.Editor;
 
 import BE.Profile;
 import BE.Scenario;
 import GUI.Model.ProfileModel;
 import GUI.Model.ScenarioModel;
 import GUI.Model.ScenarioProfileModel;
-import util.Calculator;
-
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
-
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import util.Calculator;
 
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Set;
 
-public class scenarioCreatorController implements Initializable {
+public class scenarioEditorController implements Initializable {
+    private Scenario scenario;
     private ProfileModel profileModel = ProfileModel.getInstance();
     private ScenarioModel scenarioModel = ScenarioModel.getInstance();
     private ScenarioProfileModel scenarioProfileModel = ScenarioProfileModel.getInstance();
@@ -52,31 +52,41 @@ public class scenarioCreatorController implements Initializable {
     private StringProperty marginDailyRate = new SimpleStringProperty("");
     private StringProperty marginHourlyRate = new SimpleStringProperty("");
     private ObservableList<Profile> selectedProfiles;
+    private ObservableList<Profile> availableProfiles;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        spinMargin.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
-        spinMarkup.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
-        spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
+        this.scenario = scenarioModel.getScenario();
+        txtName.setText(scenario.getName());
+        spinMargin.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getGrossMargin(), 0.5));
+        spinMarkup.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getMarkup(), 0.5));
+        spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getWorkHours(), 0.5));
 
         initTables();
         initBindings();
+        updateLabels();
     }
 
     private void initTables() {
         // Initialize the available profiles
-        tblAvailable.setItems(profileModel.getObservableProfiles());
+        availableProfiles = profileModel.getObservableProfiles();
+        tblAvailable.setItems(availableProfiles);
         colAvailName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAvailCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
         colAvailHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         colAvailDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
 
         // Initialize the selected profiles.
-        selectedProfiles = FXCollections.observableArrayList();
+        selectedProfiles = scenarioProfileModel.getAllObservableProfiles(scenario.getId());
         tblSelected.setItems(selectedProfiles);
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
         colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         colDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+
+        for(Profile profile : selectedProfiles) {
+            availableProfiles.removeIf(profile::equals);
+        }
     }
 
     private void initBindings() {
@@ -129,18 +139,24 @@ public class scenarioCreatorController implements Initializable {
 
     @FXML
     private void clickSave(ActionEvent actionEvent) {
-        Scenario scenario = scenarioModel.createScenario(new Scenario(
-                        -1, txtName.getText(),
-                        Double.parseDouble(lblHourlyRate.getText()),
-                        Double.parseDouble(lblDailyRate.getText()),
-                        spinMargin.getValue(),
-                        spinMarkup.getValue(),
-                        spinWorkHours.getValue()));
-
+        scenarioModel.updateScenario(new Scenario(
+                scenario.getId(), txtName.getText(),
+                Double.parseDouble(lblHourlyRate.getText()),
+                Double.parseDouble(lblDailyRate.getText()),
+                spinMargin.getValue(),
+                spinMarkup.getValue(),
+                spinWorkHours.getValue()));
+        Set<Profile> hash = new HashSet<>(scenarioProfileModel.getAllObservableProfiles(scenario.getId()));
         for (Profile profile : selectedProfiles) {
-            scenarioProfileModel.addToScenario(scenario.getId(), profile.getId());
+            if(!hash.contains(profile)){
+                scenarioProfileModel.addToScenario(scenario.getId(), profile.getId());
+            }
         }
-
+        for (Profile profile : hash) {
+            if(!selectedProfiles.contains(profile)){
+                scenarioProfileModel.deleteFromScenario(scenario.getId(), profile.getId());
+            }
+        }
         Stage stage = (Stage) btnSave.getScene().getWindow();
         stage.close();
     }

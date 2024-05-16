@@ -28,9 +28,6 @@ public class profileViewController implements Initializable {
 
     // FXML elements
     @FXML private TextField txtSearchField;
-    @FXML private TextField txtWorkHours;
-    @FXML private TextField txtGM;
-    @FXML private TextField txtMarkup;
     @FXML private TableView<Profile> tblViewProfiles;
     @FXML private TableColumn<Profile, String> nameColumn;
     @FXML private TableColumn<Profile, String> countryColumn;
@@ -52,7 +49,6 @@ public class profileViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setupTable();
         setupSearch();
-        setupMultiplierBindings();
         setupListeners();
         addRightClickFunctionality();
     }
@@ -78,18 +74,6 @@ public class profileViewController implements Initializable {
         txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> searchEngine.filter(newValue));
     }
 
-    // Setup multiplier bindings for hourly and daily rates
-    private void setupMultiplierBindings() {
-        DoubleBinding gmMultiplierBinding = createMultiplierBinding(txtGM);
-        DoubleBinding markupMultiplierBinding = createMultiplierBinding(txtMarkup);
-        DoubleBinding combinedMultiplierBinding = gmMultiplierBinding.multiply(markupMultiplierBinding);
-
-        hourlyRateColumn.setCellValueFactory(cellData ->
-                Bindings.createObjectBinding(() -> cellData.getValue().getHourlyRate() * combinedMultiplierBinding.get(), combinedMultiplierBinding));
-
-        dailyRateColumn.setCellValueFactory(cellData ->
-                Bindings.createObjectBinding(() -> cellData.getValue().getDailyRate() * combinedMultiplierBinding.get(), combinedMultiplierBinding));
-    }
 
     // Setup listeners for text fields
     private void setupListeners() {
@@ -104,39 +88,8 @@ public class profileViewController implements Initializable {
                 }
             });
         });
-
-        // Listener for tekstfield der ændrer dailyraten alt efter hvilket tal man skriver i det
-        txtWorkHours.textProperty().addListener((observable, oldValue, newValue) -> {
-            try {
-                int hours;
-                if (!newValue.isEmpty()) {
-                    hours = Integer.parseInt(newValue);
-                } else {
-                    hours = 8;
-                }
-                if (hours >= 0) {
-
-                    profileModel.getObservableProfiles().forEach(profile -> {
-                        profile.setDailyRate(hours);
-                    });
-                } else {
-                }
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
-    // Create multiplier binding based on text field input
-    private DoubleBinding createMultiplierBinding(TextField textField) {
-        return Bindings.createDoubleBinding(() -> {
-            try {
-                return 1.0 + (Double.parseDouble(textField.getText()) / 100.0);
-            } catch (NumberFormatException e) {
-                return 1.0;
-            }
-        }, textField.textProperty());
-    }
 
     // Open profile editor window
     @FXML private void openProfileEditor() {
