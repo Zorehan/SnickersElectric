@@ -58,6 +58,11 @@ public class scenarioCreatorController implements Initializable {
         spinMarkup.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
         spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
 
+        initTables();
+        initBindings();
+    }
+
+    private void initTables() {
         // Initialize the available profiles
         tblAvailable.setItems(profileModel.getObservableProfiles());
         colAvailName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -71,7 +76,9 @@ public class scenarioCreatorController implements Initializable {
         colCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
         colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         colDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+    }
 
+    private void initBindings() {
         //Assign and bind  boolean properties to nameEntered and Profiles added, to ensure these are filled before you can save.
         BooleanProperty nameEntered = new SimpleBooleanProperty(false);
         BooleanProperty profilesAdded = new SimpleBooleanProperty(false);
@@ -99,13 +106,18 @@ public class scenarioCreatorController implements Initializable {
     }
     @FXML
     private void clickAssign(ActionEvent actionEvent) {
-        selectedProfiles.add(tblAvailable.getSelectionModel().getSelectedItem());
-        tblSelected.setItems(selectedProfiles);
+        Profile selectedProfile = tblAvailable.getSelectionModel().getSelectedItem();
+
+        selectedProfiles.add(selectedProfile);
+        tblAvailable.getItems().remove(selectedProfile);
     }
 
     @FXML
     private void clickUnassign(ActionEvent actionEvent) {
-        selectedProfiles.remove(tblSelected.getSelectionModel().getSelectedItem());
+        Profile selectedProfile = tblSelected.getSelectionModel().getSelectedItem();
+
+        selectedProfiles.remove(selectedProfile);
+        tblAvailable.getItems().add(selectedProfile);
     }
 
     @FXML

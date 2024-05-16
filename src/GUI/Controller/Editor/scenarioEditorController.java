@@ -62,8 +62,34 @@ public class scenarioEditorController implements Initializable {
         spinMarkup.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getMarkup(), 0.5));
         spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getWorkHours(), 0.5));
 
-       initTables();
+        initTables();
+        initBindings();
+        updateLabels();
+    }
 
+    private void initTables() {
+        // Initialize the available profiles
+        availableProfiles = profileModel.getObservableProfiles();
+        tblAvailable.setItems(availableProfiles);
+        colAvailName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAvailCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
+        colAvailHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
+        colAvailDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+
+        // Initialize the selected profiles.
+        selectedProfiles = scenarioProfileModel.getAllObservableProfiles(scenario.getId());
+        tblSelected.setItems(selectedProfiles);
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
+        colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
+        colDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+
+        for(Profile profile : selectedProfiles) {
+            availableProfiles.removeIf(profile::equals);
+        }
+    }
+
+    private void initBindings() {
         //Assign and bind  boolean properties to nameEntered and Profiles added, to ensure these are filled before you can save.
         BooleanProperty nameEntered = new SimpleBooleanProperty(false);
         BooleanProperty profilesAdded = new SimpleBooleanProperty(false);
@@ -88,43 +114,21 @@ public class scenarioEditorController implements Initializable {
         lblMarginHourlyRate.textProperty().bind(marginHourlyRate);
         lblMarkupDailyRate.textProperty().bind(markupDailyRate);
         lblMarkupHourlyRate.textProperty().bind(markupHourlyRate);
-
-        updateLabels();
-    }
-
-    public void initTables() {
-        // Initialize the available profiles
-        availableProfiles = profileModel.getObservableProfiles();
-        tblAvailable.setItems(availableProfiles);
-        colAvailName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAvailCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
-        colAvailHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
-        colAvailDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
-
-        // Initialize the selected profiles.
-        selectedProfiles = scenarioProfileModel.getAllObservableProfiles(scenario.getId());
-        tblSelected.setItems(selectedProfiles);
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
-        colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
-        colDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
-
-        for(Profile profile : selectedProfiles) {
-            availableProfiles.removeIf(profile::equals);
-        }
     }
     @FXML
     private void clickAssign(ActionEvent actionEvent) {
         Profile selectedProfile = tblAvailable.getSelectionModel().getSelectedItem();
 
         selectedProfiles.add(selectedProfile);
-        tblSelected.setItems(selectedProfiles);
         tblAvailable.getItems().remove(selectedProfile);
     }
 
     @FXML
     private void clickUnassign(ActionEvent actionEvent) {
-        selectedProfiles.remove(tblSelected.getSelectionModel().getSelectedItem());
+        Profile selectedProfile = tblSelected.getSelectionModel().getSelectedItem();
+
+        selectedProfiles.remove(selectedProfile);
+        tblAvailable.getItems().add(selectedProfile);
     }
 
     @FXML
