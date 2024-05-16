@@ -12,9 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import util.Exception;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class profileRemoverController implements Initializable {
 
@@ -79,11 +82,16 @@ public class profileRemoverController implements Initializable {
             confirmation.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     // User confirmed deletion, proceed with deletion
-                    selectedProfiles.forEach(profile -> profileTeamModel.removeProfileFromTeam(profile.getId(), selectedTeam.getId()));
+                    try {
+                        selectedProfiles.forEach(profile -> profileTeamModel.removeProfileFromTeam(profile.getId(), selectedTeam.getId()));
 
-                    // Close the window
-                    Stage stage = (Stage) btnDelete.getScene().getWindow();
-                    stage.close();
+                        // Close the window
+                        Stage stage = (Stage) btnDelete.getScene().getWindow();
+                        stage.close();
+                    } catch (Exception ex) {
+                        // Handle the exception using showAndLogError method
+                        showAndLogError(ex);
+                    }
                 }
             });
         }
@@ -106,5 +114,17 @@ public class profileRemoverController implements Initializable {
     // Simple setter
     void setSelectedTeam(Team team) {
         this.selectedTeam = team;
+    }
+
+    // Method for showing and logging error
+    private static void showAndLogError(Exception ex) {
+        Logger.getLogger(profileRemoverController.class.getName()).log(Level.SEVERE, null, ex);
+
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                ex.getMessage()
+                        + String.format("%n")
+                        + "See error log for technical details."
+        );
+        alert.showAndWait();
     }
 }

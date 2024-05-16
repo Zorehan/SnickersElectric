@@ -11,10 +11,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import util.Exception;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class profileAdderController implements Initializable {
 
@@ -56,19 +59,22 @@ public class profileAdderController implements Initializable {
             for (Profile profile : selectedProfiles) {
                 if (isProfileAlreadyInTeam(profile, selectedTeam)) {
                     // If the profile is already in the team, show an error dialog
-                    showErrorDialog("Selected profile '" + profile.getName() + "' is already associated with the team.");
+                    showAndLogError(new Exception("Selected profile '" + profile.getName() + "' is already associated with the team."));
                 } else {
                     // Otherwise, add the profile to the team
-                    profileTeamModel.addProfileToTeam(selectedTeam.getId(), profile.getId());
+                    try {
+                        profileTeamModel.addProfileToTeam(selectedTeam.getId(), profile.getId());
+                    } catch (Exception ex) {
+                        // Handle the exception using showAndLogError method
+                        showAndLogError(ex);
+                    }
                 }
             }
             // Close the window after adding profiles
             Stage stage = (Stage) btnSave.getScene().getWindow();
             stage.close();
         } else {
-            // If no profiles are selected or no team is selected, show an error dialog
-            System.out.println("No profiles selected or no team selected.");
-            showErrorDialog("Please select at least one profile to add to the team.");
+            showAndLogError(new Exception("Please select at least one profile to add to the team."));
         }
     }
 
@@ -109,11 +115,14 @@ public class profileAdderController implements Initializable {
         tblViewProfiles.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
-    private void showErrorDialog(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
+    private static void showAndLogError(Exception ex) {
+        Logger.getLogger(profileAdderController.class.getName()).log(Level.SEVERE, null, ex);
+
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                ex.getMessage()
+                        + String.format("%n")
+                        + "See error log for technical details."
+        );
         alert.showAndWait();
     }
 }

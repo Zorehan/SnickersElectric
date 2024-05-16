@@ -15,10 +15,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.Exception;
 import util.SearchEngine;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class profileViewController implements Initializable {
 
@@ -141,7 +145,7 @@ public class profileViewController implements Initializable {
         if (selectedProfile != null) {
             openNewWindow("../../View/profileEditor.fxml");
         } else {
-            showErrorDialog("Please select a profile");
+            showAndLogError(new Exception("Please select a profile to edit."));
         }
     }
 
@@ -163,6 +167,9 @@ public class profileViewController implements Initializable {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
+            showAndLogError(new Exception("Error opening new window."));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -181,21 +188,17 @@ public class profileViewController implements Initializable {
             confirmation.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     // User confirmed deletion, proceed with deletion
-                    profileModel.deleteProfile(selectedProfile);
+                    try {
+                        profileModel.deleteProfile(selectedProfile);
+                    } catch (Exception ex) {
+                        // Handle the exception using showAndLogError method
+                        showAndLogError(ex);
+                    }
                 }
             });
         } else {
-            showErrorDialog("Please select a profile to delete.");
+            showAndLogError(new Exception("Please select a profile to delete."));
         }
-    }
-
-    // Show error dialog with specified message
-    private void showErrorDialog(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private void addRightClickFunctionality() {
@@ -214,5 +217,17 @@ public class profileViewController implements Initializable {
 
         // Associate context menu with table view
         tblViewProfiles.setContextMenu(contextMenu);
+    }
+
+    // Method for showing and logging error
+    private static void showAndLogError(Exception ex) {
+        Logger.getLogger(profileViewController.class.getName()).log(Level.SEVERE, null, ex);
+
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                ex.getMessage()
+                        + String.format("%n")
+                        + "See error log for technical details."
+        );
+        alert.showAndWait();
     }
 }

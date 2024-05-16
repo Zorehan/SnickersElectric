@@ -12,9 +12,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.Exception;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class teamViewController implements Initializable {
 
@@ -62,12 +66,17 @@ public class teamViewController implements Initializable {
             confirmation.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     // User confirmed deletion, proceed with deletion
-                    teamModel.deleteTeam(selectedTeam);
+                    try {
+                        teamModel.deleteTeam(selectedTeam);
+                    }
+                    catch (Exception ex) {
+                        showAndLogError(ex);
+                    }
                 }
             });
         } else {
             // If no team is selected, show an error pop-up
-            showErrorDialog("Please select a team to delete.");
+            showAndLogError(new Exception("Please select a team to delete."));
         }
     }
 
@@ -79,7 +88,7 @@ public class teamViewController implements Initializable {
         if (selectedTeam != null) {
             openWindow("../../View/teamEditor.fxml", null);
         } else {
-            showErrorDialog("Please select a team to edit.");
+            showAndLogError(new Exception("Please select a team to edit."));
         }
 
     }
@@ -107,7 +116,7 @@ public class teamViewController implements Initializable {
         if (selectedTeam != null) {
             openWindow(fxmlPath, selectedTeam);
         } else {
-            showErrorDialog("Please select a team first.");
+            showAndLogError(new Exception("Please select a team first."));
         }
     }
 
@@ -136,7 +145,7 @@ public class teamViewController implements Initializable {
             stage.setTitle("Schneider Electric");
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (Exception e) {
+        } catch (Exception | IOException e) {
             e.printStackTrace();
         }
     }
@@ -156,15 +165,6 @@ public class teamViewController implements Initializable {
             }
         });
         tblViewTeams.setItems(teamModel.getObservableTeams());
-    }
-
-    // Show an error dialog with the specified message
-    private void showErrorDialog(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private void addRightClickFunctionality() {
@@ -187,6 +187,18 @@ public class teamViewController implements Initializable {
 
         // Associate context menu with table view
         tblViewTeams.setContextMenu(contextMenu);
+    }
+
+    // Method for showing and logging error
+    private static void showAndLogError(Exception ex) {
+        Logger.getLogger(profileViewController.class.getName()).log(Level.SEVERE, null, ex);
+
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                ex.getMessage()
+                        + String.format("%n")
+                        + "See error log for technical details."
+        );
+        alert.showAndWait();
     }
 }
 
