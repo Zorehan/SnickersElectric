@@ -25,8 +25,11 @@ public class ScenarioDAO implements GenericDAO<Scenario> {
                 String name = rs.getString("name");
                 double hourlyRate = rs.getDouble("hourlyRate");
                 double dailyRate = rs.getDouble("dailyRate");
+                double margin = rs.getDouble("grossMargin");
+                double markup = rs.getDouble("markup");
+                double workHours = rs.getDouble("workHours");
 
-                Scenario scenario = new Scenario(id, name, hourlyRate, dailyRate);
+                Scenario scenario = new Scenario(id, name, hourlyRate, dailyRate, margin, markup, workHours);
                 allScenarios.add(scenario);
             }
         } catch (SQLException e) {

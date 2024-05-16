@@ -132,8 +132,7 @@ public class Profile {
     }
 
     public void setHourlyRate() {
-        Calculator cal = new Calculator();
-        double rate = cal.calcHourlyRate(this);
+        double rate = Calculator.calcHourlyRate(this);
         DecimalFormat df = new DecimalFormat("#.00", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         this.hourlyRate = Double.parseDouble(df.format(rate));
     }
@@ -143,9 +142,8 @@ public class Profile {
     }
 
     public void setDailyRate(int hours) {
-        Calculator cal = new Calculator();
         double oldRate = this.dailyRate;
-        double newRate = cal.calcDayRate(this, hours);
+        double newRate = Calculator.calcDayRate(this, hours);
         DecimalFormat df = new DecimalFormat("#.00", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         this.dailyRate = Double.parseDouble(df.format(newRate));
         propertyChangeSupport.firePropertyChange("dailyRate", oldRate, this.dailyRate);
