@@ -48,4 +48,8 @@ public class ProfileManager {
             throw new Exception("Error updating profile", ex);
         }
     }
+
+    public List<Profile> getHistoricProfile(Profile profile) {
+        return profileDAO.getHistoricProfile(profile);
+    }
 }

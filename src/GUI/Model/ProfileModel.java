@@ -10,6 +10,7 @@ public class ProfileModel {
     private ProfileManager profileManager;
     private Profile profile;
     private ObservableList<Profile> allProfiles;
+    private ObservableList<Profile> historicProfile;
 
     private Profile chosenProfile;
 
@@ -56,5 +57,11 @@ public class ProfileModel {
         Profile newProfile = profileManager.updateProfile(profile);
         allProfiles.remove(profile);
         allProfiles.add(newProfile);
+    }
+
+    public ObservableList<Profile> getHistoricProfile(Profile profile) {
+        historicProfile = FXCollections.observableArrayList();
+        historicProfile.addAll(profileManager.getHistoricProfile(profile));
+        return historicProfile;
     }
 }

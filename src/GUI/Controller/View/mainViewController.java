@@ -35,7 +35,7 @@ public class mainViewController {
     }
 
     @FXML private void handleDashboardButtonClick(ActionEvent actionEvent) {
-
+        loadAndViewFXML("../../View/dashboardView.fxml");
     }
 
     @FXML private void handleScenariosButtonClick(ActionEvent actionEvent) {

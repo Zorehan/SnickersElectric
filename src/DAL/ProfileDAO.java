@@ -1,11 +1,10 @@
 package DAL;
 
+import BE.HistoricProfile;
 import BE.Profile;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +59,7 @@ public class ProfileDAO implements GenericDAO<Profile> {
                 }
             }
 
+            createHistoricProfile(profile);
             return profile;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -95,6 +95,7 @@ public class ProfileDAO implements GenericDAO<Profile> {
         String sql = "UPDATE dbo.Profiles SET name = ?, annualSalary = ?, overheadMultiplier = ?, annualAmount = ?, workHours = ?, utilizationPercentage = ?, country = ?, type = ? WHERE id = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setString(1, profile.getName());
             stmt.setDouble(2, profile.getAnnualSalary());
             stmt.setDouble(3, profile.getOverheadPercent());
@@ -106,7 +107,61 @@ public class ProfileDAO implements GenericDAO<Profile> {
             stmt.setInt(9, profile.getId());
 
             stmt.executeUpdate();
+            createHistoricProfile(profile);
             return profile;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Profile> getHistoricProfile(Profile profile) {
+        List<Profile> historicProfiles = new ArrayList<>();
+        String sql = "SELECT * FROM dbo.ProfilesHistory WHERE profileID = ?;";
+        try (Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, profile.getId());
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                int id = rs.getInt("profileID");
+                String name = rs.getString("name");
+                double annualSalary = rs.getDouble("annualSalary");
+                double overheadPercent = rs.getDouble("overheadMultiplier");
+                double annualAmount = rs.getDouble("annualAmount");
+                double workHours = rs.getDouble("workHours");
+                double utilPercent = rs.getDouble("utilizationPercentage");
+                String country = rs.getString("country");
+                Profile.ProfileType type = Profile.ProfileType.valueOf(rs.getString("type"));
+                LocalDate date = rs.getDate("logDate").toLocalDate();
+
+                HistoricProfile historicProfile = new HistoricProfile(id, name, annualSalary, workHours, annualAmount, overheadPercent, utilPercent, country, type, date);
+                historicProfiles.add(historicProfile);
+            }
+
+            return historicProfiles;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void createHistoricProfile(Profile profile) {
+        String sql = "INSERT INTO dbo.ProfilesHistory (profileID, name, annualSalary, overheadMultiplier, annualAmount, workHours, utilizationPercentage, country, type, logdate) VALUES (?,?,?,?,?,?,?,?,?,?);";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            stmt.setInt(1, profile.getId());
+            stmt.setString(2, profile.getName());
+            stmt.setDouble(3, profile.getAnnualSalary());
+            stmt.setDouble(4, profile.getOverheadPercent());
+            stmt.setDouble(5, profile.getAnnualAmount());
+            stmt.setDouble(6, profile.getWorkHours());
+            stmt.setDouble(7, profile.getUtilizationPercent());
+            stmt.setString(8, profile.getCountry());
+            stmt.setString(9, profile.getType().toString());
+            stmt.setDate(10, Date.valueOf(LocalDate.now()));
+
+            stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

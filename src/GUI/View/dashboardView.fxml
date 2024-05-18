@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane prefHeight="507.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.View.dashboardViewController">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox spacing="50.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="96.0" text="Chart" textAlignment="CENTER" />
+                  <ComboBox fx:id="comboProfile" onAction="#clickComboProfile" prefHeight="28.0" prefWidth="150.0" promptText="Profiles" />
+                  <ComboBox fx:id="comboSortType" onAction="#clickComboSortType" prefHeight="25.0" prefWidth="128.0" promptText="Sort For" />
+               </children>
+            </HBox>
+            <HBox prefHeight="499.0" prefWidth="777.0">
+               <children>
+                  <AreaChart fx:id="chart" prefHeight="482.0" prefWidth="864.0">
+                    <xAxis>
+                      <CategoryAxis fx:id="dateAxis" endMargin="0.0" gapStartAndEnd="false" side="BOTTOM" startMargin="0.0" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="numAxis" side="LEFT" />
+                    </yAxis>
+                  </AreaChart>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
