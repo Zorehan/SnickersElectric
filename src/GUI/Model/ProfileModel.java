@@ -64,4 +64,17 @@ public class ProfileModel {
         historicProfile.addAll(profileManager.getHistoricProfile(profile));
         return historicProfile;
     }
+
+    public Profile getProfileById(int id)
+    {
+        for (Profile profile : allProfiles)
+        {
+            if(profile.getId() == id)
+            {
+                return profile;
+            }
+        }
+        return null;
+    }
+
 }

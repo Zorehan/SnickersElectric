@@ -1,6 +1,8 @@
 package GUI.Controller.Creator;
 
+import BE.Log;
 import BE.Profile;
+import GUI.Model.LogModel;
 import GUI.Model.ProfileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -40,6 +44,7 @@ public class profileCreatorController implements Initializable {
     private Button btnSave;
 
     private ProfileModel profileModel = ProfileModel.getInstance();
+    private LogModel logModel = LogModel.getInstance();
 
     private Profile profile;
 
@@ -93,7 +98,13 @@ public class profileCreatorController implements Initializable {
         Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,actualType);
 
         profileModel.createProfile(profile);
-
+        String logText = "Profile: " + profile.getName() + " was created at: " + Date.valueOf(LocalDate.now());
+        Log log = new Log(-1, profile.getId(), logText);
+        try {
+            logModel.createLog(log);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         // Close down window
         Stage stage = (Stage) btnSave.getScene().getWindow();
