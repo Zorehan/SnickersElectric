@@ -147,7 +147,7 @@ public class ProfileDAO implements GenericDAO<Profile> {
     }
 
     public void createHistoricProfile(Profile profile) {
-        String sql = "INSERT INTO dbo.ProfilesHistory (profileID, name, annualSalary, overheadMultiplier, annualAmount, workHours, utilizationPercentage, country, type, logdate, logText) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO dbo.ProfilesHistory (profileID, name, annualSalary, overheadMultiplier, annualAmount, workHours, utilizationPercentage, country, type, logdate) VALUES (?,?,?,?,?,?,?,?,?,?);";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1, profile.getId());
@@ -160,10 +160,7 @@ public class ProfileDAO implements GenericDAO<Profile> {
             stmt.setString(8, profile.getCountry());
             stmt.setString(9, profile.getType().toString());
             stmt.setDate(10, Date.valueOf(LocalDate.now()));
-
-            String generatedlogText = "Profile: " + profile.getName() + "changed at " + Date.valueOf(LocalDate.now());
-            stmt.setString(11, generatedlogText);
-
+            
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
