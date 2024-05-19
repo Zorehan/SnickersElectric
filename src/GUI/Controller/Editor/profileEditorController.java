@@ -13,7 +13,11 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
+/*
+Controlleren her styrer popupvinduet der kommer op når man trykker "Edit Profile" i "Profiles" tabben i applikationen
+vinduets formål er at redigere i en allerde eksisterende profil ved at ændre de forskellige værdier profilen har ved at benytte textfieldsne og comboboxes
+ved tryk på "Save" knappen bliver saveInformation() metoden kaldt hvilket kalder updateProfile() metoden fra Modelklassen som opdaterer profilen i databasen.
+ */
 public class profileEditorController implements Initializable {
     @FXML
     private TextField txtFieldAnnualSalary;

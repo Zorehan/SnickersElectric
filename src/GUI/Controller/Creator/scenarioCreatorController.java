@@ -25,7 +25,9 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.*;
-
+/*
+Controlleren her styrer popupvinduet der kommer frem når man trykker "Add new scenario" i "Scenarios" tabben i applikationen
+ */
 public class scenarioCreatorController implements Initializable {
     private ProfileModel profileModel = ProfileModel.getInstance();
     private ScenarioModel scenarioModel = ScenarioModel.getInstance();

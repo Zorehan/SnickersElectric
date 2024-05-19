@@ -13,6 +13,12 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/*
+Controllerklassen her er den der styrer popupvinduet der kommer frem når man trykker på "Add new profile" knappen inde på "Profiles" tabben i applikationen
+formålet er at den samler data fra de forskellige textfields og comboboxes og bruger det information til at kalde createProfile() metoden fra Profilemodel hvilket opretter profilet
+i databasen og samtidig tilføjer den til observablelisten så den kan ses med det samme i applikationen.
+ */
+
 public class profileCreatorController implements Initializable {
     @FXML
     private TextField txtFieldName;
