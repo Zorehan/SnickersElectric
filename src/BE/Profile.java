@@ -168,4 +168,9 @@ public class Profile {
     public int hashCode() {
         return Integer.hashCode(id);
     }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }
