@@ -1,6 +1,8 @@
 package GUI.Controller.View;
 
+import BE.Log;
 import BE.Profile;
+import GUI.Model.LogModel;
 import GUI.Model.ProfileModel;
 import GUI.Model.ProfileTeamModel;
 import javafx.beans.binding.Bindings;
@@ -20,6 +22,8 @@ import util.SearchEngine;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +48,7 @@ public class profileViewController implements Initializable {
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final SearchEngine searchEngine = new SearchEngine(profileModel.getObservableProfiles());
     private final ProfileTeamModel profileTeamModel = ProfileTeamModel.getInstance();
-
+    private final LogModel logModel = LogModel.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setupTable();
@@ -142,10 +146,14 @@ public class profileViewController implements Initializable {
                 if (response == ButtonType.OK) {
                     // User confirmed deletion, proceed with deletion
                     try {
+                        Log log = new Log(-1, selectedProfile.getId(), "Profile: " + selectedProfile.getName() + " was deleted at " +Date.valueOf(LocalDate.now()));
                         profileModel.deleteProfile(selectedProfile);
+                        logModel.createLog(log);
                     } catch (Exception ex) {
                         // Handle the exception using showAndLogError method
                         showAndLogError(ex);
+                    } catch (java.lang.Exception e) {
+                        throw new RuntimeException(e);
                     }
                 }
             });
