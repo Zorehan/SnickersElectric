@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.Properties;
 
+/*
+DatabaseConnector er utility klasse som har 2 funktioner, den opretter forbindelse til databasen og giver den forbindelse videre til
+klassen der kalder getConnection metoden. Dette bliver gjort ved at oprette en datasource med de forskellige loginoplysninger fra vores configfil
+ */
+
 public class DatabaseConnector {
     private static final String configSettings = "config/config.settings";
     private SQLServerDataSource dataSource;

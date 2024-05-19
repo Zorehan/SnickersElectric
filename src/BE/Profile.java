@@ -8,6 +8,12 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+/*
+Profile BE'n er den der holder styr på vores Profile entities fra databasen, det er her vi opbevarer alt information
+klassen indeholder også et Enum hvilket er vores løsning på at håndtere de to forskellige typer profilen kan have
+bruget af et enum betyder også at hvis der nu skulle komme en ny type, er det virkelig nemt at sætte ind.
+ */
+
 public class Profile {
     private final PropertyChangeSupport propertyChangeSupport;
     private String name, country;
@@ -17,8 +23,7 @@ public class Profile {
             ,workHours, hourlyRate, dailyRate;
     private int id;
 
-    // Denne kunne godt være sin egen Class, men det kan vi ret nemt refactor hvis vi føler det er nødvændigt
-    // Det finder vi bare ud af engang.
+
     public enum ProfileType {
         OVERHEAD_COST("Overhead Cost"),
         PRODUCTION_RESOURCE("Production Resource");
