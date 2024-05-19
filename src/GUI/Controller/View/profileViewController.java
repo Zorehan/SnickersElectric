@@ -146,7 +146,7 @@ public class profileViewController implements Initializable {
                 if (response == ButtonType.OK) {
                     // User confirmed deletion, proceed with deletion
                     try {
-                        Log log = new Log(-1, selectedProfile.getId(), "Profile: " + selectedProfile.getName() + " was deleted at " +Date.valueOf(LocalDate.now()));
+                        Log log = new Log(-1, selectedProfile.getName(), "Profile: " + selectedProfile.getName() + " was deleted at " +Date.valueOf(LocalDate.now()));
                         profileModel.deleteProfile(selectedProfile);
                         logModel.createLog(log);
                     } catch (Exception ex) {

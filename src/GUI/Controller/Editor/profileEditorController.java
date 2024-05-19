@@ -111,7 +111,7 @@ public class profileEditorController implements Initializable {
 
         try {
             profileModel.updateProfile(chosenProfile);
-            Log log = new Log(-1, chosenProfile.getId(), "Profile: " + chosenProfile.getName() + " was updated at: " + Date.valueOf(LocalDate.now()));
+            Log log = new Log(-1, chosenProfile.getName(), "Profile: " + chosenProfile.getName() + " was updated at: " + Date.valueOf(LocalDate.now()));
             logModel.createLog(log);
         } catch (Exception e )
         {

@@ -36,11 +36,6 @@ public class logViewController implements Initializable {
     {
         tblViewLogs.setItems(logModel.getAllLogs());
         logTextColumn.setCellValueFactory(new PropertyValueFactory<>("logText"));
-
-        nameColumn.setCellValueFactory(cellData -> {
-            Log log = cellData.getValue();
-            Profile profile = profileModel.getProfileById(log.getReferenceProfileId());
-            return new SimpleStringProperty(profile != null ? profile.getName() : "Unknown");
-        });
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("profileName"));
     }
 }
