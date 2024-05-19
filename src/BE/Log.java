@@ -2,16 +2,23 @@ package BE;
 
 public class Log {
 
-    private String logText;
-    private int id, referenceProfileId;
+    private String logText, profileName;
+    private int id;
 
-    public Log(int id, int referenceProfileId, String logText)
+    public Log(int id, String profileName, String logText)
     {
         setId(id);
-        setReferenceProfileId(referenceProfileId);
+        setProfileName(profileName);
         setLogText(logText);
     }
 
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
+    }
 
     public String getLogText() {
         return logText;
@@ -29,11 +36,4 @@ public class Log {
         this.id = id;
     }
 
-    public int getReferenceProfileId() {
-        return referenceProfileId;
-    }
-
-    public void setReferenceProfileId(int referenceProfileId) {
-        this.referenceProfileId = referenceProfileId;
-    }
 }

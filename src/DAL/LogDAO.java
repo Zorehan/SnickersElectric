@@ -23,10 +23,10 @@ public class LogDAO implements GenericDAO<Log> {
                 while (rs.next())
                 {
                     int id = rs.getInt("id");
-                    int referenceProfileId = rs.getInt("profile_id");
+                    String profileName = rs.getString("profileName");
                     String logText = rs.getString("logText");
 
-                    Log log = new Log(id, referenceProfileId, logText);
+                    Log log = new Log(id, profileName, logText);
                     allLogs.add(log);
                 }
             } catch (SQLException e){
@@ -39,11 +39,11 @@ public class LogDAO implements GenericDAO<Log> {
 
     @Override
     public Log create(Log log) {
-        String sql = "INSERT INTO dbo.Logs (profile_id, logText) VALUES (?,?);";
+        String sql = "INSERT INTO dbo.Logs (profileName, logText) VALUES (?,?);";
         try(Connection conn = getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS))
         {
-            stmt.setInt(1, log.getReferenceProfileId());
+            stmt.setString(1, log.getProfileName());
             stmt.setString(2, log.getLogText());
 
             stmt.executeUpdate();

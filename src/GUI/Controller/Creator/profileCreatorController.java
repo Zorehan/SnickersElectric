@@ -99,7 +99,7 @@ public class profileCreatorController implements Initializable {
 
         profileModel.createProfile(profile);
         String logText = "Profile: " + profile.getName() + " was created at: " + Date.valueOf(LocalDate.now());
-        Log log = new Log(-1, profile.getId(), logText);
+        Log log = new Log(-1, profile.getName(), logText);
         try {
             logModel.createLog(log);
         } catch (Exception e) {

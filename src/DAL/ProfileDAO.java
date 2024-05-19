@@ -164,7 +164,7 @@ public class ProfileDAO implements GenericDAO<Profile> {
             stmt.setString(8, profile.getCountry());
             stmt.setString(9, profile.getType().toString());
             stmt.setDate(10, Date.valueOf(LocalDate.now()));
-            
+
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
