@@ -13,7 +13,7 @@
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="777.0" spacing="10.0" stylesheets="@../Stylesheets/profileView.css" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="lblProfiles" graphicTextGap="10.0" text="Logs">
+                <Label fx:id="lblLogs" graphicTextGap="10.0" text="Logs">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -29,10 +29,10 @@
         </HBox>
     </top>
     <center>
-        <TableView fx:id="tblViewProfiles" focusTraversable="false" prefHeight="444.0" prefWidth="770.0" stylesheets="@../Stylesheets/profileView.css" BorderPane.alignment="CENTER">
+        <TableView fx:id="tblViewLogs" focusTraversable="false" prefHeight="444.0" prefWidth="770.0" stylesheets="@../Stylesheets/profileView.css" BorderPane.alignment="CENTER">
             <columns>
                 <TableColumn fx:id="nameColumn" editable="false" prefWidth="168.0" text="Name" />
-                <TableColumn fx:id="countryColumn" editable="false" prefWidth="607.0" text="Log Description" />
+                <TableColumn fx:id="logTextColumn" editable="false" prefWidth="607.0" text="Log Description" />
             </columns>
             <BorderPane.margin>
                 <Insets top="-9.0" />

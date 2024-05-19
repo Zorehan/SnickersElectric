@@ -1,6 +1,8 @@
 package GUI.Controller.Editor;
 
+import BE.Log;
 import BE.Profile;
+import GUI.Model.LogModel;
 import GUI.Model.ProfileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
 /*
@@ -48,6 +52,7 @@ public class profileEditorController implements Initializable {
     private Profile chosenProfile;
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
+    private final LogModel logModel = LogModel.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,6 +111,8 @@ public class profileEditorController implements Initializable {
 
         try {
             profileModel.updateProfile(chosenProfile);
+            Log log = new Log(-1, chosenProfile.getId(), "Profile: " + chosenProfile.getName() + " was updated at: " + Date.valueOf(LocalDate.now()));
+            logModel.createLog(log);
         } catch (Exception e )
         {
             e.printStackTrace();

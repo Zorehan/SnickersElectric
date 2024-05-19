@@ -11,14 +11,23 @@ public class LogModel {
     private LogManager logManager;
     private ObservableList<Log> allLogs;
 
-    private LogModel() throws Exception {
+    private LogModel() {
         logManager = new LogManager();
 
         allLogs = FXCollections.observableArrayList();
-        allLogs.addAll(logManager.getAllLogs());
+        try {
+            allLogs.addAll(logManager.getAllLogs());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static LogModel getInstance() throws Exception {
+    public ObservableList<Log> getAllLogs()
+    {
+        return allLogs;
+    }
+
+    public static LogModel getInstance()  {
         if(instance == null)
         {
             instance = new LogModel();
