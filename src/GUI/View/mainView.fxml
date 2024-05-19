@@ -77,7 +77,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btnLogs" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="208.0" text="Logs">
+                  <Button fx:id="btnLogs" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="208.0" text="Logs" onAction ="#handleLogsButtonClick">
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
 

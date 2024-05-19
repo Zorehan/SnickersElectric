@@ -42,6 +42,11 @@ public class mainViewController {
         loadAndViewFXML("../../View/scenarioView.fxml");
     }
 
+    @FXML private void handleLogsButtonClick(ActionEvent actionEvent)
+    {
+        loadAndViewFXML("../../View/logView.fxml");
+    }
+
     private static void showAndLogError(Exception ex) {
         Logger.getLogger(mainViewController.class.getName()).log(Level.SEVERE, null, ex);
 
