@@ -2,7 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -17,9 +17,6 @@
                 <VBox fx:id="boxLeftPanel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="570.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleDashboardButtonClick" prefHeight="46.0" prefWidth="208.0" text="Dashboard">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
                      <padding>
                         <Insets left="30.0" />
                      </padding>
@@ -29,14 +26,11 @@
                      <VBox.margin>
                         <Insets left="5.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
                   </Button>
                   <Button fx:id="btnProfiles" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleProfilesButtonClick" prefHeight="46.0" prefWidth="208.0" text="Profiles">
-
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-
-                        </ImageView>
-                     </graphic>
                      <padding>
                         <Insets left="30.0" />
                      </padding>
@@ -46,13 +40,10 @@
                      <VBox.margin>
                         <Insets left="5.0" />
                      </VBox.margin>
+                     <graphic>
+                     </graphic>
                   </Button>
                   <Button fx:id="btnTeams" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleTeamsButtonClick" prefHeight="46.0" prefWidth="208.0" text="Teams">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-
-                        </ImageView>
-                     </graphic>
                      <padding>
                         <Insets left="30.0" />
                      </padding>
@@ -62,11 +53,10 @@
                      <VBox.margin>
                         <Insets left="5.0" />
                      </VBox.margin>
+                     <graphic>
+                     </graphic>
                   </Button>
                   <Button fx:id="btnScenarios" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleScenariosButtonClick" prefHeight="46.0" prefWidth="208.0" text="Scenarios">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
                      <padding>
                         <Insets left="30.0" />
                      </padding>
@@ -76,13 +66,11 @@
                      <VBox.margin>
                         <Insets left="5.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
                   </Button>
-                  <Button fx:id="btnLogs" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="208.0" text="Logs" onAction ="#handleLogsButtonClick">
-                     <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-
-                        </ImageView>
-                     </graphic>
+                  <Button fx:id="btnLogs" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleLogsButtonClick" prefHeight="46.0" prefWidth="208.0" text="Logs">
                      <padding>
                         <Insets left="30.0" />
                      </padding>
@@ -92,13 +80,10 @@
                      <VBox.margin>
                         <Insets left="5.0" />
                      </VBox.margin>
+                     <graphic>
+                     </graphic>
                   </Button>
                   <Button fx:id="btnStatistics" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="208.0" text="Statistics">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-
-                        </ImageView>
-                     </graphic>
                      <padding>
                         <Insets left="30.0" />
                      </padding>
@@ -108,24 +93,26 @@
                      <VBox.margin>
                         <Insets left="5.0" />
                      </VBox.margin>
+                     <graphic>
+                     </graphic>
                   </Button>
                </children></VBox>
             </left>
             <top>
                 <HBox fx:id="boxTopPanel" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="980.0" stylesheets="@../Stylesheets/mainView.css" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="lblSchneiderElectric" alignment="TOP_LEFT" text="Schneider Electric">
-                     <font>
-                        <Font name="System Bold" size="31.0" />
-                     </font>
-                  </Label>
-               </children>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
                <padding>
                   <Insets left="30.0" />
-               </padding></HBox>
+               </padding>
+               <children>
+                  <ImageView fitHeight="48.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/icons/SchneiderElectric.png" />
+                     </image>
+                  </ImageView>
+               </children></HBox>
             </top>
         </BorderPane>
     </children>

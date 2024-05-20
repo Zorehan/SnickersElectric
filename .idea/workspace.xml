@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ProfileDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SnickersElectric.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SnickersElectric.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/icons/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/icons/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/icons/logs.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/icons/logs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/icons/person.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/icons/person.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/icons/statistics.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/icons/statistics.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/icons/teams.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/icons/teams.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/mainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +73,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Images",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kadar/Documents/GitHub/MyTunes",
@@ -148,6 +156,7 @@
       <workItem from="1715806506934" duration="638000" />
       <workItem from="1715852724458" duration="3085000" />
       <workItem from="1716034165348" duration="10098000" />
+      <workItem from="1716195582986" duration="385000" />
     </task>
     <servers />
   </component>
