@@ -50,6 +50,7 @@ public class teamCreatorController implements Initializable {
 
     // Initializes all countries with use of getISOCountries();
     private void initializeCountries() {
+        Locale.setDefault(Locale.ENGLISH);
         String[] countryCodes = Locale.getISOCountries();
         for (String countryCode : countryCodes) {
             Locale locale = new Locale("", countryCode);

@@ -3,12 +3,17 @@ package GUI.Controller.View;
 import BE.HistoricProfile;
 import BE.Profile;
 import GUI.Model.ProfileModel;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 
@@ -16,7 +21,9 @@ import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class dashboardViewController implements Initializable {
     private ProfileModel profileModel = ProfileModel.getInstance();
@@ -31,7 +38,12 @@ public class dashboardViewController implements Initializable {
     @FXML
     private ComboBox<String> comboSortType;
     @FXML
-    private TableView<String> tblCountries;
+    private TableView<Map.Entry<String, Long>> tblCountries;
+    @FXML
+    private TableColumn<Map.Entry<String, Long>, String> colCountry;
+    @FXML
+    private TableColumn<Map.Entry<String, Long>, Long> colAmount;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         comboProfile.getItems().addAll(profileModel.getObservableProfiles());
@@ -45,7 +57,15 @@ public class dashboardViewController implements Initializable {
     }
 
     private void initCountryData() {
-        
+        List<Profile> profiles = profileModel.getObservableProfiles();
+
+        Map<String, Long> countryCountMap = profiles.stream().collect(Collectors.groupingBy(Profile::getCountry, Collectors.counting()));
+
+        ObservableList<Map.Entry<String, Long>> countryProfileData = FXCollections.observableArrayList(countryCountMap.entrySet());
+
+        tblCountries.setItems(countryProfileData);
+        colCountry.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKey()));
+        colAmount.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getValue()).asObject());
     }
 
     public void initData(Profile profile) {
