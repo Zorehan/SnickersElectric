@@ -27,7 +27,6 @@ public class mainViewController implements Initializable{
     @FXML private Button btnTeams;
     @FXML private Button btnScenarios;
     @FXML private Button btnLogs;
-    @FXML private Button btnStatistics;
     @FXML private BorderPane borderPane;
 
     @FXML private void handleProfilesButtonClick() {
@@ -89,6 +88,5 @@ public class mainViewController implements Initializable{
         setButtonGraphic(btnTeams, "icons/teams.png");
         setButtonGraphic(btnScenarios, "icons/scenario.png");
         setButtonGraphic(btnLogs, "icons/logs.png");
-        setButtonGraphic(btnStatistics, "icons/statistics.png");
     }
 }
