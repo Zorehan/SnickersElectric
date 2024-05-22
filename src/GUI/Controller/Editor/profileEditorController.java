@@ -95,6 +95,10 @@ public class profileEditorController implements Initializable {
 
     @FXML
     private void saveInformation() {
+
+        Profile originalProfile = new Profile(0, chosenProfile.getName(), chosenProfile.getAnnualSalary(),chosenProfile.getWorkHours(), chosenProfile.getAnnualAmount(), chosenProfile.getOverheadPercent(), chosenProfile.getUtilizationPercent(), chosenProfile.getCountry(), chosenProfile.getType());
+
+
         chosenProfile.setName(txtFieldName.getText());
         chosenProfile.setWorkHours(Double.parseDouble(txtFieldWorkingHours.getText()));
         chosenProfile.setOverheadPercent(Double.parseDouble(txtFieldOverhead.getText()));
@@ -112,8 +116,9 @@ public class profileEditorController implements Initializable {
 
         try {
             profileModel.updateProfile(chosenProfile);
-            Log log = new Log(-1, chosenProfile.getName(), "Profile: " + chosenProfile.getName() + " was updated at: " + Date.valueOf(LocalDate.now()));
-            logModel.createLog(log);
+
+            logChanges(originalProfile,chosenProfile);
+
         } catch (Exception e )
         {
             e.printStackTrace();
@@ -125,5 +130,41 @@ public class profileEditorController implements Initializable {
     }
 
 
+    private void logChanges(Profile originalProfile, Profile updatedProfile) {
+        StringBuilder changes = new StringBuilder();
+        changes.append("Profile: ").append(originalProfile.getName()).append(" was updated. Changes:");
+
+        if (!originalProfile.getName().equals(updatedProfile.getName())) {
+            changes.append("\nName: ").append(originalProfile.getName()).append(" -> ").append(updatedProfile.getName());
+        }
+        if (originalProfile.getWorkHours() != updatedProfile.getWorkHours()) {
+            changes.append("\nWork Hours: ").append(originalProfile.getWorkHours()).append(" -> ").append(updatedProfile.getWorkHours());
+        }
+        if (originalProfile.getOverheadPercent() != updatedProfile.getOverheadPercent()) {
+            changes.append("\nOverhead Percent: ").append(originalProfile.getOverheadPercent()).append(" -> ").append(updatedProfile.getOverheadPercent());
+        }
+        if (originalProfile.getUtilizationPercent() != updatedProfile.getUtilizationPercent()) {
+            changes.append("\nUtilization Percent: ").append(originalProfile.getUtilizationPercent()).append(" -> ").append(updatedProfile.getUtilizationPercent());
+        }
+        if (originalProfile.getAnnualAmount() != updatedProfile.getAnnualAmount()) {
+            changes.append("\nAnnual Amount: ").append(originalProfile.getAnnualAmount()).append(" -> ").append(updatedProfile.getAnnualAmount());
+        }
+        if (originalProfile.getAnnualSalary() != updatedProfile.getAnnualSalary()) {
+            changes.append("\nAnnual Salary: ").append(originalProfile.getAnnualSalary()).append(" -> ").append(updatedProfile.getAnnualSalary());
+        }
+        if (!originalProfile.getCountry().equals(updatedProfile.getCountry())) {
+            changes.append("\nCountry: ").append(originalProfile.getCountry()).append(" -> ").append(updatedProfile.getCountry());
+        }
+        if (!originalProfile.getType().equals(updatedProfile.getType())) {
+            changes.append("\nType: ").append(originalProfile.getType().getDisplayName()).append(" -> ").append(updatedProfile.getType().getDisplayName());
+        }
+
+        Log log = new Log(-1, updatedProfile.getName(), changes.toString() + " at: " + Date.valueOf(LocalDate.now()));
+        try {
+            logModel.createLog(log);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
