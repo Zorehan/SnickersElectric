@@ -3,27 +3,19 @@ package GUI.Controller.View;
 import BE.HistoricProfile;
 import BE.Profile;
 import GUI.Model.ProfileModel;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.ListView;
 
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class dashboardViewController implements Initializable {
     private ProfileModel profileModel = ProfileModel.getInstance();
@@ -34,82 +26,28 @@ public class dashboardViewController implements Initializable {
     @FXML
     private CategoryAxis dateAxis;
     @FXML
-    private ComboBox<Profile> comboProfile;
-    @FXML
     private ComboBox<String> comboSortType;
     @FXML
-    private TableView<Map.Entry<String, Long>> tblCountries;
-    @FXML
-    private TableColumn<Map.Entry<String, Long>, String> colCountry;
-    @FXML
-    private TableColumn<Map.Entry<String, Long>, Long> colAmount;
-
+    private ListView<Object> listAvailableItems;
+    private List<String> dateCategories;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        comboProfile.getItems().addAll(profileModel.getObservableProfiles());
-        comboProfile.getSelectionModel().selectFirst();
+        dateCategories = new ArrayList<>();
+
+        listAvailableItems.getItems().addAll(profileModel.getObservableProfiles());
 
         comboSortType.setItems(FXCollections.observableArrayList("Annual Salary", "Annual Amount", "Overhead (%)", "Utilization (%)"));
         comboSortType.getSelectionModel().selectFirst();
 
-        initData(comboProfile.getSelectionModel().getSelectedItem());
-        initCountryData();
-    }
-
-    private void initCountryData() {
-        List<Profile> profiles = profileModel.getObservableProfiles();
-
-        Map<String, Long> countryCountMap = profiles.stream().collect(Collectors.groupingBy(Profile::getCountry, Collectors.counting()));
-
-        ObservableList<Map.Entry<String, Long>> countryProfileData = FXCollections.observableArrayList(countryCountMap.entrySet());
-
-        tblCountries.setItems(countryProfileData);
-        colCountry.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKey()));
-        colAmount.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getValue()).asObject());
-    }
-
-    public void initData(Profile profile) {
-        chart.getData().clear();
-        XYChart.Series<String, Number> data = new XYChart.Series<>();
-        data.setName("Historical Data");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        List<Profile> historicProfiles = profileModel.getHistoricProfile(profile);
-        historicProfiles.sort((profile1, profile2) -> {
-            HistoricProfile historicProfile1 = (HistoricProfile) profile1;
-            HistoricProfile historicProfile2 = (HistoricProfile) profile2;
-            return historicProfile1.getDate().compareTo(historicProfile2.getDate());
-        });
-
-        List<String> dateCategories = new ArrayList<>();
-
-        // Init Data in chart
-        for (Profile p : historicProfiles) {
-            HistoricProfile hProfile = (HistoricProfile) p;
-            String formattedDate = hProfile.getDate().format(formatter);
-            data.getData().add(new XYChart.Data<>(formattedDate, getSortType(hProfile, comboSortType.getSelectionModel().getSelectedItem())));
-            dateCategories.add(formattedDate);
-        }
-
-        dateAxis.setCategories(FXCollections.observableArrayList(dateCategories));
-
-        chart.getData().add(data);
-    }
-
-    @FXML
-    private void clickComboProfile(ActionEvent actionEvent) {
-        initData(comboProfile.getSelectionModel().getSelectedItem());
     }
 
     @FXML
     private void clickComboSortType(ActionEvent actionEvent) {
-        initData(comboProfile.getSelectionModel().getSelectedItem());
+        //initData((Profile) listAvailableItems.getSelectionModel().getSelectedItem());
     }
 
     private Number getSortType(HistoricProfile profile, String type) {
         switch (type) {
-            case "Annual Salary":
-                return profile.getAnnualSalary();
             case "Annual Amount":
                 return profile.getAnnualAmount();
             case "Overhead (%)":
@@ -119,5 +57,59 @@ public class dashboardViewController implements Initializable {
             default:
                 return profile.getAnnualSalary();
         }
+    }
+
+    @FXML
+    private void clickAdd(ActionEvent actionEvent) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        XYChart.Series<String, Number> data = new XYChart.Series<>();
+        Profile profile = (Profile) listAvailableItems.getSelectionModel().getSelectedItem();
+        List<Profile> historicProfiles = profileModel.getHistoricProfile(profile);
+
+        historicProfiles.sort((profile1, profile2) -> {
+            HistoricProfile historicProfile1 = (HistoricProfile) profile1;
+            HistoricProfile historicProfile2 = (HistoricProfile) profile2;
+            return historicProfile1.getDate().compareTo(historicProfile2.getDate());
+        });
+
+        for (Profile p : historicProfiles) {
+            HistoricProfile hProfile = (HistoricProfile) p;
+            String formattedDate = hProfile.getDate().format(formatter);
+            XYChart.Data<String, Number> newData = new XYChart.Data<>(formattedDate, getSortType(hProfile, comboSortType.getSelectionModel().getSelectedItem()));
+            if(!chart.getData().contains(newData)) {
+                data.getData().add(newData);
+                data.setName(profile.getName());
+            }
+            if(!dateCategories.contains(formattedDate)) {
+                dateCategories.add(formattedDate);
+            }
+        }
+        if(!data.getData().isEmpty()){
+            dateCategories.sort(String::compareTo);
+            dateAxis.setCategories(FXCollections.observableArrayList(dateCategories));
+            chart.getData().add(data);
+        }
+    }
+
+    @FXML
+    private void clickRemove(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void clickRadioProfile(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void clickRadioCountry(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void clickClearGraph(ActionEvent actionEvent) {
+        clearGraph();
+    }
+
+    private void clearGraph() {
+        dateCategories.clear();
+        chart.getData().clear();
     }
 }
