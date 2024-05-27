@@ -2,11 +2,8 @@ package GUI.Controller.View;
 
 import BE.Profile;
 import BE.Scenario;
-import BE.Team;
 import GUI.Model.ScenarioModel;
 import GUI.Model.ScenarioProfileModel;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

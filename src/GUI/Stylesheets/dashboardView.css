@@ -37,3 +37,15 @@
 .table-row-cell:hover {
     -fx-background-color: rgba(132, 159, 132, 0.4);
 }
+
+.button {
+    -fx-background-radius: 1;
+    -fx-background-color: #fff;
+    -fx-text-fill: #3e3e3e;
+    -fx-cursor: hand; /* Optional: Change cursor to hand when hovering */
+}
+
+.button:hover {
+    -fx-background-color: #dadada; /* Change background color on hover */
+    -fx-text-fill: #3e3e3e; /* You can adjust text color on hover if needed */
+}

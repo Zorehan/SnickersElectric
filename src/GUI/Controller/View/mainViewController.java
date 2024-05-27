@@ -24,17 +24,12 @@ public class mainViewController implements Initializable{
 
     @FXML private Button btnDashboard;
     @FXML private Button btnProfiles;
-    @FXML private Button btnTeams;
     @FXML private Button btnScenarios;
     @FXML private Button btnLogs;
     @FXML private BorderPane borderPane;
 
     @FXML private void handleProfilesButtonClick() {
         loadAndViewFXML("../../View/profileView.fxml");
-    }
-
-    @FXML private void handleTeamsButtonClick() {
-        loadAndViewFXML("../../View/teamView.fxml");
     }
 
     private void loadAndViewFXML(String fxmlFilePath) {
@@ -85,7 +80,6 @@ public class mainViewController implements Initializable{
         loadAndViewFXML("../../View/dashboardView.fxml");
         setButtonGraphic(btnDashboard, "icons/dashboard.png");
         setButtonGraphic(btnProfiles, "icons/person.png");
-        setButtonGraphic(btnTeams, "icons/teams.png");
         setButtonGraphic(btnScenarios, "icons/scenario.png");
         setButtonGraphic(btnLogs, "icons/logs.png");
     }

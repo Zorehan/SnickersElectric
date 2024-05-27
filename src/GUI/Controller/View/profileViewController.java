@@ -4,9 +4,6 @@ import BE.Log;
 import BE.Profile;
 import GUI.Model.LogModel;
 import GUI.Model.ProfileModel;
-import GUI.Model.ProfileTeamModel;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +44,6 @@ public class profileViewController implements Initializable {
     // Model
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final SearchEngine searchEngine = new SearchEngine(profileModel.getObservableProfiles());
-    private final ProfileTeamModel profileTeamModel = ProfileTeamModel.getInstance();
     private final LogModel logModel = LogModel.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
