@@ -74,12 +74,14 @@ public class dashboardViewController implements Initializable {
         Profile profile = (Profile) listAvailableItems.getSelectionModel().getSelectedItem();
         List<Profile> historicProfiles = profileModel.getHistoricProfile(profile);
 
+        //Sorter profil dataen efter datoen.
         historicProfiles.sort((profile1, profile2) -> {
             HistoricProfile historicProfile1 = (HistoricProfile) profile1;
             HistoricProfile historicProfile2 = (HistoricProfile) profile2;
             return historicProfile1.getDate().compareTo(historicProfile2.getDate());
         });
 
+        //Looper gennem hver historic profile og tilføjer dem til datasættet
         for (Profile p : historicProfiles) {
             HistoricProfile hProfile = (HistoricProfile) p;
             String formattedDate = hProfile.getDate().format(formatter);
@@ -101,14 +103,6 @@ public class dashboardViewController implements Initializable {
     }
 
     @FXML
-    private void clickRadioProfile(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    private void clickRadioCountry(ActionEvent actionEvent) {
-    }
-
-    @FXML
     private void clickClearGraph(ActionEvent actionEvent) {
         clearGraph();
     }
@@ -127,12 +121,14 @@ public class dashboardViewController implements Initializable {
             XYChart.Series<String, Number> data = new XYChart.Series<>();
             List<Profile> historicProfiles = profileModel.getHistoricProfile(profile);
 
+            //Sorter profil dataen efter datoen.
             historicProfiles.sort((profile1, profile2) -> {
                 HistoricProfile historicProfile1 = (HistoricProfile) profile1;
                 HistoricProfile historicProfile2 = (HistoricProfile) profile2;
                 return historicProfile1.getDate().compareTo(historicProfile2.getDate());
             });
 
+            //Looper gennem hver historic profile og tilføjer dem til datasættet
             for (Profile p : historicProfiles) {
                 HistoricProfile hProfile = (HistoricProfile) p;
                 String formattedDate = hProfile.getDate().format(formatter);
@@ -164,6 +160,7 @@ public class dashboardViewController implements Initializable {
         List<String> dates = new ArrayList<>(dateAxis.getCategories());
         dates.sort(String::compareTo);
 
+        //Parser datoerne og sletter alt før den valgte dato.
         List<String> datesToRemove = new ArrayList<>();
         for (String date : dates) {
             LocalDate parsedDate = LocalDate.parse(date, formatter);
@@ -184,6 +181,7 @@ public class dashboardViewController implements Initializable {
         List<String> dates = new ArrayList<>(dateAxis.getCategories());
         dates.sort(String::compareTo);
 
+        //Parser datoerne og sletter alt efter den valgte dato.
         List<String> datesToRemove = new ArrayList<>();
         for (String date : dates) {
             LocalDate parsedDate = LocalDate.parse(date, formatter);
@@ -195,13 +193,17 @@ public class dashboardViewController implements Initializable {
     }
 
     public  List<String> sortDates(List<String> dateList) {
-        // Convert date strings to LocalDate objects
+        /*
+         For at datoerne sortede ordentlig var det nødvendigt at konvetere dem fra string til LocalDate
+         da string sortering ikke tog højde for årstal osv. Det var noget bøvl
+         */
+        // Parser date strings til LocalDates og sorterer dem.
         List<LocalDate> localDates = dateList.stream()
                 .map(date -> LocalDate.parse(date, formatter))
                 .sorted()
                 .toList();
 
-        // Convert LocalDate objects back to strings
+        // Konvereter localdates tilbage til strings og returner dem så de kan bruges i grafen igen.
         return localDates.stream()
                 .map(date -> date.format(formatter))
                 .collect(Collectors.toList());
