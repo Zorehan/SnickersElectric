@@ -58,7 +58,7 @@ public class scenarioCreatorController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         spinMargin.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
         spinMarkup.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
-        spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, 0.0, 0.5));
+        spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 8765, 0.0, 0.5));
 
         initTables();
         initBindings();

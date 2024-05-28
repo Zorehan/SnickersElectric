@@ -60,7 +60,7 @@ public class scenarioEditorController implements Initializable {
         txtName.setText(scenario.getName());
         spinMargin.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getGrossMargin(), 0.5));
         spinMarkup.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getMarkup(), 0.5));
-        spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 100.0, scenario.getWorkHours(), 0.5));
+        spinWorkHours.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 8765.0, scenario.getWorkHours(), 0.5)); //8765 er antal timer på et år
 
         initTables();
         initBindings();

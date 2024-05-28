@@ -114,9 +114,9 @@
                   <Label fx:id="lblHourlyRate" text="Hourly Rate" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <TextField fx:id="txtName" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" />
                   <Label text="Scenario Name:" />
-                  <Label text="Gross Margin:" GridPane.rowIndex="1" />
-                  <Label text="Markup:" GridPane.rowIndex="2" />
-                  <Label text="Work Hours:" GridPane.rowIndex="3" />
+                  <Label text="Gross Margin (%):" GridPane.rowIndex="1" />
+                  <Label text="Markup (%):" GridPane.rowIndex="2" />
+                  <Label text="Work Hours (Per Profile):" GridPane.rowIndex="3" />
                   <Spinner fx:id="spinWorkHours" editable="true" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Spinner fx:id="spinMarkup" editable="true" prefHeight="25.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Spinner fx:id="spinMargin" editable="true" prefHeight="25.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
