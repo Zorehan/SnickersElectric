@@ -42,7 +42,9 @@ public class ScenarioModel {
     }
 
     public void updateScenario(Scenario scenario) {
-        scenarioManager.updateScenario(scenario);
+        Scenario newScenario = scenarioManager.updateScenario(scenario);
+        allScenarios.remove(scenario);
+        allScenarios.add(newScenario);
     }
 
     public void setScenario(Scenario scenario) {

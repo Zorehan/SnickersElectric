@@ -52,7 +52,7 @@ public class Profile {
         setType(type);
         setHourlyRate();
         propertyChangeSupport = new PropertyChangeSupport(this);
-        setDailyRate(10.0);
+        setDailyRate(workHours);
 
     }
 

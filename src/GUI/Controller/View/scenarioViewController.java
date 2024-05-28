@@ -4,6 +4,7 @@ import BE.Profile;
 import BE.Scenario;
 import GUI.Model.ScenarioModel;
 import GUI.Model.ScenarioProfileModel;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.Calculator;
 
 import java.net.URL;
 import java.util.HashSet;
@@ -24,15 +26,44 @@ public class scenarioViewController implements Initializable {
     private ScenarioProfileModel scenarioProfileModel = ScenarioProfileModel.getInstance();
     @FXML private TableView<Scenario> tblViewScenario;
     @FXML private TableColumn<Scenario, String> colName;
-    @FXML private TableColumn<Scenario, Double> colHourlyRate;
-    @FXML private TableColumn<Scenario, Double> colDailyRate;
-
+    @FXML private TableColumn<Scenario, Double> colHourlyRate, colDailyRate, colHourlyRateMarkup, colDailyRateMarkup, colHourlyRateMargin, colDailyRateMargin;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tblViewScenario.setItems(scenarioModel.getObservableScenarios());
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colHourlyRate.setCellValueFactory(new PropertyValueFactory<>("hourlyRate"));
         colDailyRate.setCellValueFactory(new PropertyValueFactory<>("dailyRate"));
+        colHourlyRateMarkup.setCellValueFactory(cellData -> {
+            Scenario scenario = cellData.getValue();
+            double hourlyRate = scenario.getHourlyRate();
+            double markupPercentage = scenario.getMarkup();
+            double calculatedMarkup = Calculator.calcMarkup(hourlyRate, markupPercentage);
+            return new SimpleDoubleProperty(calculatedMarkup).asObject();
+        });
+
+        colDailyRateMarkup.setCellValueFactory(cellData -> {
+            Scenario scenario = cellData.getValue();
+            double dailyRate = scenario.getDailyRate();
+            double markupPercentage = scenario.getMarkup();
+            double calculatedMarkup = Calculator.calcMarkup(dailyRate, markupPercentage);
+            return new SimpleDoubleProperty(calculatedMarkup).asObject();
+        });
+
+        colHourlyRateMargin.setCellValueFactory(cellData -> {
+            Scenario scenario = cellData.getValue();
+            double hourlyRate = scenario.getHourlyRate();
+            double marginPercentage = scenario.getGrossMargin();
+            double calculatedMargin = Calculator.calcGrossMargin(hourlyRate, marginPercentage);
+            return new SimpleDoubleProperty(calculatedMargin).asObject();
+        });
+
+        colDailyRateMargin.setCellValueFactory(cellData -> {
+            Scenario scenario = cellData.getValue();
+            double dailyRate = scenario.getDailyRate();
+            double marginPercentage = scenario.getGrossMargin();
+            double calculatedMargin = Calculator.calcGrossMargin(dailyRate, marginPercentage);
+            return new SimpleDoubleProperty(calculatedMargin).asObject();
+        });
 
         tblViewScenario.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {

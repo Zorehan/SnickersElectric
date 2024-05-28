@@ -139,13 +139,15 @@ public class scenarioEditorController implements Initializable {
 
     @FXML
     private void clickSave(ActionEvent actionEvent) {
-        scenarioModel.updateScenario(new Scenario(
-                scenario.getId(), txtName.getText(),
-                Double.parseDouble(lblHourlyRate.getText()),
-                Double.parseDouble(lblDailyRate.getText()),
-                spinMargin.getValue(),
-                spinMarkup.getValue(),
-                spinWorkHours.getValue()));
+        scenario.setName(txtName.getText());
+        scenario.setDayRate(Double.parseDouble(lblDailyRate.getText()));
+        scenario.setHourlyRate(Double.parseDouble(lblHourlyRate.getText()));
+        scenario.setWorkHours(spinWorkHours.getValue());
+        scenario.setGrossMargin(spinMargin.getValue());
+        scenario.setMarkup(spinMarkup.getValue());
+
+        scenarioModel.updateScenario(scenario);
+
         Set<Profile> hash = new HashSet<>(scenarioProfileModel.getAllObservableProfiles(scenario.getId()));
         for (Profile profile : selectedProfiles) {
             if(!hash.contains(profile)){

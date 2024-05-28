@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="27e430b1-c7f7-4a0c-9559-2d522b2dcf97" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/Creator/scenarioCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Creator/scenarioCreatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BE/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BE/Profile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Controller/Editor/scenarioEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/Editor/scenarioEditorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/View/scenarioCreator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/scenarioCreator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/View/scenarioEditor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/scenarioEditor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller/View/scenarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Model/ScenarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Model/ScenarioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/View/scenarioView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Calculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +176,7 @@
       <workItem from="1716034165348" duration="10098000" />
       <workItem from="1716195582986" duration="385000" />
       <workItem from="1716314233298" duration="1372000" />
-      <workItem from="1716923322657" duration="343000" />
+      <workItem from="1716923322657" duration="4435000" />
     </task>
     <servers />
   </component>

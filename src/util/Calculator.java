@@ -2,9 +2,16 @@ package util;
 
 import BE.Profile;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class Calculator {
+    static DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.forLanguageTag("da_DK"));
+    private static final DecimalFormat df = new DecimalFormat("#.00", symbols);
+
     public static double calcDayRate(Profile profile, double hours) {
-        double dayRate = profile.getHourlyRate() * hours;
+        double dayRate = profile.getHourlyRate() * (hours / 365);
         return dayRate;
     }
 
@@ -29,7 +36,8 @@ public class Calculator {
      */
     public static double calcGrossMargin(double value, double margin) {
         margin = 1 - (margin / 100);
-        return value / margin;
+        double calculated =  value / margin;
+        return Double.parseDouble(df.format(calculated));
     }
 
     /**
@@ -40,6 +48,7 @@ public class Calculator {
      */
     public static double calcMarkup(double value, double markup) {
         markup = 1 + (markup / 100);
-        return value * markup;
+        double calculated = value * markup;
+        return Double.parseDouble(df.format(calculated));
     }
 }

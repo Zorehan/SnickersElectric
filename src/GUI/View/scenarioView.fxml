@@ -34,8 +34,12 @@
       <TableView fx:id="tblViewScenario" focusTraversable="false" prefHeight="444.0" prefWidth="770.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="colName" editable="false" prefWidth="95.0" text="Name" />
-            <TableColumn fx:id="colHourlyRate" editable="false" prefWidth="90.0" text="Total Hourly Rate" />
-            <TableColumn fx:id="colDailyRate" editable="false" prefWidth="90.0" text="Total Daily Rate" />
+            <TableColumn fx:id="colHourlyRate" editable="false" prefWidth="90.0" text="Hourly Rate" />
+            <TableColumn fx:id="colDailyRate" editable="false" prefWidth="90.0" text="Daily Rate" />
+            <TableColumn fx:id="colHourlyRateMarkup" editable="false" prefWidth="90.0" text="Markup HourlyRate" />
+            <TableColumn fx:id="colDailyRateMarkup" editable="false" prefWidth="90.0" text="Markup Daily Rate" />
+            <TableColumn fx:id="colHourlyRateMargin" editable="false" prefWidth="90.0" text="Margin Hourly Rate" />
+            <TableColumn fx:id="colDailyRateMargin" editable="false" prefWidth="90.0" text="Margin Daily Rate" />
          </columns>
          <BorderPane.margin>
             <Insets top="-9.0" />
