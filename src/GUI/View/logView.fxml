@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -21,7 +20,6 @@
                         <Insets left="30.0" />
                     </padding>
                 </Label>
-                <TextField fx:id="txtSearchField" prefHeight="25.0" prefWidth="210.0" />
             </children>
             <BorderPane.margin>
                 <Insets top="-10.0" />
