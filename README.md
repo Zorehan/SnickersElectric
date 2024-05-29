@@ -47,4 +47,4 @@ This project is developed to dynamically calculate detailed regional or country 
 - [@RuneKrogh](https://github.com/RuneKrogh)
 
 ## Roadmap
-- [Scrumwise Link]([https://www.scrumwise.com/scrum/#/overview/project/billetmester_cs2023-dk/id-36893-38727-1](https://www.scrumwise.com/scrum/#/overview/project/snickers-electric_cs2023-dk-eksamen/id-36893-40414-143))
+- [Scrumwise Link](https://www.scrumwise.com/scrum/#/overview/project/snickers-electric_cs2023-dk-eksamen/id-36893-40414-143)
