@@ -38,6 +38,8 @@ This project is developed to dynamically calculate detailed regional or country 
 - Clone this repository.
 - Set up VPN connected to school database.
 - Open the project in IntelliJ IDE.
+- Import the following libraries through maven: "org.junit.jupiter:junit-jupiter:5.10.2" and "microsoft.sqlserver:mssql-jdbc:12.6.0.jre11"
+- Mark the "resources" folder as resources root
 - Run the application and follow the user interface for functionalities.
 
 
