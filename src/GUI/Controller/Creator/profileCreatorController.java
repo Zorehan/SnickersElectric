@@ -4,8 +4,10 @@ import BE.Log;
 import BE.Profile;
 import GUI.Model.LogModel;
 import GUI.Model.ProfileModel;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -50,9 +52,10 @@ public class profileCreatorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         initializeCountries();
         initializeProfileTypes();
+
+        initializeValidation();
     }
 
 
@@ -96,7 +99,7 @@ public class profileCreatorController implements Initializable {
             System.err.println("Invalid profile type: " + comboBoxType.getValue());
         }
 
-        Profile profile = new Profile(-1, name,annualSalary,workingHours,annualAmount,overhead,utilization,country,actualType);
+        Profile profile = new Profile(-1, name, annualSalary, workingHours, annualAmount, overhead, utilization, country, actualType);
 
         profileModel.createProfile(profile);
         String logText = "Profile: " + profile.getName() + " was created at: " + Date.valueOf(LocalDate.now());
@@ -112,4 +115,71 @@ public class profileCreatorController implements Initializable {
         stage.close();
     }
 
+    private void showError(String message) {
+        // Show error message to the user
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void initializeValidation() {
+        // Add listeners to text fields for real-time validation
+        txtFieldName.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("[a-zA-Z ]*")) {
+                showError("Name should only contain letters.");
+                txtFieldName.setText(oldValue);
+            }
+        });
+
+        txtFieldAnnualSalary.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                showError("Annual salary should only contain numbers.");
+                txtFieldAnnualSalary.setText(oldValue);
+            }
+        });
+
+        txtFieldAnnualAmount.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                showError("Annual amount should only contain numbers.");
+                txtFieldAnnualAmount.setText(oldValue);
+            }
+        });
+
+        txtFieldWorkingHours.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                showError("Working hours should only contain numbers.");
+                txtFieldWorkingHours.setText(oldValue);
+            }
+        });
+
+        txtFieldOverhead.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.isEmpty() && !newValue.matches("\\d*")) {
+                showError("Overhead should only contain numbers.");
+                txtFieldOverhead.setText(oldValue); // Revert to previous value
+            } else if (!newValue.isEmpty()) {
+                // Check if overhead is within the range 0-100
+                int overhead = Integer.parseInt(newValue);
+                if (overhead < 0 || overhead > 100) {
+                    showError("Overhead should be between 0 and 100.");
+                    txtFieldOverhead.setText(oldValue);
+                }
+            }
+        });
+
+        txtFieldUtilization.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.isEmpty() && !newValue.matches("\\d*")) {
+                showError("Utilization should only contain numbers.");
+                txtFieldUtilization.setText(oldValue);
+            } else if (!newValue.isEmpty()) {
+                // Check if utilization is within the range 0-100
+                int utilization = Integer.parseInt(newValue);
+                if (utilization < 0 || utilization > 100) {
+                    showError("Utilization should be between 0 and 100.");
+                    txtFieldUtilization.setText(oldValue);
+                }
+            }
+        });
+    }
 }

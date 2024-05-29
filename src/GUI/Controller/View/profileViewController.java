@@ -4,6 +4,7 @@ import BE.Log;
 import BE.Profile;
 import GUI.Model.LogModel;
 import GUI.Model.ProfileModel;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,12 +46,18 @@ public class profileViewController implements Initializable {
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final SearchEngine searchEngine = new SearchEngine(profileModel.getObservableProfiles());
     private final LogModel logModel = LogModel.getInstance();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setupTable();
-        setupSearch();
-        setupListeners();
         addRightClickFunctionality();
+
+        new Thread(new Runnable() {
+            public void run() {
+                setupTable();
+                setupSearch();
+                setupListeners();
+            }
+        }).start();
     }
 
     // Setup table view
