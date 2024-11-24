@@ -42,6 +42,11 @@ This project is developed to dynamically calculate detailed regional or country 
 - Mark the "resources" folder as resources root
 - Run the application and follow the user interface for functionalities.
 
+## Screenshots
+![Snickersdash](https://github.com/user-attachments/assets/0f3829be-ee69-4e24-83ff-71477d0944f5)
+![Snickersprofiles](https://github.com/user-attachments/assets/452f7954-325e-4dc3-904e-9b64c709e410)
+![Snickers3](https://github.com/user-attachments/assets/939ca37f-03e8-4d2b-80e2-8f8f352f3add)
+![snickers2](https://github.com/user-attachments/assets/76ad66d5-f15b-4d1c-b20a-35b1ca704468)
 
 ## Authors
 - [@Zorehan](https://github.com/Zorehan)
